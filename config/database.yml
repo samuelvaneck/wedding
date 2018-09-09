@@ -1,0 +1,21 @@
+# PostgreSQL. Versions 9.1 and up are supported.
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: wedding_development
+
+test:
+  <<: *default
+  database: wedding_test
+
+
+production:
+  <<: *default
+  database: wedding_production
+  username: wedding
+  password: <%= ENV['WEDDING_DATABASE_PASSWORD'] %>
