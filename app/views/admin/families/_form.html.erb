@@ -1,0 +1,22 @@
+<%= form_for [:admin, @family], html: { class: "needs-validation", novalidate: true } do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control", required: true, autocomplete: "off" %>
+    <div class="invalid-feedback"></div>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: "form-control", autocomplete: "off" %>
+    <div class="invalid-feedback"></div>
+  </div>
+  <div class="form-group">
+    <%= f.check_box :response %>
+    <%= f.label :response %>
+    <div class="invalid-feedback"></div>
+  </div>
+  <div class="form-group">
+    <%= f.label :attendees %>
+    <%= f.text_field :attendees, class: "form-control", required: true, autocomplete: "off" %>
+    <div class="invalid-feedback"></div>
+  </div>
+<% end %>

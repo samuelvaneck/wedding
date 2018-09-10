@@ -9,7 +9,7 @@ class Admin::FamiliesController < ApplicationController
   end
 
   def new
-    @familiy = Family.new
+    @family = Family.new
     respond_with @family
   end
 
@@ -38,6 +38,6 @@ class Admin::FamiliesController < ApplicationController
     params.require(:family).permit(:email, :name, :response, :attendees)
   end
   def set_family
-    @family = Familiy.find params[:id]
+    @family = Family.find params[:id]
   end
 end
