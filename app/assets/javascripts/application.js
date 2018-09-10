@@ -12,7 +12,7 @@
 //
 //= require jquery3
 //= require popper
-//= require boostrap
+//= require bootstrap
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
