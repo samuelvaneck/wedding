@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
-    resources :families do
-      resources :guest
-      resources :messages
-    end
+    resources :families
+    resources :messages
+    resources :guests
     resources :photos
   end
 
