@@ -1,14 +1,17 @@
-<div class="d-flex d-row">
+<div class="d-flex justify-content-center">
+  <div><h1 class="">Families</h1></div>
+</div>
+<div class="d-flex">
   <ul class="list-group  w-100">
     <% @families.each do |family| %>
-      <li class="list-group-item">
-        <%= link_to family.email, admin_family_path(family) %>
-        <%= family.response %>
-      </li>
+    <li class="list-group-item">
+      <%= link_to family.email, admin_family_path(family) %>
+      <%= family.response %>
+    </li>
     <% end %>
   </ul>
 </div>
-<div class="d-flex d-row">
+<div class="d-flex">
   <div class="btn btn-outline-primary">
     <%= link_to "New", new_admin_family_path %>
   </div>
