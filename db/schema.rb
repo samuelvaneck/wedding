@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_09_191159) do
+ActiveRecord::Schema.define(version: 2018_09_13_191544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2018_09_09_191159) do
     t.string "email"
     t.string "name"
     t.boolean "response"
-    t.integer "attendees"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_09_09_191159) do
     t.bigint "family_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "attending"
     t.index ["family_id"], name: "index_guests_on_family_id"
   end
 
