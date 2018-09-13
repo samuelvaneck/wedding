@@ -2,5 +2,5 @@
   <td><%= link_to family.name, admin_family_path(family) %></td>
   <td><%= link_to family.email %></td>
   <td class="text-center"><%= response_icon family.response %></td>
-  <td class="text-center"><%= family.attendees %></td>
+  <td class="text-center"><%= family.guests.count %></td>
 </tr>
