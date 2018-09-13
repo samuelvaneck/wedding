@@ -1,15 +1,6 @@
-<ul class="list-group w-100">
-  <li class="list-group-item">
-    <div class="d-flex flex-row">
-      <div>
-        <%= family.name %>
-      </div>
-      <div>
-        <%= family.email %>
-      </div>
-      <div>
-        <%= family.response %>
-      </div>
-    </div>
-  </li>
-</ul>
+<tr>
+  <td><%= link_to family.name, admin_family_path(family) %></td>
+  <td><%= link_to family.email %></td>
+  <td class="text-center"><%= response_icon family.response %></td>
+  <td class="text-center"><%= family.attendees %></td>
+</tr>

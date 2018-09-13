@@ -2,6 +2,9 @@ class Admin::FamiliesController < ApplicationController
   before_action :set_family, only: [:show, :edit, :update, :destory]
   def index
     @families = Family.all
+    @families.where!("name LIKE ? OR email LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%" ) if params[:search]
+    @target = params[:target] if params[:target]
+    debugger
   end
 
   def show
