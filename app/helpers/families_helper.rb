@@ -1,5 +1,5 @@
 module FamiliesHelper
-  def response_icon responded
+  def boolean_icon responded
     if responded
       tag.i class: "fas fa-check"
     else

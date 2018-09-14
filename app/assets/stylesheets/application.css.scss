@@ -14,7 +14,7 @@
  *= require_self
  */
  $primary: #E94B3C;
- 
+
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -47,4 +47,9 @@ li.link-active {
 
 .text-center {
   text-align: center;
+}
+
+.thumbnail {
+  max-height: 50px;
+  width: auto;
 }

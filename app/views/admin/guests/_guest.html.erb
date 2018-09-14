@@ -1,6 +1,6 @@
 <tr>
   <td><%= guest.name %></td>
-  <td><%= guest.attending %></td>
-  <td><%= guest.day_guest %></td>
-  <td><%= guest.family.name %></td>
+  <td class="text-center"><%= boolean_icon guest.attending %></td>
+  <td class="text-center"><%= boolean_icon guest.day_guest %></td>
+  <td class="text-center"><%= link_to guest.family.name, admin_family_path(guest.family) %></td>
 </tr>

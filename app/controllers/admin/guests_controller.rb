@@ -3,7 +3,7 @@ class Admin::GuestsController < ApplicationController
 
   def index
     @guests = Guest.all
-    @guests.where!("name LIKE ?", "%#{params[:search]}%") if params[:search]
+    @guests.where!("name ILIKE ?", "%#{params[:search]}%") if params[:search]
     @target = params[:target] if params[:target]
   end
 

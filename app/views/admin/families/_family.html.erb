@@ -1,6 +1,8 @@
 <tr>
   <td><%= link_to family.name, admin_family_path(family) %></td>
   <td><%= link_to family.email %></td>
-  <td class="text-center"><%= response_icon family.response %></td>
+  <td class="text-center"><%= boolean_icon family.response %></td>
   <td class="text-center"><%= family.guests.count %></td>
+  <td class="text-center"><%= link_to family.message, admin_message_path(family.message) rescue "none" %></td>
+  <td class="text-center"><%= link_to admin_photo_path(family.photo) do %><%= image_tag family.photo, class: "thumbnail" %><% end rescue "none" %></td>
 </tr>
