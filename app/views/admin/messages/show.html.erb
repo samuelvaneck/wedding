@@ -1,25 +1,29 @@
 <%= provide(:title, "Message from #{@message.family.name}") %>
 
-<div class="d-flex justify-content-center">
-  <h1>Messsage from <%= @message.family.name %></h1>
+<div class="d-flex justify-content-center mt-3">
+  <h2>Messsage</h2>
+</div>
+
+<div class="flex-row mt-2 mb-2">
+  <%= link_to "Back", admin_messages_path, class: "btn btn-outline-secondary" %>
+  <%= link_to "Delete", admin_message_path(@message), method: :delete, class: "btn btn-outline-primary float-right ml-2", data: { confirm: "Are you sure?" } %>
+  <%= link_to "Edit", edit_admin_message_path(@message), class: "btn btn-outline-secondary float-right" %>
 </div>
 
 <div class="d-flex">
   <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Family</th>
-        <th>Content</th>
-      </tr>
-    </thead>
     <tbody>
       <tr>
+        <th colspan="2">Message from <%= @message.family.name %></th>
+      </tr>
+      <tr>
+        <th>Family</th>
         <td><%= link_to @message.family.name, admin_family_path(@message.family) %></td>
+      </tr>
+      <tr>
+        <th>Content</th>
         <td><%= @message.content %></td>
       </tr>
     </tbody>
   </table>
-</div>
-<div class="flex-row">
-  <%= link_to "Back", admin_messages_path, class: "btn btn-outline-secondary" %>
 </div>

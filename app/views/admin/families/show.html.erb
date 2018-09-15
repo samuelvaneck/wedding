@@ -1,1 +1,47 @@
-<%= render @family %>
+<%= provide(:title, "Wedding | Family #{@family.name}") %>
+
+<div class="d-flex justify-content-center mt-3">
+  <h2>Family</h2>
+</div>
+
+<div class="flex-row mt-2 mb-2">
+  <%= link_to "Back", admin_families_path, class: "btn btn-outline-secondary" %>
+  <%= link_to "Delete", admin_family_path(@family), method: :delete, class: "btn btn-outline-primary float-right ml-2", data: { confirm: "Are you sure?" } %>
+  <%= link_to "Edit", edit_admin_family_path(@family), class: "btn btn-outline-secondary float-right" %>
+</div>
+
+<div class="d-flex">
+  <table class="table table-striped">
+    <tbody>
+    <tr>
+      <td colspan="2">
+        <strong>Family details</strong>
+      </td>
+    </tr>
+    <tr>
+      <th>Family</th>
+      <td><%= @family.name %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= link_to @family.email %></td>
+    </tr>
+    <tr>
+      <th>Response</th>
+      <td><%= boolean_icon @family.response %></td>
+    </tr>
+    <tr>
+      <th>Guests</th>
+      <td><%= @family.guests.count %></td>
+    </tr>
+    <tr>
+      <th>Message</th>
+      <td><%= link_to @family.message.content, admin_message_path(family.message) rescue "none" %></td>
+    </tr>
+    <tr>
+      <th>Photo</th>
+      <td><%= link_to admin_photo_path(@family.photo) do %><%= image_tag family.photo, class: "thumbnail" %><% end rescue "none" %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
