@@ -1,0 +1,25 @@
+<%= provide(:title, "Message from #{@message.family.name}") %>
+
+<div class="d-flex justify-content-center">
+  <h1>Messsage from <%= @message.family.name %></h1>
+</div>
+
+<div class="d-flex">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Family</th>
+        <th>Content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= link_to @message.family.name, admin_family_path(@message.family) %></td>
+        <td><%= @message.content %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="flex-row">
+  <%= link_to "Back", admin_messages_path, class: "btn btn-outline-secondary" %>
+</div>
