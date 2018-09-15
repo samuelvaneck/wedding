@@ -7,17 +7,16 @@ class Admin::FamiliesController < ApplicationController
   end
 
   def show
-    respond_with @family
+    respond_with :admin, @family
   end
 
   def new
     @family = Family.new
-    respond_with @family
   end
 
   def create
-    @family = Family.create(family_params)
-    respond_with @family
+    @family = Family.create family_params
+    respond_with :admin, @family
   end
 
   def edit
@@ -25,8 +24,8 @@ class Admin::FamiliesController < ApplicationController
   end
 
   def updated
-    @family.update(family_params)
-    respond_with @family
+    @family.update family_params
+    respond_with :admin, @family
   end
 
   def destroy
@@ -37,7 +36,7 @@ class Admin::FamiliesController < ApplicationController
   private
 
   def family_params
-    params.require(:family).permit(:email, :name, :response, :attendees)
+    params.require(:family).permit :email, :name, :response, :attendees
   end
   def set_family
     @family = Family.find params[:id]

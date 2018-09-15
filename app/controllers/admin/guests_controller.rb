@@ -8,7 +8,7 @@ class Admin::GuestsController < ApplicationController
   end
 
   def show
-    respond_with @guest
+    respond_with :admin, @guest
   end
 
   def new
@@ -16,8 +16,8 @@ class Admin::GuestsController < ApplicationController
   end
 
   def create
-    @guest = Guest.create(guest_params)
-    respond_with @guest
+    @guest = Guest.create guest_params
+    respond_with :admin, @guest
   end
 
   def edit
@@ -25,17 +25,18 @@ class Admin::GuestsController < ApplicationController
   end
 
   def updated
-    @guest.update(guest_params)
-    respond_with @guest
+    @guest.update guest_params
+    respond_with :admin, @guest
   end
 
   def destroy
     @guest.destroy
+    redirect_to admin_guests_path
   end
 
   private
   def guest_params
-    params.require(:guest).permit(:name, :atteding, :day_guest)
+    params.require(:guest).permit :name, :atteding, :day_guest, :family_id
   end
   def set_guest
     @guest = Guest.find params[:id]
