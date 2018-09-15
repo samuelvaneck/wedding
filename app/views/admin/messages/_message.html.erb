@@ -1,4 +1,6 @@
 <tr>
-  <td><%= message.family.name %></td>
-  <td><%= message.content %></td>
+  <td><%= link_to message.family.name, admin_family_path(message.family) %></td>
+  <td><%= link_to message.content, admin_message_path(message) %></td>
+  <td><%= link_to edit_admin_message_path(message) do %><i class="fas fa-pen"></i><% end %></td>
+  <td><%= link_to admin_message_path(message), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fas fa-trash"></i><% end %></td>
 </tr>

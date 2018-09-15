@@ -1,0 +1,37 @@
+<%= provide(:title, "Guest from #{@guest.family.name}") %>
+
+<div class="d-flex justify-content-center mt-3">
+  <h2>Guest</h2>
+</div>
+
+<div class="flex-row mt-2 mb-2">
+  <%= link_to "Back", admin_guests_path, class: "btn btn-outline-secondary" %>
+  <%= link_to "Delete", admin_guest_path(@guest), method: :delete, class: "btn btn-outline-primary float-right ml-2", data: { confirm: "Are you sure?" } %>
+  <%= link_to "Edit", edit_admin_guest_path(@guest), class: "btn btn-outline-secondary float-right" %>
+</div>
+
+<div class="d-flex">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <th colspan="2">Guest from <%= @guest.family.name %></th>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <td><%= @guest.name %></td>
+      </tr>
+      <tr>
+        <th>Attending</th>
+        <td><%= boolean_icon @guest.attending %></td>
+      </tr>
+      <tr>
+        <th>Day guest</th>
+        <td><%= @guest.day_guest %></td>
+      </tr>
+      <tr>
+        <th>Family</th>
+        <td><%= link_to @guest.family.name, admin_family_path(@guest.family) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
