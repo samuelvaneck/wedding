@@ -1,0 +1,24 @@
+<%= form_for [:admin, @photo], html: { class: "needs-validation", novalidate: true } do |f| %>
+  <div class="form-group">
+    <%= f.label :photo %>
+    <%= f.file_field :data, class: "form-control", required: true, autocomplete: "off" %>
+    <div class="invalid-feedback"></div>
+  </div>
+  <div>
+    <%= f.label :url %>
+    <%= f.text_field :url, class: "form-control", required: true, autocomplete: "off" %>
+    <div class="invalid-feedback"></div>
+  </div>
+  <div class="form-group">
+    <%= f.label :comment %>
+    <%= f.text_field :comment, class: "form-control", autocomplete: "off" %>
+    <div class="invalid-feedback"></div>
+  </div>
+  <div class="form-group">
+    <%= f.label :family %>
+    <%= f.collection_select :family_id, Family.all, :id, :name, { include_blank: true }, { class: "form-control" } %>
+    <div class="invalid-feedback"></div>
+  </div>
+  <%= link_to "Back", admin_families_path, class: "btn btn-outline-secondary" %>
+  <%= f.submit "Save", class: "btn btn-outline-primary float-right" %>
+<% end %>

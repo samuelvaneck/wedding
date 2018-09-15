@@ -68,6 +68,9 @@ ActiveRecord::Schema.define(version: 2018_09_18_172630) do
     t.string "imageble_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "family_id"
+    t.text "comment"
+    t.index ["family_id"], name: "index_photos_on_family_id"
     t.index ["imageble_type", "imagable_id"], name: "index_photos_on_imageble_type_and_imagable_id"
   end
 
@@ -100,4 +103,5 @@ ActiveRecord::Schema.define(version: 2018_09_18_172630) do
 
   add_foreign_key "guests", "families"
   add_foreign_key "messages", "families"
+  add_foreign_key "photos", "families"
 end
