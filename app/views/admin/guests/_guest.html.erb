@@ -2,7 +2,7 @@
   <td><%= link_to guest.name, admin_guest_path(guest) %></td>
   <td class="text-center"><%= boolean_icon guest.attending %></td>
   <td class="text-center"><%= boolean_icon guest.day_guest %></td>
-  <td class="text-center"><%= link_to guest.family.name, admin_family_path(guest.family) %></td>
+  <td class="text-center d-none d-lg-table-cell"><%= link_to guest.family.name, admin_family_path(guest.family) %></td>
   <td><%= link_to edit_admin_guest_path(guest) do %><i class="fas fa-pen"></i><% end %></td>
   <td><%= link_to admin_guest_path(guest), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fas fa-trash"></i><% end %></td>
 </tr>

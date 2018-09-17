@@ -1,59 +1,41 @@
 <nav>
   <ul class="list-group">
     <li class="list-group-item">
-      <div class="d-block d-lg-none">
-        <span class="avatar">W</span>
-      </div>
-      <div class="d-none d-lg-block">
-        <span class="avatar">W</span>&ensp; Wedding
+      <div class="d-flex justify-content-center">
+        <div class="d-inline"><span class="avatar">W</span></div>
+        <div class="d-none d-md-inline">&ensp; Wedding</div>
       </div>
     </li>
     <li class="list-group-item">
       <%= link_to admin_families_path do %>
-      <div class="d-flex justify-content-center flex-row">
-        <div class="d-block">
-          <i class="fas fa-users"></i>&ensp;
+        <div class="d-flex justify-content-center justify-content-md-start">
+          <div class="d-inline"><i class="fas fa-users"></i></div>
+          <div class="d-none d-md-inline">&ensp;Families</div>
         </div>
-        <div class="d-none d-lg-block">
-          Families
-        </div>
-      </div>
       <% end %>
     </li>
     <li class="list-group-item">
       <%= link_to admin_guests_path do %>
-      <div class="d-flex justify-content-center flex-row">
-        <div class="d-block">
-          <i class="fas fa-user"></i>&ensp;
+        <div class="d-flex justify-content-center justify-content-md-start">
+          <div class="d-inline"><i class="fas fa-user"></i></div>
+          <div class="d-none d-md-inline">&ensp;Guests</div>
         </div>
-        <div class="d-none d-lg-block">
-          Guests
-        </div>
-      </div>
       <% end %>
     </li>
     <li class="list-group-item">
       <%= link_to admin_messages_path do %>
-      <div class="d-flex justify-content-center flex-row">
-        <div class="d-block">
-          <i class="fas fa-envelope"></i>&ensp;
+        <div class="d-flex justify-content-center justify-content-md-start">
+          <div class="d-inline"><i class="fas fa-envelope"></i></div>
+          <div class="d-none d-md-inline">&ensp;Messages</div>
         </div>
-        <div class="d-none d-lg-block">
-          Messages
-        </div>
-      </div>
       <% end %>
     </li>
     <li class="list-group-item">
       <%= link_to admin_photos_path do %>
-      <div class="d-flex justify-content-center flex-row">
-        <div class="d-block">
-          <i class="fas fa-camera"></i>&ensp;
+        <div class="d-flex justify-content-center justify-content-md-start">
+          <div class="d-inline"><i class="fas fa-camera"></i></div>
+          <div class="d-none d-md-inline">&ensp;Photos</div>
         </div>
-        <div class="d-none d-lg-block">
-          Photos
-        </div>
-      </div>
       <% end %>
     </li>
   </ul>
