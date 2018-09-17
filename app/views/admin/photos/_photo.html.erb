@@ -4,6 +4,6 @@
     <div><%= photo.comment %></div>
     <div><%= photo.family&.name %></div>
     <div><%= link_to edit_admin_photo_path(photo) do %><i class="fas fa-pen"></i><% end %></div>
-    <div><%= link_to admin_photo_path(photo), method: :delete, data: { confirm: "Are you sure?" } %><i class="fas fa-trash"></i><% end %></div>
+    <div><%= link_to admin_photo_path(photo), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fas fa-trash"></i><% end %></div>
   </div>
 </li>

@@ -1,0 +1,8 @@
+<li class="list-group-item">
+  <div class="d-flex">
+    <div><%#= image_tag(post.photo) %></div>
+    <div><%= post.comment %></div>
+    <div><%= link_to edit_admin_post_path(post) do %><i class="fas fa-pen"></i><% end %></div>
+    <div><%= link_to admin_post_path(post), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fas fa-trash"></i><% end %></div>
+  </div>
+</li>

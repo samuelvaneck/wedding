@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_09_18_172630) do
+=======
+ActiveRecord::Schema.define(version: 2018_09_17_181511) do
+>>>>>>> Added Post model. Changed data field tag
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,9 +72,6 @@ ActiveRecord::Schema.define(version: 2018_09_18_172630) do
     t.string "imageble_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "family_id"
-    t.text "comment"
-    t.index ["family_id"], name: "index_photos_on_family_id"
     t.index ["imageble_type", "imagable_id"], name: "index_photos_on_imageble_type_and_imagable_id"
   end
 
@@ -103,5 +104,4 @@ ActiveRecord::Schema.define(version: 2018_09_18_172630) do
 
   add_foreign_key "guests", "families"
   add_foreign_key "messages", "families"
-  add_foreign_key "photos", "families"
 end

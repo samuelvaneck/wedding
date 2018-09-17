@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :families
-    resources :messages
     resources :guests
+    resources :messages
+    resources :posts
     resources :photos
   end
 
@@ -13,4 +14,5 @@ Rails.application.routes.draw do
     resources :messages, only: [:create, :show, :update]
   end
   resources :photos
+  resources :posts
 end

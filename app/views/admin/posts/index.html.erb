@@ -1,0 +1,22 @@
+<%= provide(:title, "Wedding | Posts") %>
+
+<div class="d-flex justify-content-center mt-3">
+  <div><h2 class="">Posts</h2></div>
+</div>
+<div class="d-flex mb-2">
+  <div class="btn btn-outline-primary">
+    <%= link_to "New", new_admin_post_path %>
+  </div>
+  <div class="ml-auto">
+    <input id="search" type="text" class="form-control" placeholder="Search..." autocomplete="off" data-table="posts-list" data-search-path="<%= admin_posts_path %>" />
+  </div>
+</div>
+<div class="d-flex">
+  <ul class="list-group" id="posts-list">
+    <%= render @posts %>
+  </ul>
+</div>
+
+<script>
+  $("#search").on("keyup", function() { searchItems($(this)) });
+</script>

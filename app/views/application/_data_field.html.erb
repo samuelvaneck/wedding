@@ -1,0 +1,20 @@
+<div class="form-group">
+  <%= label_tag :photo %>
+  <%= file_field_tag :data, class: "form-control", autocomplete: "off", style: "display:none", id: "real-input-field" %>
+  <div class="input-group">
+    <%= text_field_tag :visible_data_field, nil, class: "form-control", autocomplete: "off", required: true %>
+    <div class="input-group-append">
+      <%= button_tag "Browse", class: "btn btn-secondary", type: "button", id: "browse-btn" %>
+    </div>
+  </div>
+  <div class="invalid-feedback"></div>
+</div>
+
+<script>
+  $("#real-input-field").change(function(){
+    $("#visible_data_field").val($(this).val().replace(/^.*[\\\/]/, ''))
+  });
+  $("#browse-btn").click(function(){
+    $("#real-input-field").click();
+  });
+</script>
