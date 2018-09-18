@@ -4,7 +4,7 @@
   <td class="text-center"><%= boolean_icon family.response %></td>
   <td class="text-center"><%= family.guests.count %></td>
   <td class="text-center d-none d-md-table-cell"><%= link_to family.message.content, admin_message_path(family.message) rescue "none" %></td>
-  <td class="text-center d-none d-md-table-cell"><%= link_to admin_photo_path(family.photo) do %><%= image_tag family.photo, class: "thumbnail" %><% end rescue "none" %></td>
+  <td class="text-center d-none d-lg-table-cell"><%= link_to family.photo do %><%= image_tag family.photo, class: "thumbnail" %><% end rescue "none" %></td>
   <td><%= link_to edit_admin_family_path(family) do %><i class="fas fa-pen"></i><% end %></td>
   <td><%= link_to admin_family_path(family), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fas fa-trash"></i><% end %></td>
 </tr>
