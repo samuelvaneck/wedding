@@ -1,3 +1,3 @@
 class Post < ApplicationRecord
-  has_many :photos, as: :imageble
+  has_one_attached :photo
 end

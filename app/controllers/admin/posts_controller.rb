@@ -8,7 +8,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def show
-    repond_with :admin, @post
+    respond_with :admin, @post
   end
 
   def new
@@ -29,7 +29,7 @@ class Admin::PostsController < ApplicationController
     respond_with :admin, @post
   end
 
-  def
+  def destroy
     @post.destroy
     redirect_to admin_posts_path
   end
@@ -37,7 +37,7 @@ class Admin::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit :comment
+    params.require(:post).permit :comment, :photo
   end
 
   def set_post

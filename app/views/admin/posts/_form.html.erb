@@ -1,10 +1,26 @@
 <%= form_for [:admin, @post], html: { class: "needs-validation", novalidate: true } do |f| %>
-  <%= render 'data_field' %>
+  <div class="form-group">
+    <%= f.label :photo %>
+    <%= f.file_field :photo, class: "form-control", autocomplete: "off", style: "display:none", id: "real-input-field" %>
+    <div class="input-group">
+      <%= text_field_tag :visible_photo_field, nil, class: "form-control", autocomplete: "off", required: true %>
+      <div class="input-group-append">
+        <%= button_tag "Browse", class: "btn btn-secondary", type: "button", id: "browse-btn" %>
+      </div>
+    </div>
+    <div class="invalid-feedback"></div>
+  </div>
+
   <div class="form-group">
     <%= f.label :comment %>
     <%= f.text_field :comment, class: "form-control", autocomplete: "off" %>
     <div class="invalid-feedback"></div>
   </div>
+
   <%= link_to "Back", admin_posts_path, class: "btn btn-outline-secondary" %>
   <%= f.submit "Save", class: "btn btn-outline-primary float-right" %>
 <% end %>
+
+<script>
+  bindPhotoUploadBtn();
+</script>
