@@ -3,14 +3,14 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :families
-    resources :messages
     resources :guests
-    resources :photos
+    resources :messages
+    resources :posts
   end
 
   resources :families, only: [:show, :update] do
     resources :guests, only: [:show, :update]
     resources :messages, only: [:create, :show, :update]
   end
-  resources :photos
+  resources :posts
 end

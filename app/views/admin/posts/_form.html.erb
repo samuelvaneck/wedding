@@ -1,16 +1,4 @@
-<%= form_for [:admin, @family], html: { class: "needs-validation", novalidate: true } do |f| %>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control", required: true, autocomplete: "off" %>
-    <div class="invalid-feedback"></div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.text_field :email, class: "form-control", autocomplete: "off" %>
-    <div class="invalid-feedback"></div>
-  </div>
-
+<%= form_for [:admin, @post], html: { class: "needs-validation", novalidate: true } do |f| %>
   <div class="form-group">
     <%= f.label :photo %>
     <%= f.file_field :photo, class: "form-control", autocomplete: "off", style: "display:none", id: "real-input-field" %>
@@ -24,12 +12,12 @@
   </div>
 
   <div class="form-group">
-    <%= f.check_box :response %>
-    <%= f.label :response %>
+    <%= f.label :comment %>
+    <%= f.text_field :comment, class: "form-control", autocomplete: "off" %>
     <div class="invalid-feedback"></div>
   </div>
 
-  <%= link_to "Back", admin_families_path, class: "btn btn-outline-secondary" %>
+  <%= link_to "Back", admin_posts_path, class: "btn btn-outline-secondary" %>
   <%= f.submit "Save", class: "btn btn-outline-primary float-right" %>
 <% end %>
 

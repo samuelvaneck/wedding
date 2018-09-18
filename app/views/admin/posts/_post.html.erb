@@ -1,0 +1,11 @@
+<div class="card mt-3">
+  <div class="card-image">
+    <%= image_tag(post&.photo, class: 'card-image') %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Post @ <%= post.created_at.strftime('%F %H') %></h5>
+    <p class="card-text"><%= post.comment %></p>
+    <%= link_to "Delete", admin_post_path(post), method: :delete, class: "btn btn-outline-primary float-right ml-2", data: { confirm: "Are you sure?" } %>
+    <%= link_to "Edit", edit_admin_post_path(post), class: "btn btn-outline-secondary float-right" %>
+  </div>
+</div>

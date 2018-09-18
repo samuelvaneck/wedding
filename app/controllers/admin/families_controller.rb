@@ -23,7 +23,7 @@ class Admin::FamiliesController < ApplicationController
     respond_with @family
   end
 
-  def updated
+  def update
     @family.update family_params
     respond_with :admin, @family
   end

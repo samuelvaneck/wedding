@@ -1,0 +1,13 @@
+<%= provide(:title, "Wedding | Post") %>
+
+<div class="d-flex justify-content-center mt-3">
+  <h2>Post</h2>
+</div>
+
+<div class="flex-row mt-2 mb-2">
+  <%= link_to "Back", admin_posts_path, class: "btn btn-outline-secondary" %>
+</div>
+
+<div class="d-flex justify-content-center">
+  <%= render @photo %>
+</div>
