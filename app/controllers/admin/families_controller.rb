@@ -36,7 +36,7 @@ class Admin::FamiliesController < ApplicationController
   private
 
   def family_params
-    params.require(:family).permit :email, :name, :response, :attendees
+    params.require(:family).permit :email, :name, :response, :attendees, :photo
   end
   def set_family
     @family = Family.find params[:id]
