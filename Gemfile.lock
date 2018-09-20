@@ -188,6 +188,9 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    roo (2.7.1)
+      nokogiri (~> 1)
+      rubyzip (~> 1.1, < 2.0.0)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
@@ -293,6 +296,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.1)
   redis (~> 4.0)
+  roo
   rspec
   rubocop
   sass-rails (~> 5.0)
