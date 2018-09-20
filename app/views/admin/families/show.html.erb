@@ -32,7 +32,11 @@
     </tr>
     <tr>
       <th>Guests</th>
-      <td><%= @family.guests.count %></td>
+      <td>
+        <% @family.guests.each do |guest| %>
+          <p><%= link_to guest.name, admin_guest_path(guest) %></p>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>Message</th>

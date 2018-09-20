@@ -2,7 +2,7 @@ class Admin::FamiliesController < ApplicationController
   before_action :set_family, only: [:show, :edit, :update, :destory]
   def index
     @families = Family.all
-    @families.where!("name ILIKE ? OR email ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%" ) if params[:search]
+    @families.where!("name ILIKE ? OR email ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search]
     @target = params[:target] if params[:target]
   end
 
@@ -33,11 +33,18 @@ class Admin::FamiliesController < ApplicationController
     redirect_to admin_families_path
   end
 
+  def import
+    file = params[:file]
+    imported = Family.import file
+    redirect_to admin_families_path
+  end
+
   private
 
   def family_params
     params.require(:family).permit :email, :name, :response, :attendees, :photo
   end
+
   def set_family
     @family = Family.find params[:id]
   end

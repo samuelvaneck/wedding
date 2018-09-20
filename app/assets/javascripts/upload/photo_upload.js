@@ -1,8 +1,8 @@
-function bindPhotoUploadBtn() {
-  $("#real-input-field").change(function(){
-    $("#visible_photo_field").val($(this).val().replace(/^.*[\\\/]/, ''))
+function bindDataUploadBtn(visibleField) {
+  $('#real-input-field').change(function(){
+    $(visibleField).val($(this).val().replace(/^.*[\\\/]/, ''))
   });
-  $("#browse-btn").click(function(){
-    $("#real-input-field").click();
+  $('#browse-btn').click(function(){
+    $('#real-input-field').click();
   });
 }
