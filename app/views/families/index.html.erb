@@ -1,37 +1,53 @@
-<div class="family-container">
-  <div class="d-flex justify-content-center m-5">
-    <div class="card w-75 shadow rounded mb-5">
-      <% if @family.photo %>
-        <div class="card-img-top"><%=  %></div>
-      <% end %>
-      <div class="card-header">
-        <div class="d-flex justify-content-center">
-          <div class="mt-2"><h5><strong><%= @family.name %></strong></h5></div>
-        </div>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <div class="d-flex">
-            <div><strong>Gasten</strong></div>
-            <div class="ml-auto"><strong>Aanwezig</strong></div>
+<div class="family-header">
+  <div class="bg-header"></div>
+  <div class="d-flex justify-content-center">
+    <div class="mt-5">
+      <div><h2>Bruiloft Samuel & Corine</h2></div>
+      <div class="text-center"><h6>Marienhof | 10 mei 2019 Amersfoort</h6></div>
+    </div>
+  </div>
+</div>
+<div class="family-content">
+  <div class="card-wrapper">
+    <div class="d-flex justify-content-center">
+      <div class="card shadow rounded">
+        <% if @family.photo %>
+          <div class="card-img-top"><%=  %></div>
+        <% end %>
+        <div class="card-header">
+          <div class="d-flex justify-content-center">
+            <div class="mt-2"><h5><strong><%= @family.name %></strong></h5></div>
           </div>
-        </li>
-        <% @guests.each do |guest| %>
+        </div>
+        <ul class="list-group list-group-flush">
           <li class="list-group-item">
             <div class="d-flex">
-              <div><%= guest.name %></div>
-              <div class="ml-auto mr-4"><%= check_box_tag :attending %></div>
+              <div><strong>Gasten</strong></div>
+              <div class="ml-auto"><strong>Aanwezig</strong></div>
             </div>
           </li>
-        <% end %>
-      </ul>
-      <div class="card-body">
-        <div class="d-flex justify-content-end">
-          <button type="button" class="btn btn-outline-primary">
-            <i class="fas fa-paper-plane"></i>&ensp;Verstuur
-          </button>
+          <% @guests.each do |guest| %>
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div><%= guest.name %></div>
+                <div class="ml-auto mr-4"><%= check_box_tag :attending %></div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+        <div class="card-body">
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-outline-primary">
+              <i class="fas fa-paper-plane"></i>&ensp;Verstuur
+            </button>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="family-footer">
+  <div class="fixed-bottom text-center mb-2">
+    <div>Gemaakt door Samuel van Eck</div>
   </div>
 </div>
