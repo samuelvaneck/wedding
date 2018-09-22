@@ -4,6 +4,7 @@ class Family < ApplicationRecord
   has_one :message, dependent: :destroy
 
   validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
 
   def self.import(file)
     accepted_extensions = ['.xls', '.xlsx']
