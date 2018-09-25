@@ -65,23 +65,41 @@ li.link-active {
 .family-header {
   z-index: 1;
   height: 50vh;
-  color: #FFFFFF;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-image: url(asset_path("bgs/bg-1.jpg"));
   position: relative;
   overflow: hidden;
 }
 
-#before-block {
-  width: 40%;
-  height: 40%;
-  color: $primary;
+.header-img {
+  width: 60vw;
+  height: 50vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(asset_path("bgs/bg-1.jpg"));
+  transition: all 0.4s ease-in-out;
+}
+
+.header-img:hover {
+  transform: scale(1.1);
+  width: 80vw;
+}
+
+.header-content {
+  color: #000000;
   background-color: #FFFFFF;
-  transform: rotate(-45deg);
-  position: absolute;
-  top: -20%;
-  left: -20%;
+  width: 40vw;
+  height: 90vh;
+  transform: rotate(25deg) translate(-50%);
+  transition: all 0.4s ease-in-out;
+}
+
+.header-text {
+  transform: rotate(-25deg) translate(0, 50px);
+}
+
+.header-content:hover {
+  transform: rotate(25deg) translate(-50%);
+  width: 80vw;
 }
 
 .family-content {
