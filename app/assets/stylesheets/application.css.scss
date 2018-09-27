@@ -72,7 +72,7 @@ li.link-active {
 .header-img {
   width: 60vw;
   height: 50vh;
-  background-position: center;
+  background-position: 75% 50%;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(asset_path("bgs/bg-1.jpg"));
@@ -81,25 +81,38 @@ li.link-active {
 
 .header-img:hover {
   transform: scale(1.1);
-  width: 80vw;
+  width: 100vw;
 }
 
 .header-content {
+  position: relative;
   color: #000000;
   background-color: #FFFFFF;
   width: 40vw;
-  height: 90vh;
-  transform: rotate(25deg) translate(-50%);
+  height: 50vh;
   transition: all 0.4s ease-in-out;
-}
-
-.header-text {
-  transform: rotate(-25deg) translate(0, 50px);
+  overflow-x: visible;
 }
 
 .header-content:hover {
-  transform: rotate(25deg) translate(-50%);
   width: 80vw;
+}
+
+.content-text {
+  position: absolute;
+  left: -2%;
+}
+
+.overlay::after {
+  content: " ";
+  display: inline-block;
+  position: absolute;
+  width: 70%;
+  height: 200%;
+  left: -35%;
+  top: -80%;
+  background-color: #FFFFFF;
+  transform: rotate(10deg);
 }
 
 .family-content {
@@ -118,6 +131,4 @@ li.link-active {
 .family-footer {
   z-index: 1;
   height: 50vh;
-
-  // background-color: #EFEFEF;
 }
