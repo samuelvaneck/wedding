@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :posts
   end
 
-  resources :families, only: [:show, :update] do
+  resources :families, only: [:index, :update] do
     resources :guests, only: [:show, :update]
     resources :messages, only: [:create, :show, :update]
   end

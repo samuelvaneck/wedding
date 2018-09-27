@@ -12,9 +12,11 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-1 col-md-2" style="padding:0px">
-          <%= render 'layouts/sidenav' %>
-        </div>
+        <% if self.class.parent == Admin %>
+          <div class="col-1 col-md-2" style="padding:0px">
+            <%= render 'layouts/sidenav' %>
+          </div>
+        <% end %>
         <div class="col">
           <%= yield %>
         </div>
