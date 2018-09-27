@@ -77,6 +77,9 @@ li.link-active {
   background-size: cover;
   background-image: url(asset_path("bgs/bg-1.jpg"));
   transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
 }
 
 .header-img:hover {
@@ -91,6 +94,9 @@ li.link-active {
   width: 40vw;
   height: 50vh;
   transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
   overflow-x: visible;
 }
 
