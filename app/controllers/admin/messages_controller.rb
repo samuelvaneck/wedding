@@ -1,4 +1,4 @@
-class Admin::MessagesController < ApplicationController
+class Admin::MessagesController < AdminController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   def index

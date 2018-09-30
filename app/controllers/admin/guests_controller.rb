@@ -1,4 +1,4 @@
-class Admin::GuestsController < ApplicationController
+class Admin::GuestsController < AdminController
   before_action :set_guest, only: [:show, :edit, :update, :destroy]
 
   def index
