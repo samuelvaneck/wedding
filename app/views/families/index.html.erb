@@ -16,61 +16,69 @@
   <div class="card-wrapper">
     <div class="d-flex justify-content-center">
       <div class="card shadow rounded">
-        <% if @family.photo %>
-          <div class="card-img-top"><%=  %></div>
-        <% end %>
         <div class="card-header">
           <div class="d-flex justify-content-center">
             <div class="mt-2"><h5><strong><%= @family.name %></strong></h5></div>
           </div>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <div class="d-flex">
-              <div><strong>Gasten</strong></div>
-              <div class="ml-auto"><strong>Aanwezig</strong></div>
-            </div>
-          </li>
-          <% @guests.each do |guest| %>
+        <% if @family.photo.attached? %>
+          <div class="card-img-top">
+            <%= image_tag @family.photo, class: "w-100" %></div>
+        <% end %>
+        <%= form_for @family, remote: true do |f| %>
+          <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <div class="d-flex">
-                <div><%= guest.name %></div>
-                <div class="ml-auto mr-4">
-                  <%= check_box_tag :attending, nil, false, class: 'cbx', style: 'display:none', id: "attending_"+guest.id.to_s %>
-                  <%= label_tag :attending, class: "toggle", for: "attending_"+guest.id.to_s do %><span></span><% end %>
+                <div><strong>Gasten</strong></div>
+                <div class="ml-auto"><strong>Aanwezig</strong></div>
+              </div>
+            </li>
+            <% @guests.each do |guest| %>
+              <%= f.fields_for :guests, guest do |guest_fields| %>
+                <li class="list-group-item">
+                  <div class="d-flex">
+                    <div><%= guest.name %></div>
+                    <div class="ml-auto mr-4">
+                      <%= guest_fields.check_box :attending, { class: 'cbx', style: '', id: "attending_"+guest.id.to_s }, guest.attending %>
+                      <%= guest_fields.label :attending, class: "toggle", for: "attending_"+guest.id.to_s do %><span></span><% end %>
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+            <% end %>
+            <li class="list-group-item">
+              <%= f.fields_for :message, @message do |message_fields| %>
+                <div class="d-flex">
+                  <div class="form-group">
+                    <strong><%= message_fields.label :bericht %></strong>
+                    <%= message_fields.text_area :content, placeholder: "Laat optioneel uw wens of bericht achter", class: 'form-control', cols: 100, rows: 3 %>
+                  </div>
+                </div>
+              <% end %>
+              <div class="d-flex">
+                <div class="form-group w-100">
+                  <%= f.label :foto %>
+                  <%= f.file_field :photo, class: "form-control", autocomplete: "off", style: "display:none", id: "real-input-field", direct_upload: true %>
+                  <div class="input-group">
+                    <%= text_field_tag :visible_photo_field, nil, class: "form-control", autocomplete: "off", placeholder: "Upload een foto" %>
+                    <div class="input-group-append">
+                      <%= button_tag "Bladeren", class: "btn btn-secondary", type: "button", id: "browse-btn" %>
+                    </div>
+                  </div>
+                  <div class="invalid-feedback"></div>
+                  <small class="form-text text-muted">Het uploaden van een foto is optioneel. De foto zal tijdens de bruiloft gebruikt worden voor de decoratie van een foto gallerij.</small>
                 </div>
               </div>
             </li>
-          <% end %>
-          <li class="list-group-item">
-            <div class="d-flex">
-              <div class="form-group">
-                <strong><%= label_tag :bericht %></strong>
-                <%= text_area_tag :message, @family.message, class: 'form-control', size: '50x3' %>
-              </div>
+          </ul>
+          <div class="card-body">
+            <div class="d-flex justify-content-end">
+              <%= f.button "Verstuur", class: "btn btn-outline-primary" do %>
+                <i class="fas fa-paper-plane"></i>&ensp;Verstuur
+              <% end %>
             </div>
-            <div class="d-flex">
-              <div class="form-group w-100">
-                <%= label_tag :foto %>
-                <%= file_field_tag :photo, class: "form-control", autocomplete: "off", style: "display:none", id: "real-input-field" %>
-                <div class="input-group">
-                  <%= text_field_tag :visible_photo_field, nil, class: "form-control", autocomplete: "off", required: true %>
-                  <div class="input-group-append">
-                    <%= button_tag "Bladeren", class: "btn btn-secondary", type: "button", id: "browse-btn" %>
-                  </div>
-                </div>
-                <div class="invalid-feedback"></div>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <div class="card-body">
-          <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-outline-primary">
-              <i class="fas fa-paper-plane"></i>&ensp;Verstuur
-            </button>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -80,3 +88,7 @@
     <div>Gemaakt door Samuel van Eck</div>
   </div>
 </div>
+
+<script>
+
+</script>
