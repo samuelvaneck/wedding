@@ -1,4 +1,4 @@
-class Admin::FamiliesController < ApplicationController
+class Admin::FamiliesController < AdminController
   before_action :set_family, only: [:show, :edit, :update, :destory]
   def index
     @families = Family.all
