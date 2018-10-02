@@ -2,6 +2,7 @@ class FamiliesController < ApplicationController
   before_action :set_family, only: [:update]
 
   def index
+    return unless params[:email]
     @family = Family.find_by(email: params[:email])
     @guests = @family.guests
     @message = @family.message || Message.new
@@ -15,7 +16,7 @@ class FamiliesController < ApplicationController
   private
 
   def family_params
-    params.require(:family).permit :response, :photo, guests_attributes: [:id, :attending], message_attributes: [:content]
+    params.require(:family).permit(:response, :photo, guests_attributes: [:id, :attending], message_attributes: [:content, :id])
   end
 
   def set_family
