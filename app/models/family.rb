@@ -5,6 +5,7 @@ class Family < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
+  validates :uuid, uniqueness: true
 
   accepts_nested_attributes_for :guests
   accepts_nested_attributes_for :message
@@ -31,7 +32,7 @@ class Family < ApplicationRecord
   end
 
   def self.import_guest(guest)
-    family = guest[:family] ? Family.create(name: guest[:family], email: guest[:email], response: false) : Family.last
+    family = guest[:family] ? Family.create(name: guest[:family], email: guest[:email], response: false, uuid: SecureRandom.hex(3)) : Family.last
     Guest.create(name: guest[:guest], day_guest: (guest[:day_guest] == 1 ? true : false), family: family)
   end
 end

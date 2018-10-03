@@ -31,6 +31,10 @@
       <td><%= boolean_icon @family.response %></td>
     </tr>
     <tr>
+      <th>uuid</th>
+      <td><%= @family.uuid %></td>
+    </tr>
+    <tr>
       <th>Guests</th>
       <td>
         <% @family.guests.each do |guest| %>
