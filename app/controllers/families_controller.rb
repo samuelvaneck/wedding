@@ -4,7 +4,6 @@ class FamiliesController < ApplicationController
   def index
     return unless params[:uuid]
     @family = Family.find_by(uuid: params[:uuid])
-    logger.debug "<<<<<<<< Family #{@family.name} >>>>>>>>>"
     return unless @family
     @guests = @family.guests
     @message = @family.message || Message.new

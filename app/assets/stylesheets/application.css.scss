@@ -127,7 +127,7 @@ li.link-active {
 .family-content {
   z-index: 10;
   position: relative;
-  top: -20%;
+  top: -15%;
   margin: 10px;
 }
 
@@ -212,4 +212,11 @@ li.link-active {
   height: 100%;
   text-align: center;
   text-transform: lowercase;
+}
+
+.admin-btns {
+  right: 0px;
+  top: 0px;
+  position: absolute;
+  z-index: 20;
 }
