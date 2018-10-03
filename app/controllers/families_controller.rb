@@ -2,8 +2,10 @@ class FamiliesController < ApplicationController
   before_action :set_family, only: [:update]
 
   def index
-    return unless params[:email]
-    @family = Family.find_by(email: params[:email])
+    return unless params[:uuid]
+    @family = Family.find_by(uuid: params[:uuid])
+    logger.debug "<<<<<<<< Family #{@family.name} >>>>>>>>>"
+    return unless @family
     @guests = @family.guests
     @message = @family.message || Message.new
   end

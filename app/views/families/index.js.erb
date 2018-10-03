@@ -1,0 +1,6 @@
+<% if @family %>
+  $("#content").html("<%= j render partial: 'reply_card' %>");
+<% else %>
+  $("#status").find(".status-text").text("Geen gasten gevonden");
+  $("#spinner").hide();
+<% end %>

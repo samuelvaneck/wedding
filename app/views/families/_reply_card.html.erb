@@ -1,0 +1,68 @@
+<div class="card-wrapper">
+  <div class="d-flex justify-content-center">
+    <div class="card shadow rounded">
+      <div class="card-header">
+        <div class="d-flex justify-content-center">
+          <div class="mt-2"><h5><strong><%= @family.name %></strong></h5></div>
+        </div>
+      </div>
+      <% if @family.photo.attached? %>
+        <div class="card-img-top"><%= image_tag @family.photo, class: "w-100" %></div>
+      <% end %>
+      <%= form_for @family, remote: true do |f| %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="d-flex">
+              <div><strong>Gasten</strong></div>
+              <div class="ml-auto"><strong>Aanwezig</strong></div>
+            </div>
+          </li>
+          <% @guests.each do |guest| %>
+            <%= f.fields_for :guests, guest do |guest_fields| %>
+              <li class="list-group-item">
+                <div class="d-flex">
+                  <div><%= guest.name %></div>
+                  <div class="ml-auto mr-4">
+                    <%= guest_fields.check_box :attending, { class: 'cbx', style: 'display:none' } %>
+                    <%= guest_fields.label :attending, class: "toggle" do %><span></span><% end %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+          <li class="list-group-item">
+            <%= f.fields_for :message, @message do |message_fields| %>
+              <div class="d-flex">
+                <div class="form-group">
+                  <strong><%= message_fields.label :bericht %></strong>
+                  <%= message_fields.text_area :content, placeholder: "Laat optioneel uw wens of bericht achter", class: 'form-control', cols: 100, rows: 3 %>
+                </div>
+              </div>
+            <% end %>
+            <div class="d-flex">
+              <div class="form-group w-100">
+                <%= f.label :foto %>
+                <%= f.file_field :photo, class: "form-control", autocomplete: "off", style: "display:none", id: "real-input-field", direct_upload: true %>
+                <div class="input-group">
+                  <%= text_field_tag :visible_photo_field, nil, class: "form-control", autocomplete: "off", placeholder: "Upload een foto" %>
+                  <div class="input-group-append">
+                    <%= button_tag "Bladeren", class: "btn btn-secondary", type: "button", id: "browse-btn" %>
+                  </div>
+                </div>
+                <div class="invalid-feedback"></div>
+                <small class="form-text text-muted">Het uploaden van een foto is optioneel. De foto zal tijdens de bruiloft gebruikt worden voor de decoratie van een foto gallerij.</small>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="card-body">
+          <div class="d-flex justify-content-end">
+            <%= f.button "Verstuur", class: "btn btn-outline-primary" do %>
+              <i class="fas fa-paper-plane"></i>&ensp;Verstuur
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

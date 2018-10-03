@@ -73,16 +73,16 @@ li.link-active {
 }
 
 .header-img {
-  width: 60vw;
+  width: 80vw;
   height: 50vh;
   background-position: 75% 50%;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(asset_path("bgs/bg-1.jpg"));
-  transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
+  transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
 }
 
 .header-img:hover {
@@ -94,17 +94,17 @@ li.link-active {
   position: relative;
   color: #000000;
   background-color: #FFFFFF;
-  width: 40vw;
+  width: 20vw;
   height: 50vh;
-  transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
+  transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
   overflow-x: visible;
 }
 
 .header-content:hover {
-  width: 80vw;
+  width: 50vw;
 }
 
 .content-text {
@@ -116,7 +116,7 @@ li.link-active {
   content: " ";
   display: inline-block;
   position: absolute;
-  width: 70%;
+  width: 150%;
   height: 200%;
   left: -35%;
   top: -80%;
@@ -204,4 +204,12 @@ li.link-active {
       transition: all .4s ease;
     }
   }
+}
+
+.code-input-field {
+  font-size: 2em;
+  max-width: 60px;
+  height: 100%;
+  text-align: center;
+  text-transform: lowercase;
 }

@@ -15,6 +15,7 @@ class Admin::FamiliesController < AdminController
   end
 
   def create
+    params[:family][:uuid] = SecureRandom.hex 3
     @family = Family.create family_params
     respond_with :admin, @family
   end
@@ -42,7 +43,7 @@ class Admin::FamiliesController < AdminController
   private
 
   def family_params
-    params.require(:family).permit(:email, :name, :response, :attendees, :photo, guests_attributes: [:attending, :id], message_attributes: [:content, :id])
+    params.require(:family).permit(:email, :name, :response, :attendees, :photo, :uuid, guests_attributes: [:attending, :id], message_attributes: [:content, :id])
   end
 
   def set_family

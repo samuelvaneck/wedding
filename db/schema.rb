@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_09_18_172630) do
-=======
-ActiveRecord::Schema.define(version: 2018_09_17_181511) do
->>>>>>> Added Post model. Changed data field tag
+ActiveRecord::Schema.define(version: 2018_10_03_062019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +42,7 @@ ActiveRecord::Schema.define(version: 2018_09_17_181511) do
     t.boolean "response"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid"
   end
 
   create_table "guests", force: :cascade do |t|
