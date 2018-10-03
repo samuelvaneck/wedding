@@ -19,10 +19,12 @@
         <% end %>
         <div class="col">
           <% if user_signed_in? %>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-outline-primary float-right mt-2 ml-2' %>
-            <% if params[:controller].split("/").first != "admin" %>
-              <%= link_to "Admin", admin_families_path, class: "btn btn-outline-primary float-right mt-2" %>
-            <% end %>
+            <div class="admin-btns">
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-outline-primary float-right mt-2 ml-2' %>
+              <% if params[:controller].split("/").first != "admin" %>
+                <%= link_to "Admin", admin_families_path, class: "btn btn-outline-primary float-right mt-2" %>
+              <% end %>
+            </div>
           <% end %>
           <%= yield %>
         </div>
