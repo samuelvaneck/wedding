@@ -20,9 +20,14 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem "roo"
 
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-passenger'
+gem 'capistrano-rbenv'
+gem 'capistrano-bundler'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capistrano-rails'
 end
 
 group :development do
