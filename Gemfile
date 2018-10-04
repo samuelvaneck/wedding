@@ -19,6 +19,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem "roo"
+gem 'devise'
 
 gem 'capistrano'
 gem 'capistrano-rails'
@@ -38,7 +39,6 @@ group :development do
   gem 'rubocop'
   gem 'brakeman'
   gem 'rspec'
-  gem 'devise'
 end
 
 group :test do
