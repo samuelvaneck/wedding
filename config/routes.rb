@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: "families#index"
 
+  get "admin", to: "admin/families#index"
+
   namespace :admin do
     resources :families do
       collection { post :import }
