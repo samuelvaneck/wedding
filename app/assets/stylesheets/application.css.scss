@@ -85,7 +85,7 @@ li.link-active {
   -ms-transition: all 1s ease-in-out;
 }
 
-.header-img:hover, .header-img:active {
+.header-img:hover, .header-img:focus, .header-img:active {
   transform: scale(1.1);
   width: 100vw;
 }
@@ -103,7 +103,7 @@ li.link-active {
   overflow-x: visible;
 }
 
-.header-content:hover, .header-content:active {
+.header-content:hover, .header-content:focus, .header-content:active {
   width: 50vw;
 }
 
