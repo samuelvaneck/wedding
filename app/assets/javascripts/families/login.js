@@ -56,3 +56,8 @@ function showSpinner() {
 function hideSpinner() {
   $("#status").hide();
 }
+
+function clearCodeInputFields() {
+  $(".code-input-field").val("")
+  $("#code-input-0").focus();
+}
