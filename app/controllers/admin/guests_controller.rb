@@ -24,7 +24,7 @@ class Admin::GuestsController < AdminController
     respond_with @guest
   end
 
-  def updated
+  def update
     @guest.update guest_params
     respond_with :admin, @guest
   end

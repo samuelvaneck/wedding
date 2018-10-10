@@ -1,7 +1,9 @@
 <div class="card mt-3">
-  <div class="card-image">
-    <%= image_tag(post&.photo, class: 'card-image') %>
-  </div>
+  <% if post.photo.attached? %>
+    <div class="card-image">
+      <%= image_tag(post.photo, class: 'card-image') %>
+    </div>
+  <% end %>
   <div class="card-body">
     <h5 class="card-title">Post @ <%= post.created_at.strftime('%F %H') %></h5>
     <p class="card-text"><%= post.comment %></p>

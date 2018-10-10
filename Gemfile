@@ -29,6 +29,14 @@ gem 'capistrano-bundler'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'shoulda-matchers'
+  gem 'launchy'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -38,7 +46,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop'
   gem 'brakeman'
-  gem 'rspec'
+  gem 'guard-rspec'
 end
 
 group :test do
