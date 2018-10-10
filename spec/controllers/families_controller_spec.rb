@@ -76,10 +76,10 @@ describe FamiliesController do
     context 'with valid params' do
       before do
         put :update, params: { id: family.id, family: { guests_attributes: { '0' => { attending: true } } } }
-        family.reload
+        family.guests.reload
       end
       it 'is expected to update the attribute with the new value' do
-        expect(family.guests.first.attending).to eq true
+        expect(family.guests.order(updated_at: :asc).first.attending).to eq true
       end
       it 'is expected to redirect to the family show page' do
         expect(response.status).to eq 204

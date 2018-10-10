@@ -86,12 +86,12 @@ describe Admin::MessagesController do
     context 'with invalid params' do
       it 'is expected to NOT save the message in the database' do
         expect {
-          post :create, params: { family_id: family.id, message: { name: '', family_id: family.id } }
+          post :create, params: { family_id: family.id, message: { name: 'test', family_id: '' } }
         }.to change(Message, :count).by(0)
       end
 
       it 'is expected to render the new template' do
-        post :create, params: { family_id: family.id, message: { name: '', family_id: family.id } }
+        post :create, params: { family_id: family.id, message: { name: 'test', family_id: '' } }
         expect(response).to render_template :new
       end
     end
@@ -125,7 +125,7 @@ describe Admin::MessagesController do
 
     context 'with invalid params' do
       before do
-        put :update, params: { family_id: family.id, id: message.id, message: { content: '', family_id: family.id } }
+        put :update, params: { family_id: family.id, id: message.id, message: { content: 'test', family_id: '' } }
         message.reload
       end
       it 'is expected to NOT save the new value to the database' do
