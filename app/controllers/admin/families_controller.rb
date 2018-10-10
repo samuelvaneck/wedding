@@ -1,5 +1,5 @@
 class Admin::FamiliesController < AdminController
-  before_action :set_family, only: [:show, :edit, :update, :destory]
+  before_action :set_family, only: [:show, :edit, :update, :destroy]
   def index
     @families = Family.all
     @families.where!("name ILIKE ? OR email ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search]

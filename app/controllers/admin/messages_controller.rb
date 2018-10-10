@@ -3,6 +3,8 @@ class Admin::MessagesController < AdminController
 
   def index
     @messages = Message.all
+    @messages.where!("content ILIKE ?", "%#{params[:search]}%") if params[:search]
+    @target = params[:target] if params[:target]
   end
 
   def show
