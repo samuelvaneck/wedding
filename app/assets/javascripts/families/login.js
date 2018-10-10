@@ -45,7 +45,7 @@ function inputUuid() {
   $(".code-input-field").map(function(i, d) {
     uuid += $(d).val();
   });
-  return uuid;
+  return uuid.toLowerCase();
 }
 
 function showSpinner() {
