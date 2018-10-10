@@ -3,7 +3,7 @@ class Admin::PostsController < AdminController
 
   def index
     @posts = Post.all
-    @posts.where("comment ILIKE ?", "%#{params[:search]}%") if params[:search]
+    @posts.where!("comment ILIKE ?", "%#{params[:search]}%") if params[:search]
     @target = params[:target]
   end
 
@@ -25,7 +25,7 @@ class Admin::PostsController < AdminController
   end
 
   def update
-    @post = Post.update(post_params)
+    @post.update(post_params)
     respond_with :admin, @post
   end
 
