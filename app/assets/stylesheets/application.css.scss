@@ -73,7 +73,7 @@ li.link-active {
 }
 
 .header-img {
-  width: 80vw;
+  width: 75vw;
   height: 50vh;
   background-position: 75% 50%;
   background-repeat: no-repeat;
@@ -87,15 +87,15 @@ li.link-active {
 
 .header-img:hover, .header-img:focus, .header-img:active {
   transform: scale(1.1);
-  width: 100vw;
 }
 
 .header-content {
-  position: relative;
+  position: fixed;
   color: #000000;
   background-color: #FFFFFF;
   width: 20vw;
   height: 50vh;
+  right: 5%;
   transition: all 1s ease-in-out;
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;

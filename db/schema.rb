@@ -63,15 +63,6 @@ ActiveRecord::Schema.define(version: 2018_10_03_062019) do
     t.index ["family_id"], name: "index_messages_on_family_id"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.string "url"
-    t.integer "imagable_id"
-    t.string "imageble_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["imageble_type", "imagable_id"], name: "index_photos_on_imageble_type_and_imagable_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.text "comment"
     t.datetime "created_at", null: false
