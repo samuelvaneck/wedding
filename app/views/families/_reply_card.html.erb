@@ -44,7 +44,7 @@
                 <%= f.label :foto %>
                 <%= f.file_field :photo, class: "form-control", autocomplete: "off", style: "display:none", id: "real-input-field", direct_upload: true %>
                 <div class="input-group">
-                  <%= text_field_tag :visible_photo_field, nil, class: "form-control", autocomplete: "off", placeholder: "Upload een foto" %>
+                  <%= text_field_tag :visible_file_upload_field, nil, class: "form-control", autocomplete: "off", placeholder: "Upload een foto" %>
                   <div class="input-group-append">
                     <%= button_tag "Bladeren", class: "btn btn-secondary", type: "button", id: "browse-btn" %>
                   </div>
