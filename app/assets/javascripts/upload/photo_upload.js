@@ -1,8 +1,6 @@
-function bindDataUploadBtn(visibleField) {
-  $('#real-input-field').change(function(){
-    $(visibleField).val($(this).val().replace(/^.*[\\\/]/, ''))
-  });
-  $('#browse-btn').click(function(){
-    $('#real-input-field').click();
-  });
-}
+$(document).on('change', '#real-input-field', function(){
+  $("#visible_file_upload_field").val($(this).val().replace(/^.*[\\\/]/, ''))
+});
+$(document).on('click',  '#browse-btn', function(){
+  $('#real-input-field').click();
+});
