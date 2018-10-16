@@ -11,7 +11,7 @@ class FamiliesController < ApplicationController
 
   def update
     @family.response = true
-    @family.update(family_params)
+    @success = @family.update(family_params)
   end
 
   private

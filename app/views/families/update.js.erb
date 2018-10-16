@@ -1,0 +1,5 @@
+<% if @success %>
+  $("#content").html("<%= j render 'update_success' %>");
+<% else %>
+  $("#content").html("<%= j render 'update_error' %>");
+<% end %>
