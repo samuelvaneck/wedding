@@ -75,27 +75,28 @@ describe FamiliesController do
   describe '#PUT update' do
     context 'with valid params' do
       before do
-        put :update, params: { id: family.id, family: { guests_attributes: { '0' => { attending: true } } } }
+        put :update, params: { id: family.id, format: "script/js", family: { guests_attributes: { '0' => { attending: true } } } }
         family.guests.reload
       end
       it 'is expected to update the attribute with the new value' do
         expect(family.guests.order(updated_at: :asc).first.attending).to eq true
       end
       it 'is expected to redirect to the family show page' do
-        expect(response.status).to eq 204
+        expect(response).to render_template :update
+        expect(response.status).to eq 200
       end
     end
 
     context 'with invalid params' do
       before do
-        put :update, params: { id: family.id, family: { name: '' } }
+        put :update, params: { id: family.id, format: "script/js", family: { name: '' } }
         family.reload
       end
       it 'is expected to NOT save the new value to the database' do
         expect(family.name).to_not eq 'Test update'
       end
-      it 'is expected to render the edit template' do
-        expect(response.status).to eq 204
+      it 'is expected to render the update template' do
+        expect(response).to render_template :update
       end
     end
   end
