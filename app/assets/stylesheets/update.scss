@@ -1,0 +1,15 @@
+@import 'application';
+
+.update-icon {
+  font-size: 5em;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  &.success {
+    color: $green;
+  }
+  &.error {
+    color: $primary;
+  }
+}
