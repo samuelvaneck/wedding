@@ -48,7 +48,11 @@
     </tr>
     <tr>
       <th>Photo</th>
-      <td><%= image_tag @family.photo, class: "thumbnail" %></td>
+      <% if @family.photo.attached? %>
+        <td><%= image_tag @family.photo, class: "thumbnail" %></td>
+      <% else %>
+        <td>none</td>
+      <% end %>
     </tr>
     </tbody>
   </table>
