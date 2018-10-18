@@ -27,7 +27,7 @@
   position: fixed;
   color: #000000;
   background-color: #FFFFFF;
-  width: 20vw;
+  width: 20%;
   height: 50vh;
   right: 5%;
   transition: all 1s ease-in-out;
@@ -43,11 +43,15 @@
 
 .content-text {
   position: absolute;
-  left: -2%;
+  margin-left: 10vw;
 }
 
-.overlay::after {
-  content: " ";
+.chevron-icon {
+  color: #EFEFEF;
+}
+
+.overlay {
+  color: #000000;
   display: inline-block;
   position: absolute;
   width: 150%;
