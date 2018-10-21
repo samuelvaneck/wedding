@@ -8,7 +8,6 @@
 .header-img {
   width: 75vw;
   height: 50vh;
-  // position: fixed;
   background-position: 75% 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -55,7 +54,7 @@
   display: inline-block;
   position: absolute;
   width: 150%;
-  height: 200%;
+  height: 250%;
   left: -35%;
   top: -80%;
   background-color: #FFFFFF;
@@ -83,6 +82,24 @@
 
 .family-footer {
   z-index: 1;
-  // height: 50vh;
   min-height: 20vh;
+}
+
+@media (min-width: 768px) {
+  .content-logo {
+    max-height: 150%;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-logo {
+    width: 50vw;
+    height: auto;
+  }
+}
+
+
+.content-date {
+  font-size: 1.5em;
+  
 }
