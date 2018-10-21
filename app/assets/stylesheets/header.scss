@@ -8,7 +8,6 @@
 .header-img {
   width: 75vw;
   height: 50vh;
-  // position: fixed;
   background-position: 75% 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -27,7 +26,7 @@
   position: fixed;
   color: #000000;
   background-color: #FFFFFF;
-  width: 20vw;
+  width: 20%;
   height: 50vh;
   right: 5%;
   transition: all 1s ease-in-out;
@@ -43,15 +42,19 @@
 
 .content-text {
   position: absolute;
-  left: -2%;
+  margin-left: 10vw;
 }
 
-.overlay::after {
-  content: " ";
+.chevron-icon {
+  color: #EFEFEF;
+}
+
+.overlay {
+  color: #000000;
   display: inline-block;
   position: absolute;
   width: 150%;
-  height: 200%;
+  height: 250%;
   left: -35%;
   top: -80%;
   background-color: #FFFFFF;
@@ -79,6 +82,24 @@
 
 .family-footer {
   z-index: 1;
-  // height: 50vh;
   min-height: 20vh;
+}
+
+@media (min-width: 768px) {
+  .content-logo {
+    max-height: 150%;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-logo {
+    width: 50vw;
+    height: auto;
+  }
+}
+
+
+.content-date {
+  font-size: 1.5em;
+  
 }
