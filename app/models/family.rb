@@ -32,7 +32,13 @@ class Family < ApplicationRecord
   end
 
   def self.import_guest(guest)
-    family = guest[:family] ? Family.create(name: guest[:family], email: guest[:email], response: false, uuid: SecureRandom.hex(3)) : Family.last
-    Guest.create(name: guest[:guest], day_guest: (guest[:day_guest] == 1 ? true : false), family: family)
+    return if guest[:guest].blank?
+    email = Family.set_email guest
+    family = guest[:family] ? Family.create!(name: guest[:family], email: email, response: false, uuid: SecureRandom.hex(3)) : Family.last
+    Guest.find_or_create_by!(name: guest[:guest], day_guest: (guest[:day_guest] == 1 ? true : false), family: family)
+  end
+
+  def self.set_email(guest)
+    guest[:email] == '-' ? nil : guest[:email]
   end
 end

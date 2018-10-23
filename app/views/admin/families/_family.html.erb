@@ -1,6 +1,6 @@
 <tr>
   <td><%= link_to family.name, admin_family_path(family) %></td>
-  <td class="d-none d-md-table-cell"><%= link_to family.email %></td>
+  <td class="d-none d-lg-table-cell"><%= mail_to family.email %></td>
   <td class="text-center"><%= boolean_icon family.response %></td>
   <td class="text-center d-none d-md-table-cell"><%= family.guests.count %></td>
   <td class="text-center d-none d-lg-table-cell"><%= family.uuid %></td>
