@@ -33,6 +33,12 @@ a:hover {
   text-decoration: inherit;
 }
 
+nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 8px;
+}
+
 .avatar {
   border-radius: 50%;
   border: 0;

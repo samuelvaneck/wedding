@@ -37,8 +37,19 @@
     <tr>
       <th>Guests</th>
       <td>
+        <div class="d-flex mt-1">
+          <div><strong>Name</strong></div>
+          <div class="ml-auto"><strong>Attending</strong></div>
+        </div>
         <% @family.guests.each do |guest| %>
-          <p><%= link_to guest.name, admin_guest_path(guest) %></p>
+          <div class="d-flex m-1">
+            <div>
+              <%= link_to guest.name, admin_guest_path(guest) %>
+            </div>
+            <div class="ml-auto mr-4">
+              <%= boolean_icon guest.attending %>
+            </div>
+          </div>
         <% end %>
       </td>
     </tr>

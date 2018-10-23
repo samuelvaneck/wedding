@@ -36,7 +36,7 @@ class Admin::GuestsController < AdminController
 
   private
   def guest_params
-    params.require(:guest).permit :name, :atteding, :day_guest, :family_id
+    params.require(:guest).permit :name, :attending, :day_guest, :family_id
   end
   def set_guest
     @guest = Guest.find params[:id]
