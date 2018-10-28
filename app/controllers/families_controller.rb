@@ -14,6 +14,10 @@ class FamiliesController < ApplicationController
     @success = @family.update(family_params)
   end
 
+  def flip_card
+    @card_id = params[:card_id]
+  end
+
   private
 
   def family_params
