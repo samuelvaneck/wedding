@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :families, only: [:index, :update] do
+    collection { get :flip_card }
     resources :guests, only: [:show, :update]
     resources :messages, only: [:create, :show, :update]
   end

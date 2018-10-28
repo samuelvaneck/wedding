@@ -1,0 +1,19 @@
+flipCard("<%= @card_id %>");
+
+function flipCard(cardId) {
+  const backFace = $(".flipping-card").hasClass("is-flipped");
+  const renderSurface = backFace ? ".card__face--front" : ".card__face--back";
+  const cardHTML = {
+    "card-info": () => { $(renderSurface).html("<%= j render 'info_card' %>") },
+    "card-rsvp": () => { $(renderSurface).html("<%= j render 'uuid_card' %>") },
+    "card-post": () => { $(renderSurface).html("<%= j render 'post_card' %>") }
+  }
+  const renderCard = cardHTML[cardId];
+  renderCard();
+  
+  if (backFace) {
+    $(".flipping-card").removeClass("is-flipped");  
+  } else {
+    $(".flipping-card").addClass("is-flipped");
+  }
+}
