@@ -1,19 +1,27 @@
+var flippedDegrees;
 flipCard("<%= @card_id %>");
 
 function flipCard(cardId) {
-  const backFace = $(".flipping-card").hasClass("is-flipped");
-  const renderSurface = backFace ? ".card__face--front" : ".card__face--back";
+  const currentFace = $(".flipping-card").attr("class").split(/\s+/)[1];
+  const selectNextFace = {
+    "show-front": ["show-right", ".card__face--right"],
+    "show-right": ["show-back", ".card__face--back"],
+    "show-back": ["show-left", ".card__face--left"],
+    "show-left": ["show-front", ".card__face--front"]
+  }
+  const nextFace = selectNextFace[currentFace];
   const cardHTML = {
-    "card-info": () => { $(renderSurface).html("<%= j render 'info_card' %>") },
-    "card-rsvp": () => { $(renderSurface).html("<%= j render 'uuid_card' %>") },
-    "card-post": () => { $(renderSurface).html("<%= j render 'post_card' %>") }
+    "card-info": () => { $(nextFace[1]).html("<%= j render 'info_card' %>") },
+    "card-rsvp": () => { $(nextFace[1]).html("<%= j render 'uuid_card' %>") },
+    "card-post": () => { $(nextFace[1]).html("<%= j render 'post_card' %>") }
   }
   const renderCard = cardHTML[cardId];
   renderCard();
   
-  if (backFace) {
-    $(".flipping-card").removeClass("is-flipped");  
-  } else {
-    $(".flipping-card").addClass("is-flipped");
-  }
+  $(".flipping-card").removeClass(currentFace);
+  $(".flipping-card").addClass(nextFace[0]);
+
+  flippedDegrees = flippedDegrees-90 || -90;
+
+  $(".flipping-card").css({ "transform": "rotateY(" + flippedDegrees + "deg)" });
 }
