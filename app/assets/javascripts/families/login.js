@@ -31,6 +31,7 @@ function fetchFamily() {
   data.uuid = inputUuid();
 
   showSpinner();
+  localStorage.setItem("uuid", inputUuid());
 
   setTimeout(function() {
     $.get("/families", data, null, "script").fail(function() {

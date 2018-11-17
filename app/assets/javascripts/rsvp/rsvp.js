@@ -1,0 +1,31 @@
+class RSVP {
+  constructor() {
+    this._code = this.getUUID();
+  }
+
+  getUUID() {
+    return localStorage.getItem("uuid");
+  }
+
+  setUUID() {
+    localStorage.setItem("uuid", this._code);
+    this._code = value;
+  }
+
+  code(value) {
+    if (!arguments.length) return this.getUUID();
+    this.setUUID(value);
+  }
+
+  fillInCode() {
+    const code = this.code().split("");
+    let time   = 100;
+    $(code).each((i, character) => {
+      setTimeout(() => {
+        $("#code-input-" + i).val(character);
+        if (i == code.length-1) { $("#code-input-" + i).keyup(); }
+      }, time)
+      time += 100;
+    });
+  }
+}
