@@ -57,9 +57,14 @@
         </ul>
         <div class="card-body">
           <div class="d-flex justify-content-end">
-            <%= f.button "Verstuur", class: "btn btn-outline-primary" do %>
-              <i class="fas fa-paper-plane"></i>&ensp;Verstuur
-            <% end %>
+            <div class="mr-auto">
+              <%= button_tag "Reset code", type: "button", class: "btn btn-outline-primary", id: "reset-rsvp-code" %>
+            </div>
+            <div>
+              <%= f.button "Verstuur", class: "btn btn-outline-primary" do %>
+                <i class="fas fa-paper-plane"></i>&ensp;Verstuur
+              <% end %>
+            </div>
           </div>
         </div>
       <% end %>
