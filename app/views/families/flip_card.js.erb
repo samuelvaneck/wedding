@@ -24,4 +24,5 @@ function flipCard(cardId) {
   flippedDegrees = flippedDegrees-90 || -90;
 
   $(".flipping-card").css({ "transform": "rotateY(" + flippedDegrees + "deg)" });
+  $("#content").height($(nextFace[1]).find(".card").height());
 }
