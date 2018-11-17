@@ -7,7 +7,7 @@ class RSVP {
     return localStorage.getItem("uuid");
   }
 
-  setUUID() {
+  setUUID(value) {
     localStorage.setItem("uuid", this._code);
     this._code = value;
   }
@@ -28,4 +28,14 @@ class RSVP {
       time += 100;
     });
   }
+
+  resetCode() {
+    localStorage.removeItem("uuid");
+    location.reload();
+  }
 }
+
+$(document).on("click", "#reset-rsvp-code", () => {
+  const rsvp = new RSVP();
+  rsvp.resetCode();
+});
