@@ -12,7 +12,7 @@ function flipCard(cardId) {
   const nextFace = selectNextFace[currentFace];
   const cardHTML = {
     "card-info": () => { $(nextFace[1]).html("<%= j render 'info_card' %>") },
-    "card-rsvp": () => { $(nextFace[1]).html("<%= j render 'uuid_card' %>") },
+    "card-uuid": () => { $(nextFace[1]).html("<%= j render 'uuid_card' %>") },
     "card-post": () => { $(nextFace[1]).html("<%= j render 'post_card' %>") }
   }
   const renderCard = cardHTML[cardId];
