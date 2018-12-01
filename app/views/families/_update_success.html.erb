@@ -12,3 +12,11 @@
     </div>
   </div>
 </div>
+
+<script>
+  setTimeout(() => {
+    const uuid = localStorage.getItem("uuid");
+    const card_id = "card-info";
+    $.get("/families/flip_card", { card_id: card_id, uuid: uuid }, "", "script");
+  }, 3000)
+</script>

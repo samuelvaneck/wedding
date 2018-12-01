@@ -27,14 +27,15 @@ function filledLoginCode() {
 }
 
 function fetchFamily() {
-  let data = {};
-  data.uuid = inputUuid();
+  let data     = {};
+  data.uuid    = inputUuid();
+  data.card_id = "card-reply";
 
   showSpinner();
   localStorage.setItem("uuid", inputUuid());
 
   setTimeout(function() {
-    $.get("/families", data, null, "script").fail(function() {
+    $.get("/families/flip_card", data, null, "script").fail(function() {
       hideSpinner();
       $("#status").find(".status-text").text("Geen gasten gevonden")
     });
