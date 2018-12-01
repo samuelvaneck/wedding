@@ -36,6 +36,6 @@ class RSVP {
 }
 
 $(document).on("click", "#reset-rsvp-code", () => {
-  const rsvp = new RSVP();
+  let rsvp = new RSVP();
   rsvp.resetCode();
 });
