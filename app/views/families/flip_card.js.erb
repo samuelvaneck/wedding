@@ -1,28 +1,37 @@
-var flippedDegrees;
-flipCard("<%= @card_id %>");
+<% if @family %>
+  var flippedDegrees;
+  flipCard("<%= @card_id %>");
 
-function flipCard(cardId) {
-  const currentFace = $(".flipping-card").attr("class").split(/\s+/)[1];
-  const selectNextFace = {
-    "show-front": ["show-right", ".card__face--right"],
-    "show-right": ["show-back", ".card__face--back"],
-    "show-back": ["show-left", ".card__face--left"],
-    "show-left": ["show-front", ".card__face--front"]
+  function flipCard(cardId) {
+    const currentFace = $(".flipping-card").attr("class").split(/\s+/)[1];
+    const selectNextFace = {
+      "show-front": ["show-right", ".card__face--right"],
+      "show-right": ["show-back", ".card__face--back"],
+      "show-back": ["show-left", ".card__face--left"],
+      "show-left": ["show-front", ".card__face--front"]
+    }
+    const nextFace = selectNextFace[currentFace];
+    const cardHTML = {
+      "card-info": () => { $(nextFace[1]).html("<%= j render 'info_card' %>") },
+      "card-uuid": () => { $(nextFace[1]).html("<%= j render 'uuid_card' %>") },
+      "card-post": () => { $(nextFace[1]).html("<%= j render 'post_card' %>") },
+      "card-reply": () => { $(nextFace[1]).html("<%= j render 'reply_card' %>") },
+      "card-success": () => { $(nextFace[1]).html("<%= j render 'update_success' %>") },
+      "card-error": () => { $(nextFace[1]).html("<%= j render 'update_error' %>") }
+    }
+    const renderCard = cardHTML[cardId];
+    renderCard();
+    
+    $(".flipping-card").removeClass(currentFace);
+    $(".flipping-card").addClass(nextFace[0]);
+
+    flippedDegrees = flippedDegrees-90 || -90;
+
+    $(".flipping-card").css({ "transform": "rotateY(" + flippedDegrees + "deg)" });
+    $("#content").height($(nextFace[1]).find(".card").height());
   }
-  const nextFace = selectNextFace[currentFace];
-  const cardHTML = {
-    "card-info": () => { $(nextFace[1]).html("<%= j render 'info_card' %>") },
-    "card-uuid": () => { $(nextFace[1]).html("<%= j render 'uuid_card' %>") },
-    "card-post": () => { $(nextFace[1]).html("<%= j render 'post_card' %>") }
-  }
-  const renderCard = cardHTML[cardId];
-  renderCard();
-  
-  $(".flipping-card").removeClass(currentFace);
-  $(".flipping-card").addClass(nextFace[0]);
-
-  flippedDegrees = flippedDegrees-90 || -90;
-
-  $(".flipping-card").css({ "transform": "rotateY(" + flippedDegrees + "deg)" });
-  $("#content").height($(nextFace[1]).find(".card").height());
-}
+<% else %>
+  $("#status").find(".status-text").text("Geen gasten gevonden");
+  $("#spinner").hide();
+  clearCodeInputFields();
+<% end %>

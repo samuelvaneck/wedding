@@ -8,3 +8,11 @@
     </div>
   </div>
 </div>
+
+<script>
+  setTimeout(() => {
+    const uuid = localStorage.getItem("uuid");
+    const card_id = "card-reply";
+    $.get("/families/flip_card", { card_id: card_id, uuid: uuid }, "", "script");
+  }, 5000)
+</script>

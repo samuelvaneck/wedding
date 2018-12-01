@@ -12,6 +12,9 @@
       <%= form_for @family, remote: true do |f| %>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
+            <%= render 'card_buttons' %>
+          </li>
+          <li class="list-group-item">
             <div class="d-flex">
               <div><strong>Gasten</strong></div>
               <div class="ml-auto"><strong>Aanwezig</strong></div>
@@ -57,9 +60,6 @@
         </ul>
         <div class="card-body">
           <div class="d-flex justify-content-end">
-            <div class="mr-auto">
-              <%= button_tag "Reset code", type: "button", class: "btn btn-outline-primary", id: "reset-rsvp-code" %>
-            </div>
             <div>
               <%= f.button "Verstuur", class: "btn btn-outline-primary" do %>
                 <i class="fas fa-paper-plane"></i>&ensp;Verstuur
