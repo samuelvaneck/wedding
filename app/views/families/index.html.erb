@@ -22,12 +22,12 @@
     </div>
   </div>
 </div>
-<div class="family-content" id="content">
+<div class="family-content h-100" id="content">
   <% if @family %>
     <%= render 'reply_card' %>
   <% else %>
     <div class="flipping-card show-front" style="top:80px">
-      <div class="card__face card__face--front">
+      <div class="card__face card__face--front h-100">
         <%= render 'uuid_card' %>
       </div>
       <div class="card__face card__face--right"></div>
