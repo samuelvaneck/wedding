@@ -5,10 +5,10 @@
   function flipCard(cardId) {
     const currentFace = $(".flipping-card").attr("class").split(/\s+/)[1];
     const selectNextFace = {
-      "show-front": ["show-right", ".card__face--right"],
-      "show-right": ["show-back", ".card__face--back"],
-      "show-back": ["show-left", ".card__face--left"],
-      "show-left": ["show-front", ".card__face--front"]
+      "show-front": ["show-right", ".card__face--right", ".card__face--front"],
+      "show-right": ["show-back", ".card__face--back", ".card__face--right"],
+      "show-back": ["show-left", ".card__face--left", ".card__face--back"],
+      "show-left": ["show-front", ".card__face--front", ".card__face--left"]
     }
     const nextFace = selectNextFace[currentFace];
     const cardHTML = {
@@ -28,7 +28,9 @@
     flippedDegrees = flippedDegrees-90 || -90;
 
     $(".flipping-card").css({ "transform": "rotateY(" + flippedDegrees + "deg)" });
-    $("#content").height($(nextFace[1]).find(".card").height());
+    setTimeout(() => {
+      $(selectNextFace[currentFace][2]).empty();
+    }, 1500)
   }
 <% else %>
   $("#status").find(".status-text").text("Geen gasten gevonden");

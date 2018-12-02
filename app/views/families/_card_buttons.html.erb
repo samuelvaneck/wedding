@@ -1,6 +1,10 @@
 <div class="d-flex justify-content-center mb-3">
   <%= tag.button 'Informatie', { class: 'btn btn-outline-primary mr-1', id: 'card-info-btn', data_card: "card-info", type: "button" } %>
-  <%= tag.button 'RSVP', { class: 'btn btn-outline-primary mr-1', id: 'card-reply-btn', data_card: "card-uuid", type: "button" } %>
-  <%= tag.button 'Foto uploaden', { class: 'btn btn-outline-primary mr-1', id: 'card-post-btn', data_card: "card-post", type: "button" } %>
+  <% if Date.today < Date.parse("2019-05-10") %>
+    <%= tag.button 'RSVP', { class: 'btn btn-outline-primary mr-1', id: 'card-reply-btn', data_card: "card-uuid", type: "button" } %>
+  <% end %>
+  <% if Date.today >= Date.parse("2019-05-10") %>
+    <%= tag.button 'Foto uploaden', { class: 'btn btn-outline-primary mr-1', id: 'card-post-btn', data_card: "card-post", type: "button" } %>
+  <% end %>
   <%= button_tag "Reset code", type: "button", class: "btn btn-outline-primary", id: "reset-rsvp-code" %>
 </div>
