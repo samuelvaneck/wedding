@@ -30,7 +30,22 @@
     $(".flipping-card").css({ "transform": "rotateY(" + flippedDegrees + "deg)" });
     setTimeout(() => {
       $(selectNextFace[currentFace][2]).empty();
-    }, 1500)
+    }, 1500);
+
+    // scroll to top content
+    $("html, body").animate({
+      scrollTop: $("#content").offset().top
+    }, 500);
+
+    // on image load adjust the height of the content
+    if ($(nextFace[1]).find("img").length < 1) return;
+
+    $(nextFace[1]).find("img").one("load", (event) => {
+      const cardHeight = $(".flipping-card").height();
+      const imgHeight = $(event.target).height();
+
+      $("#content").height(cardHeight + imgHeight);
+    });
   }
 <% else %>
   $("#status").find(".status-text").text("Geen gasten gevonden");
