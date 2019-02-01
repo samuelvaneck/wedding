@@ -36,6 +36,13 @@
     $("html, body").animate({
       scrollTop: $("#content").offset().top
     }, 500);
+    
+    // load the map if info card
+    if (cardId == "card-info") {
+      setTimeout(() => {
+        initMap(52.153595, 5.390943);
+      }, 1500);
+    }
 
     // on image load adjust the height of the content
     if ($(nextFace[1]).find("img").length < 1) return;
