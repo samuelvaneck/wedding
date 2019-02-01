@@ -160,3 +160,23 @@
 #content {
   height: 100%;
 }
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 767.98px) { 
+  .code-input-left {
+    justify-content: center !important;
+  }
+  .code-input-right {
+    justify-content: center !important;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+  .code-input-left {
+    float: right !important;
+  }
+  .code-input-right {
+    justify-content: left !important;
+  }
+}

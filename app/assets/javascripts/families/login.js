@@ -10,27 +10,27 @@ $(document).ready(function () {
 });
 
 $(document).on("keyup", ".code-input-field", (event) => {
-  const idx = $(event.target).attr("id").split("-")[2];
-  
+  const idx = parseInt($(event.target).attr("id").split("-")[2]);
+
   focusInputField(event, idx);
   if (filledLoginCode()) { fetchFamily() };
   window["codeInput" + idx] = $(event.target).val().length > 0;
 });
 
-function focusInputField(event, idx) { 
+function focusInputField(event, idx) {
   if (event.keyCode == 8) {
     if (idx == 0) return;
     if (window["codeInput" + idx]) return;
-    $(event.target).parent().prev("div").find("input").focus();
+    $("#code-input-" + (idx - 1)).focus();
   } else {
     if (idx == 5) { return };
-    $(event.target).parent().next("div").find("input").focus();
+    $("#code-input-" + (idx + 1)).focus();
   }
 }
 
 function filledLoginCode() {
   let filled = 0
-  
+
   $(".code-input-field").each((i, d) => {
     if ($(d).val().length > 0) { filled++ };
   });
@@ -46,9 +46,12 @@ function fetchFamily() {
   localStorage.setItem("uuid", inputUuid());
 
   setTimeout(function () {
-    $.get("/families/flip_card", data, null, "script").fail(function () {
+    $.get("/families/flip_card", data, null, "script").fail(() => {
       hideSpinner();
       $("#status").find(".status-text").text("Geen gasten gevonden")
+      localStorage.removeItem("uuid");
+      $(".code-input-field").val("");
+      $("#code-input-0").focus();
     });
   }, 1000);
 }
