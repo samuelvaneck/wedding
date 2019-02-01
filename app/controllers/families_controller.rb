@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class FamiliesController < ApplicationController
   before_action :set_family, only: [:update]
 
@@ -8,7 +6,7 @@ class FamiliesController < ApplicationController
   def update
     @family.response = true
     success = @family.update(family_params)
-    @card_id = success ? "card-success" : "card-error"
+    @card_id = success ? 'card-success' : 'card-error'
     @guests = @family.guests
     @message = @family.message || Message.new
     render 'flip_card'
@@ -17,18 +15,21 @@ class FamiliesController < ApplicationController
   def flip_card
     @card_id = params[:card_id]
     @family = Family.find_by(uuid: params[:uuid]) if params[:uuid]
-    if @family
-      @guests = @family.guests
-      @message = @family.message || Message.new
-    else 
-      return head(:not_found)
-    end
+    return head(:not_found) unless @family
+
+    @guests = @family.guests
+    @message = @family.message || Message.new
   end
 
   private
 
   def family_params
-    params.require(:family).permit(:response, :photo, guests_attributes: %i[id attending], message_attributes: %i[content id])
+    params.require(:family).permit(
+      :response,
+      :photo,
+      guests_attributes: %i[id attending],
+      message_attributes: %i[content id]
+    )
   end
 
   def set_family
