@@ -16,11 +16,12 @@ class FamiliesController < ApplicationController
 
   def flip_card
     @card_id = params[:card_id]
-    if params[:uuid]
-      @family = Family.find_by(uuid: params[:uuid])
-      return unless @family
+    @family = Family.find_by(uuid: params[:uuid]) if params[:uuid]
+    if @family
       @guests = @family.guests
       @message = @family.message || Message.new
+    else 
+      return head(:not_found)
     end
   end
 
