@@ -38,9 +38,10 @@ function filledLoginCode() {
 }
 
 function fetchFamily() {
-  let data = {};
-  data.uuid = inputUuid();
+  let data     = {};
+  data.uuid    = inputUuid();
   data.card_id = "card-reply";
+  data.login   = true;
 
   showSpinner();
   localStorage.setItem("uuid", inputUuid());

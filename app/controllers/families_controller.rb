@@ -13,8 +13,8 @@ class FamiliesController < ApplicationController
   end
 
   def flip_card
-    @card_id = params[:card_id]
     @family = Family.find_by(uuid: params[:uuid]) if params[:uuid]
+    @card_id = @family&.response && params[:login] == 'true' ? 'card-info' : params[:card_id]
     return head(:not_found) unless @family
 
     @guests = @family.guests
