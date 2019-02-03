@@ -43,8 +43,14 @@
               </div>
             <% end %>
             <div class="d-flex">
+              <div class="form-group">
+                <strong><%= f.label :allergien %></strong>
+                <%= f.text_area :allergies, placeholder: "Moet er rekening gehouden worden met allergiën", class: 'form-control', cols: 100, rows: 3 %>
+              </div>
+            </div>
+            <div class="d-flex">
               <div class="form-group w-100">
-                <%= f.label :foto %>
+                <strong><%= f.label :foto %></strong>
                 <%= f.file_field :photo, class: "form-control", autocomplete: "off", style: "display:none", id: "real-input-field", direct_upload: true %>
                 <div class="input-group">
                   <%= text_field_tag :visible_file_upload_field, nil, class: "form-control", autocomplete: "off", placeholder: "Upload een foto" %>

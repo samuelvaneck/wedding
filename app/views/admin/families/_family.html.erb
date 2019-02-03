@@ -5,6 +5,7 @@
   <td class="text-center d-none d-md-table-cell"><%= atteding_total_guests family %></td>
   <td class="text-center d-none d-lg-table-cell"><%= family.uuid %></td>
   <td class="text-center d-none d-md-table-cell"><%= link_to family.message.content, admin_message_path(family.message) rescue "none" %></td>
+  <td class="text-center d-none d-lg-table-cell"><%= family.allergies %></td>
   <% if family.photo.attached? %> 
     <td class="text-center d-none d-lg-table-cell"><%= image_tag family.photo, class: "thumbnail" %></td>
   <% else %>
