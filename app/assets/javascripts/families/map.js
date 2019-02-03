@@ -8,5 +8,5 @@ function initMap(lat, lng) {
     position: { lat: lat, lng: lng },
     map: map,
     title: "Mariënhof"
-  })
+  });
 }
