@@ -15,10 +15,12 @@ class RSVP {
   code(value) {
     if (!arguments.length) return this.getUUID();
     this.setUUID(value);
+    this._code = value;
+    return this;
   }
 
   fillInCode() {
-    const code = this.code().split("");
+    const code = this._code.split("");
     let time   = 100;
     $(code).each((i, character) => {
       setTimeout(() => {
