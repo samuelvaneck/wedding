@@ -12,6 +12,7 @@ class Admin::FamiliesController < AdminController
 
   def new
     @family = Family.new
+    @item = @family
   end
 
   def create
@@ -21,6 +22,7 @@ class Admin::FamiliesController < AdminController
   end
 
   def edit
+    @item = @family
     respond_with @family
   end
 
