@@ -4,8 +4,12 @@ class Admin::GuestsController < AdminController
   def index
     @guests = Guest.all
     @guests.where!("name ILIKE ?", "%#{params[:search]}%") if params[:search]
-    @guests = @guests.order(name: :asc).page(params[:page]).per_page(20)
     @target = params[:target] if params[:target]
+    if params[:reverse]
+      @guests = @guests.order("#{params[:order]} DESC").page(params[:page]).per_page(20)
+    else
+      @guests = @guests.order(params[:order]).page(params[:page]).per_page(20)
+    end
   end
 
   def show

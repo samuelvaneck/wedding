@@ -17,9 +17,45 @@
   <table class="table table-striped" id="guests-table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th class="text-center">Attending</th>
-        <th class="text-center d-none d-md-table-cell">Day guest</th>
+        <th>
+          <div class="d-flex flex-row">
+            <div>Name</div>
+            <div class="ml-auto">
+              <%= link_to admin_guests_path(order: "name") do %>
+                <i class="fas fa-caret-down fa-lg"></i>
+              <% end %>
+              <%= link_to admin_guests_path(order: "name", reverse: "true") do %>
+                <i class="fas fa-caret-up fa-lg"></i>
+              <% end %>
+            </div>
+          </div>
+        </th>
+        <th class="text-center">
+          <div class="d-flex flex-row">
+            <div>Attending</div>
+            <div class="ml-auto">
+              <%= link_to admin_guests_path(order: "attending") do %>
+                <i class="fas fa-caret-down fa-lg"></i>
+              <% end %>
+              <%= link_to admin_guests_path(order: "attending", reverse: "true") do %>
+                <i class="fas fa-caret-up fa-lg"></i>
+              <% end %>
+            </div>
+          </div>
+        </th>
+        <th class="text-center d-none d-md-table-cell">
+          <div class="d-flex flex-row">
+            <div>Day guest</div>
+            <div class="ml-auto">
+              <%= link_to admin_guests_path(order: "day_guest") do %>
+                <i class="fas fa-caret-down fa-lg"></i>
+              <% end %>
+              <%= link_to admin_guests_path(order: "day_guest", reverse: "true") do %>
+                <i class="fas fa-caret-up fa-lg"></i>
+              <% end %>
+            </div>
+          </div>
+        </th>
         <th class="text-center d-none d-md-table-cell">Family</th>
         <th></th>
         <th></th>

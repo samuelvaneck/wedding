@@ -15,13 +15,73 @@
   <table class="table table-striped" id="families-table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th class="d-none d-lg-table-cell">Email</th>
-        <th class="text-center">Response</th>
+        <th>
+          <div class="d-flex flex-row">
+            <div>Name</div>
+            <div class="ml-auto">
+              <%= link_to admin_families_path(order: "name") do %>
+                <i class="fas fa-caret-down fa-lg"></i>
+              <% end %>
+              <%= link_to admin_families_path(order: "name", reverse: "true") do %>
+                <i class="fas fa-caret-up fa-lg"></i>
+              <% end %>
+            </div>
+          </div>
+        </th>
+        <th class="d-none d-lg-table-cell">
+          <div class="d-flex flex-row">
+            <div>Email</div>
+            <div class="ml-auto">
+              <%= link_to admin_families_path(order: "email") do %>
+                <i class="fas fa-caret-down fa-lg"></i>
+              <% end %>
+              <%= link_to admin_families_path(order: "email", reverse: "true") do %>
+                <i class="fas fa-caret-up fa-lg"></i>
+              <% end %>
+            </div>
+          </div>
+        </th>
+        <th class="text-center">
+          <div class="d-flex flex-row">
+            <div>Response</div>
+            <div class="ml-auto">
+              <%= link_to admin_families_path(order: "response") do %>
+                <i class="fas fa-caret-down fa-lg"></i>
+              <% end %>
+              <%= link_to admin_families_path(order: "response", reverse: "true") do %>
+                <i class="fas fa-caret-up fa-lg"></i>
+              <% end %>
+            </div>
+          </div>
+        </th>
         <th class="text-center d-none d-md-table-cell">Guests</th>
-        <th class="text-center d-none d-lg-table-cell">UUID</th>
-        <th class="text-center d-none d-md-table-cell">Message</th>
-        <th class="text-center d-none d-lg-table-cell">Allergien</th>
+        <th class="text-center d-none d-lg-table-cell">
+          <div class="d-flex flex-row">
+            <div>UUID</div>
+            <div class="ml-auto">
+              <%= link_to admin_families_path(order: "uuid") do %>
+                <i class="fas fa-caret-down fa-lg"></i>
+              <% end %>
+              <%= link_to admin_families_path(order: "uuid", reverse: "true") do %>
+                <i class="fas fa-caret-up fa-lg"></i>
+              <% end %>
+            </div>
+          </div>
+        </th>
+        <th class="text-center d-none d-md-table-cell">Messages</th>
+        <th clas="text-center d-none d-lg-table-cell">
+            <div class="d-flex flex-row">
+              <div>Allergien</div>
+              <div class="ml-auto">
+              <%= link_to admin_families_path(order: "allergies") do %>
+                <i class="fas fa-caret-down fa-lg"></i>
+              <% end %>
+              <%= link_to admin_families_path(order: "allergies", reverse: "true") do %>
+                <i class="fas fa-caret-up fa-lg"></i>
+              <% end %>
+            </div>
+          </div>
+        </th>
         <th class="text-center d-none d-lg-table-cell">Photo</th>
         <th></th>
         <th></th>
