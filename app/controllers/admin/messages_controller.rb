@@ -4,6 +4,7 @@ class Admin::MessagesController < AdminController
   def index
     @messages = Message.all
     @messages.where!("content ILIKE ?", "%#{params[:search]}%") if params[:search]
+    @messages = @messages.order(content: :asc).page(params[:page]).per_page(20)
     @target = params[:target] if params[:target]
   end
 

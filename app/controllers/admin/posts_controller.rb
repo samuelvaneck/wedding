@@ -4,6 +4,7 @@ class Admin::PostsController < AdminController
   def index
     @posts = Post.all
     @posts.where!("comment ILIKE ?", "%#{params[:search]}%") if params[:search]
+    @posts = @posts.order(created_at: :asc).page(params[:page]).per_page(20)
     @target = params[:target]
   end
 

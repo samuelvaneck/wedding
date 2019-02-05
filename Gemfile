@@ -27,6 +27,8 @@ gem 'capistrano-passenger'
 gem 'capistrano-rbenv'
 gem 'capistrano-bundler'
 
+gem 'will_paginate'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
