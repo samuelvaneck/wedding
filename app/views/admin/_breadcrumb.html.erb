@@ -3,6 +3,11 @@
     <li class="breadcrumb-item">
       <%= link_to "Home", admin_families_path %>
     </li>
+    <% if action_name =="index" %>
+      <li class="breadcrumb-item">
+        <%= controller_name.capitalize %>
+      </li>
+    <% end %>
     <% if @family && @family.persisted? %>
       <li class="breadcrumb-item">
         <%= link_to "Families", admin_families_path %>
@@ -24,7 +29,10 @@
         <%= link_to "Messages", admin_messages_path %>
       </li>
       <li class="breadcrumb-item">
-        <%= link_to @message&.family&.name, [:admin, @message&.family] %>
+        <%= @message&.family&.name %>
+      </li>
+      <li class="breadcrumb-item">
+        <%= @message&.id %>
       </li>
     <% end %>
     <% if @post && @post.persisted? %>
@@ -34,7 +42,7 @@
     <% end %>
     <% if action_name == "new" %>
       <li class="breadcrumb-item">
-        <%= @item.class.name.capitalize.pluralize %>
+        <%= controller_name.capitalize %>
       </li>
       <li class="breadcrumb-item">
         New

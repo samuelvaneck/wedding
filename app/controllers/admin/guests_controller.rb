@@ -13,7 +13,6 @@ class Admin::GuestsController < AdminController
 
   def new
     @guest = Guest.new
-    @item = @guest
   end
 
   def create
@@ -22,7 +21,6 @@ class Admin::GuestsController < AdminController
   end
 
   def edit
-    @item = @guest
     respond_with @guest
   end
 
