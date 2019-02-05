@@ -1,0 +1,2 @@
+$("#<%= @target %>").find("tbody").html("<%= j render @posts %>");
+$("#pagination").html("<%= j bootstrap_will_paginate @posts %>");

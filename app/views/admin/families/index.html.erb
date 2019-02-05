@@ -35,6 +35,10 @@
   </table>
 </div>
 
+<div class="d-flex justify-content-center flex-row m-3" id="pagination">
+  <%= bootstrap_will_paginate @families %>
+</div>
+
 <div class="modal" id="import-guests-modal" tabindex="-1" role="dialog" aria-labelledby="importGuestModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

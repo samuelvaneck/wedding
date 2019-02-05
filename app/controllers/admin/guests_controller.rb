@@ -4,6 +4,7 @@ class Admin::GuestsController < AdminController
   def index
     @guests = Guest.all
     @guests.where!("name ILIKE ?", "%#{params[:search]}%") if params[:search]
+    @guests = @guests.order(name: :asc).page(params[:page]).per_page(20)
     @target = params[:target] if params[:target]
   end
 

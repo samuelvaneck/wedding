@@ -18,3 +18,7 @@
     <%= render @posts %>
   </ul>
 </div>
+
+<d-flex class="jusitfy-content-center flex-row" id="pagination">
+  <%= bootstrap_will_paginate @posts %>
+</d-flex>

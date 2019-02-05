@@ -3,6 +3,7 @@ class Admin::FamiliesController < AdminController
   def index
     @families = Family.all
     @families.where!("name ILIKE ? OR email ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search]
+    @families = @families.order(name: :asc).page(params[:page]).per_page(20)
     @target = params[:target] if params[:target]
   end
 
