@@ -1,12 +1,14 @@
 <% provide(:title, "New post") %>
 
-<div class="d-flex flex-row">
+<%= render 'breadcrumb' %>
+
+<div class="d-flex justify-content-center flex-row">
   <div>
-    <h1>New post</h1>
+    <h2>New post</h2>
   </div>
 </div>
 <div class="d-flex flex-row">
-  <div>
+  <div class="w-100">
     <%= render 'form' %>
   </div>
 </div>

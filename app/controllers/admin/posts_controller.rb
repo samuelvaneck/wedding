@@ -13,6 +13,7 @@ class Admin::PostsController < AdminController
 
   def new
     @post = Post.new
+    @item = @post
   end
 
   def create
@@ -21,6 +22,7 @@ class Admin::PostsController < AdminController
   end
 
   def edit
+    @item = @post
     respond_with @post
   end
 

@@ -1,0 +1,49 @@
+<div aria-label="breadcrumb" class="mt-2">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to "Home", admin_families_path %>
+    </li>
+    <% if @family && @family.persisted? %>
+      <li class="breadcrumb-item">
+        <%= link_to "Families", admin_families_path %>
+      </li>
+      <li class="breadcrumb-item">
+        <%= link_to @family.name, [:admin, @family] %>
+      </li>
+    <% end %>
+    <% if @guest && @guest.persisted? %>
+      <li class="breadcrumb-item">
+        <%= link_to @guest&.family&.name, [:admin, @guest&.family] %>
+      </li>
+      <li class="breadcrumb-item">
+        <%= link_to @guest.name, [:admin, @guest] %>
+      </li>
+    <% end %>
+    <% if @message && @message.persisted? %>
+      <li class="breadcrumb-item">
+        <%= link_to "Messages", admin_messages_path %>
+      </li>
+      <li class="breadcrumb-item">
+        <%= link_to @message&.family&.name, [:admin, @message&.family] %>
+      </li>
+    <% end %>
+    <% if @post && @post.persisted? %>
+      <li class="breadcrumb-item">
+        <%= link_to @post.name, [:admin, @post] %>
+      </li>
+    <% end %>
+    <% if action_name == "new" %>
+      <li class="breadcrumb-item">
+        <%= @item.class.name.capitalize.pluralize %>
+      </li>
+      <li class="breadcrumb-item">
+        New
+      </li>
+    <% end %>
+    <% if action_name == "edit" %>
+      <li class="breadcrumb-item">
+        Edit
+      </li>
+    <% end %>
+  </ol>
+</div>

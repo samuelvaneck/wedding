@@ -1,11 +1,12 @@
 <%= provide(:title, "Guest from #{@guest.family.name}") %>
 
+<%= render 'breadcrumb' %>
+
 <div class="d-flex justify-content-center mt-3">
   <h2>Guest</h2>
 </div>
 
-<div class="flex-row mt-2 mb-2">
-  <%= link_to "Back", admin_guests_path, class: "btn btn-outline-secondary" %>
+<div class="d-flex flex-row-reverse mt-2 mb-2">
   <%= link_to "Delete", admin_guest_path(@guest), method: :delete, class: "btn btn-outline-primary float-right ml-2", data: { confirm: "Are you sure?" } %>
   <%= link_to "Edit", edit_admin_guest_path(@guest), class: "btn btn-outline-secondary float-right" %>
 </div>

@@ -1,12 +1,14 @@
 <% provide(:title, "Edit guest") %>
 
-<div class="d-flex flex-row">
+<%= render 'breadcrumb' %>
+
+<div class="d-flex justify-content-center flex-row">
   <div>
-    <h1>Edit guest</h1>
+    <h2>Edit <%= @guest.name %></h2>
   </div>
 </div>
 <div class="d-flex flex-row">
-  <div>
+  <div class="w-100">
     <%= render 'form' %>
   </div>
 </div>

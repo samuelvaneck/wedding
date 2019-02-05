@@ -13,6 +13,7 @@ class Admin::MessagesController < AdminController
 
   def new
     @message = Message.new
+    @item = @message
   end
 
   def create
@@ -21,6 +22,7 @@ class Admin::MessagesController < AdminController
   end
 
   def edit
+    @item = @message
     respond_with @message
   end
 

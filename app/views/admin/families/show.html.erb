@@ -1,13 +1,14 @@
 <%= provide(:title, "Wedding | Family #{@family.name}") %>
 
+<%= render 'breadcrumb' %>
+
 <div class="d-flex justify-content-center mt-3">
   <h2>Family</h2>
 </div>
 
-<div class="flex-row mt-2 mb-2">
-  <%= link_to "Back", admin_families_path, class: "btn btn-outline-secondary" %>
-  <%= link_to "Delete", admin_family_path(@family), method: :delete, class: "btn btn-outline-primary float-right ml-2", data: { confirm: "Are you sure?" } %>
-  <%= link_to "Edit", edit_admin_family_path(@family), class: "btn btn-outline-secondary float-right" %>
+<div class="d-flex flex-row-reverse mt-2 mb-2">
+  <%= link_to "Delete", admin_family_path(@family), method: :delete, class: "btn btn-outline-primary ml-2", data: { confirm: "Are you sure?" } %>
+  <%= link_to "Edit", edit_admin_family_path(@family), class: "btn btn-outline-secondary" %>
 </div>
 
 <div class="d-flex">
