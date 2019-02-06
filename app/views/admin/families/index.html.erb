@@ -8,80 +8,32 @@
     Import guests
   </button>
   <div class="ml-auto">
-    <input id="search" type="text" class="form-control" placeholder="Search..." autocomplete="off" data-table="families-table" data-search-path="<%= admin_families_path %>" />
+    <div class="input-group">
+      <input id="search" type="text" class="form-control" placeholder="Search..." autocomplete="off" data-table="families-table" data-search-path="<%= admin_families_path %>" />
+      <div class="input-group-append">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-hashpop="true" aria-expanded="false">Sort</button>
+        <div class="dropdown-menu">
+          <%= link_to "Name", admin_families_path(order: "name"), class: "dropdown-item" %>
+          <%= link_to "Email", admin_families_path(order: "email"), class: "dropdown-item" %>
+          <%= link_to "Response", admin_families_path(order: "response"), class: "dropdown-item" %>
+          <%= link_to "UUID", admin_families_path(order: "uuid"), class: "dropdown-item" %>
+          <%= link_to "Allergien", admin_families_path(order: "allergies"), class: "dropdown-item" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="d-flex">
   <table class="table table-striped" id="families-table">
     <thead>
       <tr>
-        <th>
-          <div class="d-flex flex-row">
-            <div>Name</div>
-            <div class="ml-auto">
-              <%= link_to admin_families_path(order: "name") do %>
-                <i class="fas fa-caret-down fa-lg"></i>
-              <% end %>
-              <%= link_to admin_families_path(order: "name", reverse: "true") do %>
-                <i class="fas fa-caret-up fa-lg"></i>
-              <% end %>
-            </div>
-          </div>
-        </th>
-        <th class="d-none d-lg-table-cell">
-          <div class="d-flex flex-row">
-            <div>Email</div>
-            <div class="ml-auto">
-              <%= link_to admin_families_path(order: "email") do %>
-                <i class="fas fa-caret-down fa-lg"></i>
-              <% end %>
-              <%= link_to admin_families_path(order: "email", reverse: "true") do %>
-                <i class="fas fa-caret-up fa-lg"></i>
-              <% end %>
-            </div>
-          </div>
-        </th>
-        <th class="text-center">
-          <div class="d-flex flex-row">
-            <div>Response</div>
-            <div class="ml-auto">
-              <%= link_to admin_families_path(order: "response") do %>
-                <i class="fas fa-caret-down fa-lg"></i>
-              <% end %>
-              <%= link_to admin_families_path(order: "response", reverse: "true") do %>
-                <i class="fas fa-caret-up fa-lg"></i>
-              <% end %>
-            </div>
-          </div>
-        </th>
+        <th>Name</th>
+        <th class="d-none d-lg-table-cell">Email</th>
+        <th class="text-center">Response</th>
         <th class="text-center d-none d-md-table-cell">Guests</th>
-        <th class="text-center d-none d-lg-table-cell">
-          <div class="d-flex flex-row">
-            <div>UUID</div>
-            <div class="ml-auto">
-              <%= link_to admin_families_path(order: "uuid") do %>
-                <i class="fas fa-caret-down fa-lg"></i>
-              <% end %>
-              <%= link_to admin_families_path(order: "uuid", reverse: "true") do %>
-                <i class="fas fa-caret-up fa-lg"></i>
-              <% end %>
-            </div>
-          </div>
-        </th>
+        <th class="text-center d-none d-lg-table-cell">UUID<</th>
         <th class="text-center d-none d-md-table-cell">Messages</th>
-        <th clas="text-center d-none d-lg-table-cell">
-            <div class="d-flex flex-row">
-              <div>Allergien</div>
-              <div class="ml-auto">
-              <%= link_to admin_families_path(order: "allergies") do %>
-                <i class="fas fa-caret-down fa-lg"></i>
-              <% end %>
-              <%= link_to admin_families_path(order: "allergies", reverse: "true") do %>
-                <i class="fas fa-caret-up fa-lg"></i>
-              <% end %>
-            </div>
-          </div>
-        </th>
+        <th clas="text-center d-none d-lg-table-cell">Allergien</th>
         <th class="text-center d-none d-lg-table-cell">Photo</th>
         <th></th>
         <th></th>
