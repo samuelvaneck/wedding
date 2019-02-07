@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :families do
       collection { post :import }
+      collection { get :qrcodes, defaults: { format: :pdf } }
     end
     resources :guests
     resources :messages

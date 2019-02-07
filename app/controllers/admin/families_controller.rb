@@ -9,7 +9,6 @@ class Admin::FamiliesController < AdminController
   end
 
   def show
-    @qrcode = @family.qrcode
     respond_with :admin, @family
   end
 
@@ -41,6 +40,18 @@ class Admin::FamiliesController < AdminController
     file = params[:file]
     imported = Family.import file
     redirect_to admin_families_path
+  end
+
+  def qrcodes
+    @families = Family.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "wedding_qrcodes",
+               template: "admin/families/qrcodes.html.erb",
+               layout: "pdf.html.erb"
+      end
+    end
   end
 
   private

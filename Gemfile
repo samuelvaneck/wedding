@@ -27,8 +27,10 @@ gem 'capistrano-passenger'
 gem 'capistrano-rails'
 gem 'capistrano-rbenv'
 
-gem 'will_paginate'
 gem 'rqrcode'
+gem 'will_paginate'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
