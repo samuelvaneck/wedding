@@ -1,0 +1,26 @@
+<table class="table">
+  <tbody>
+    <% @families.in_groups_of(2).each do |group| %>
+      <tr>
+        <% group.compact.each do |family| %>
+          <td class="text-center">
+            <h2 class="m-3">Bruiloft code</h2>
+            <div class="m-3">
+              www.bruiloftsamuelencorine.nl
+            </div>
+            <div class="m-3">
+             <span class="mr-3">Code</span><%= family.uuid.upcase %>
+            </div>
+            <div class="m-3">
+              <%= raw family.qrcode %>
+            </div>
+            <div class="mt-5">
+              <%= family.name %>
+            </div>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+<table
+

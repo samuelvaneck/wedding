@@ -73,7 +73,9 @@
     <tr>
       <th>QRCode</th>
       <td class="text-center">
-         <div class="ml-auto mr-auto qrcode"><%= raw @qrcode %></div>
+        <div class="ml-auto mr-auto qrcode">@family
+          <%= raw @family.qrcode %>
+        </div>
       </td>
     </tr>
     </tbody>
