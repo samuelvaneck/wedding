@@ -1,5 +1,6 @@
 class Admin::FamiliesController < AdminController
-  before_action :set_family, only: [:show, :edit, :update, :destroy]
+  before_action :set_family, only: [:show, :edit, :update, :destroy, :qrcode]
+  
   def index
     @families = Family.all
     @families.where!("name ILIKE ? OR email ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search]
@@ -8,6 +9,7 @@ class Admin::FamiliesController < AdminController
   end
 
   def show
+    @qrcode = @family.qrcode
     respond_with :admin, @family
   end
 
