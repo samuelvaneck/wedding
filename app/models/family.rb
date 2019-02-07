@@ -20,6 +20,15 @@ class Family < ApplicationRecord
     end
   end
 
+  def qrcode
+    qrcode = RQRCode::QRCode.new("https://www.bruiloftsamuelencorine.nl/?uuid=" + uuid)
+    qrcode.as_svg(
+      offset: 0, color: '000',
+      shape_rendering: 'crispEdges',
+      module_size: 6
+    )
+  end
+
   private
 
   def self.read_sheet(sheet)

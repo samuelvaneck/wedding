@@ -22,38 +22,38 @@ gem "roo"
 gem 'devise'
 
 gem 'capistrano'
-gem 'capistrano-rails'
-gem 'capistrano-passenger'
-gem 'capistrano-rbenv'
 gem 'capistrano-bundler'
+gem 'capistrano-passenger'
+gem 'capistrano-rails'
+gem 'capistrano-rbenv'
 
 gem 'will_paginate'
+gem 'rqrcode'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
   gem 'database_cleaner'
-  gem 'selenium-webdriver'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'shoulda-matchers'
   gem 'launchy'
   gem 'rails-controller-testing'
+  gem 'rspec-rails'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rubocop'
   gem 'brakeman'
   gem 'guard-rspec'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rubocop'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   gem 'chromedriver-helper'
 end
 
