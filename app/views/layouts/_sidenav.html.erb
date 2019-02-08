@@ -38,6 +38,14 @@
         </div>
       <% end %>
     </li>
+    <li class="list-group-item">
+      <%= link_to qrcodes_admin_families_path(format: :pdf) do %>
+        <div class="d-flex justify-content-center justify-content-md-start">
+          <div class="d-inline"><i class="fas fa-file-pdf"></i></div>
+          <div class="d-none d-md-inline nav-link-text">&ensp;Code cards</div>
+        </div>
+      <% end %>
+    </li>
   </ul>
 </nav>
 
