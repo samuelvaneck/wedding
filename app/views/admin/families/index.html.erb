@@ -7,9 +7,6 @@
   <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#import-guests-modal">
     Import guests
   </button>
-  <%= link_to qrcodes_admin_families_path(format: :pdf), class: "btn btn-outline-primary" do %>
-    QRCodes 
-  <% end %>
   <div class="ml-auto">
     <div class="input-group">
       <input id="search" type="text" class="form-control" placeholder="Search..." autocomplete="off" data-table="families-table" data-search-path="<%= admin_families_path %>" />

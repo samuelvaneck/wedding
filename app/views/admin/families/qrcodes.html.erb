@@ -1,7 +1,7 @@
 <table class="table">
   <tbody>
     <% @families.in_groups_of(2).each do |group| %>
-      <tr>
+      <tr style="page-break-inside: avoid !important;">
         <% group.compact.each do |family| %>
           <td class="text-center">
             <h2 class="m-3">Bruiloft code</h2>
