@@ -13,9 +13,10 @@
  *= require_tree .
  *= require_self
  */
- // $primary: #E94B3C;
-$primary: #A11607;
-$primary-light: #CC2817;
+//$primary: #A11607;
+//$primary-light: #CC2817;
+$primary: #3758b2;
+$primary-light: #95b2f0;
 $gray: #EFEFEF;
 $green: #92B558;
 
@@ -105,4 +106,10 @@ li.link-active {
 }
 .source-sans-pro {
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+.img-mc {
+  margin: 0.5rem;
+  height: 160px;
+  width: auto;
 }

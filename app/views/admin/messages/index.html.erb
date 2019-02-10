@@ -5,12 +5,21 @@
 <div class="d-flex justify-content-center mt-3">
   <div><h2 class="">Messages</h2></div>
 </div>
-<div class="d-flex mb-2">
-  <div class="btn btn-outline-primary">
-    <%= link_to "New", new_admin_message_path %>
+
+<div class="row mb-2">
+  <div class="col-12 col-md-6">
+    <div class="mt-1">
+      <div class="btn btn-outline-primary">
+        <%= link_to "New", new_admin_message_path %>
+      </div>
+    </div>
   </div>
-  <div class="ml-auto">
-    <input id="search" type="text" class="form-control" placeholder="Search..." autocomplete="off" data-table="messages-table" data-search-path="<%= admin_messages_path %>" />
+  <div class="col-12 col-md-6">
+    <div class="ml-auto mt-1">
+      <div class="input-group">
+        <input id="search" type="text" class="form-control" placeholder="Search..." autocomplete="off" data-table="messages-table" data-search-path="<%= admin_messages_path %>" />
+      </div>
+    </div>
   </div>
 </div>
 <div class="d-flex">
