@@ -5,19 +5,26 @@
 <div class="d-flex justify-content-center mt-3">
   <div><h2 class="">Guests</h2></div>
 </div>
-<div class="d-flex mb-2">
-  <div class="btn btn-outline-primary">
-    <%= link_to "New", new_admin_guest_path %>
+
+<div class="row mb-2">
+  <div class="col-12 col-md-6">
+    <div class="mt-1">
+      <div class="btn btn-outline-primary">
+        <%= link_to "New", new_admin_guest_path %>
+      </div>
+    </div>
   </div>
-  <div class="ml-auto">
-    <div class="input-group">
-      <input id="search" type="text" class="form-control" placeholder="Search..." autocomplete="off" data-table="guests-table" data-search-path="<%= admin_guests_path %>" />
-      <div class="input-group-append">
-        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-hashpop="true" aria-expanded="false">Sort</button>
-        <div class="dropdown-menu">
-          <%= link_to "Name", admin_guests_path(order: "name"), class: "dropdown-item" %>
-          <%= link_to "Attending", admin_guests_path(order: "atteding"), class: "dropdown-item" %>
-          <%= link_to "Day guest", admin_guests_path(order: "day_guest"), class: "dropdown-item" %>
+  <div class="col-12 col-md-6">
+    <div class="ml-auto mt-1">
+      <div class="input-group">
+        <input id="search" type="text" class="form-control" placeholder="Search..." autocomplete="off" data-table="guests-table" data-search-path="<%= admin_guests_path %>" />
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-hashpop="true" aria-expanded="false">Sort</button>
+          <div class="dropdown-menu">
+            <%= link_to "Name", admin_guests_path(order: "name"), class: "dropdown-item" %>
+            <%= link_to "Attending", admin_guests_path(order: "atteding"), class: "dropdown-item" %>
+            <%= link_to "Day guest", admin_guests_path(order: "day_guest"), class: "dropdown-item" %>
+          </div>
         </div>
       </div>
     </div>

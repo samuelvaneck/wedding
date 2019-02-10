@@ -38,22 +38,18 @@
     }, 500);
     
     // load the map if info card
-    if (cardId == "card-info") {
+    if (cardId == "card-info" || cardId == "card-reply") {
       setTimeout(() => {
         initMap(52.153595, 5.390943);
         $("#content").height("2000px");
       }, 1500);
     }
 
-    // on image load adjust the height of the content
-    if ($(nextFace[1]).find("img").length < 1) return;
-
-    $(nextFace[1]).find("img").one("load", (event) => {
-      const cardHeight = $(".flipping-card").height();
-      const imgHeight = $(event.target).height();
-
-      $("#content").height(cardHeight + imgHeight);
-    });
+    if (cardId == "card-reply") {
+      setTimeout(() => {
+        $("#content").height("2000px");
+      }, 1500)
+    }   
   }
 <% else %>
   $("#status").find(".status-text").text("Geen gasten gevonden");
