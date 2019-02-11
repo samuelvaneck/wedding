@@ -109,7 +109,21 @@ li.link-active {
 }
 
 .img-mc {
-  margin: 0.5rem;
   height: 160px;
   width: auto;
+}
+
+#mobile-menu {
+  background-color: $primary;
+  color: #FFFFFF;
+  display: none;
+  position: absolute;
+  top: 60px;
+  .list-group-item {
+    color: #FFFFFF;
+    background-color: $primary;
+  }
+  a {
+    color: #FFFFFF;
+  }
 }
