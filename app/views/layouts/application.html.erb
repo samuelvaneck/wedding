@@ -17,8 +17,13 @@
     <div class="container-fluid">
       <div class="row">
         <% if params[:controller].split("/").first == "admin" %>
-          <div id="admin-header" class="d-flex justify-content-center flex-row w-100">
-            <div class="m-2"><h3>Wedding</h3></div>
+          <div id="admin-header" class="d-flex flex-row w-100">
+            <div id="#open-mobile-nav" class="ml-2 mt-2 d-sm-none" onClick="openNav()">
+              <i class="fas fa-bars fa-2x"></i>
+            </div>
+            <div class="m-2 flex-fill text-center">
+              <h3>Wedding</h3>
+            </div>
             <% if user_signed_in? %>
               <div class="admin-btns">
                 <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light float-right mt-2 ml-2' %>
@@ -28,11 +33,9 @@
               </div>
             <% end %>
           </div>
-          <div class="col-1 col-md-2 p-0 mt-2">
-            <%= render 'layouts/sidenav' %>
-          </div>
+          <%= render 'layouts/sidenav' %>
         <% end %>
-        <div class="col">
+        <div class="col" id="main">
           <%= yield %>
         </div>
       </div>
