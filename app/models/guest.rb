@@ -4,6 +4,5 @@ class Guest < ApplicationRecord
   validates :name, presence: true
 
   scope :is_attending, -> { where(attending: true) }
-  scope :not_attending, -> { where(attending: false).or(Guest.where(attending: nil)) 
-                           }
+  scope :not_attending, -> { where(attending: false).or(Guest.where(attending: nil)) }
 end
