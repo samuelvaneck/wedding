@@ -1,0 +1,199 @@
+<%= render 'breadcrumb' %>
+<div class="d-flex justify-content-center mt-3">
+  <div><h2 class="">Dashboard</h2></div>
+</div>
+
+<div class="row">
+  <!-- Responded -->
+  <div class="col-sm-12 col-md-6 mb-2">
+    <ul class="list-group dashboard-list">
+      <li class="list-group-item bg-light">Responsed</li>
+      <li class="list-group-item d-flex justify-content-lg-around flew-row">
+        <div class="dashboard-chart" id="chart-response" data-percentage="<%= percentage @responded.count, Family.all.count %>"></div>
+        <div class="mt-2">
+          <table class="table table-borderless table-sm">
+            <tr>
+              <th>Responses</th>
+              <td><%= @responded.count %></td>
+            </tr>
+            <tr>
+              <th>Total</th>
+              <td><%= Family.all.count %></td>
+            </tr>
+          </table>
+          <%= button_tag "List", type: "button", class: "btn btn-primary btn-block", data: { toggle: "modal", target: "#repsonsed-modal" } %>
+        </div>       
+      </li>
+    </ul>
+  </div>
+
+  <div class="modal fade" id="repsonsed-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Families that reponded</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group">
+            <% @responded.each do |family| %>
+              <li class="list-group-item dashboard-list-item"><%= family.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Awaiting response -->
+  <div class="col-sm-12 col-md-6 mb-2">
+    <ul class="list-group dashboard-list">
+      <li class="list-group-item bg-light">Awaiting response</li>
+      <li class="list-group-item d-flex justify-content-lg-around flex-row">
+        <div class="dashboard-chart" id="chart-awaiting" data-percentage="<%= percentage @awaiting_respone.count, Family.all.count %>"></div>
+        <div class="mt-2">
+          <table class="table table-borderless table-sm">
+            <tr>
+              <th>Awaiting response</th>
+              <td><%= @awaiting_respone.count %></td>
+            </tr>
+            <tr>
+              <th>Total</th>
+              <td><%= Family.all.count %></td>
+            </tr>
+          </table>
+          <%= button_tag "List", type: "button", class: "btn btn-primary btn-block", data: { toggle: "modal", target: "#awaiting-repsonse-modal" } %>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="modal fade" id="awaiting-repsonse-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Families awaiting response</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group">
+            <% @awaiting_respone.each do |family| %>
+              <li class="list-group-item dashboard-list-item"><%= family.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Present -->
+<div class="row">
+  <div class="col-sm-12 col-md-6 mb-2">
+    <ul class="list-group dashboard-list">
+      <li class="list-group-item bg-light">Attending</li>
+      <li class="list-group-item d-flex justify-content-lg-around flex-row">
+        <div class="dashboard-chart" id="chart-attending" data-percentage="<%= percentage @guests_present.count, Guest.all.count %>"></div>
+        <div class="mt-2">
+          <table class="table table-borderless table-sm">
+            <tr>
+              <th>Attending</th>
+              <td><%= @guests_present.count %></td>
+            </tr>
+            <tr>
+              <th>Total</th>
+              <td><%= Guest.all.count %></td>
+            </tr>
+          </table>
+          <%= button_tag "List", type: "button", class: "btn btn-primary btn-block", data: { toggle: "modal", target: "#attending-guests-modal" } %>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="modal fade" id="attending-guests-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Guests attending</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group">
+            <% @guests_present.each do |guest| %>
+              <li class="list-group-item dashboard-list-item"><%= guest.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Absent -->
+  <div class="col-sm-12 col-md-6 mb-2">
+    <ul class="list-group dashboard-list">
+      <li class="list-group-item bg-light">Absent</li>
+      <li class="list-group-item d-flex justify-content-lg-around flex-row">
+        <div class="dashboard-chart" id="chart-absent" data-percentage="<%= percentage @guests_absent.count, Guest.all.count %>"></div>
+        <div class="mt-2">
+          <table class="table table-borderless table-sm">
+            <tr>
+              <th>Absent</th>
+              <td><%= @guests_absent.count %></td>
+            </tr>
+            <tr>
+              <th>Total</th>
+              <td><%= Guest.all.count %></td>
+            </tr>
+          </table>
+          <%= button_tag "List", type: "button", class: "btn btn-primary btn-block", data: { toggle: "modal", target: "#absent-guests-modal" } %>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="modal fade" id="absent-guests-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Guests absent</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group">
+            <% @guests_absent.each do |guest| %>
+              <li class="list-group-item dashboard-list-item"><%= guest.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  percentageChart("#chart-response", $("#chart-response").attr("data-percentage"));
+  percentageChart("#chart-awaiting", $("#chart-awaiting").attr("data-percentage"));
+  percentageChart("#chart-attending", $("#chart-attending").attr("data-percentage"));
+  percentageChart("#chart-absent", $("#chart-absent").attr("data-percentage"));
+</script>
