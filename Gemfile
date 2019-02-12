@@ -26,7 +26,6 @@ gem 'capistrano-bundler'
 gem 'capistrano-passenger'
 gem 'capistrano-rails'
 gem 'capistrano-rbenv'
-gem 'capistrano-yarn'
 
 gem 'rqrcode'
 gem 'will_paginate'
