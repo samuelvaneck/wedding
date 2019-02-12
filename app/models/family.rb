@@ -10,6 +10,9 @@ class Family < ApplicationRecord
   accepts_nested_attributes_for :guests
   accepts_nested_attributes_for :message
 
+  scope :responded, -> { where(response: true) }
+  scope :not_responded, -> { where(response: false) }
+
   def self.import(file)
     accepted_extensions = ['.xls', '.xlsx']
     return unless accepted_extensions.include? File.extname(file.original_filename).downcase

@@ -8,9 +8,17 @@
       </li>
       <li class="list-group-item">
         <div class="d-flex justify-content-center">
-          <div><i class="fab fa-weebly"></i></div>
+          <div><span data-letters="W"></span></div>
           <div class="nav-link-text">&ensp; Wedding</div>
         </div>
+      </li>
+      <li class="list-group-item">
+        <%= link_to admin_dashboard_path do %>
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <div><i class="fas fa-tachometer-alt"></i></div>
+            <div class="nav-link-text">&ensp;Dashboard</div>
+          </div>
+        <% end %>
       </li>
       <li class="list-group-item">
         <%= link_to admin_families_path do %>
@@ -61,9 +69,17 @@
     <ul class="list-group">
       <li class="list-group-item">
         <div class="d-flex justify-content-center">
-          <div class="d-inline"><i class="fab fa-weebly"></i></div>
+          <div class="d-inline"><span data-letters="W"></span></div>
           <div class="d-none d-md-inline nav-link-text">&ensp; Wedding</div>
         </div>
+      </li>
+      <li class="list-group-item">
+        <%= link_to admin_dashboard_path do %>
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <div><i class="fas fa-tachometer-alt"></i></div>
+            <div class="nav-link-text">&ensp;Dashboard</div>
+          </div>
+        <% end %>
       </li>
       <li class="list-group-item">
         <%= link_to admin_families_path do %>

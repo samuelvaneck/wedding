@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   root to: "families#index"
 
-  get "admin", to: "admin/families#index"
+  get "admin", to: "admin/dashboards#index"
+  get "admin/dashboard", to: "admin/dashboards#index"
 
   namespace :admin do
     resources :families do
