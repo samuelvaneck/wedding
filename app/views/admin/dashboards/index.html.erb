@@ -7,7 +7,10 @@
   <!-- Responded -->
   <div class="col-sm-12 col-md-6 mb-2">
     <ul class="list-group dashboard-list">
-      <li class="list-group-item bg-light">Responsed</li>
+      <li class="list-group-item bg-light">
+        <span>Responsed</span>
+        <span class="badge badge-primary float-right">Families</span>
+      </li>
       <li class="list-group-item d-flex justify-content-lg-around flew-row">
         <div class="dashboard-chart" id="chart-response" data-percentage="<%= percentage @responded.count, Family.all.count %>"></div>
         <div class="mt-2">
@@ -53,7 +56,10 @@
   <!-- Awaiting response -->
   <div class="col-sm-12 col-md-6 mb-2">
     <ul class="list-group dashboard-list">
-      <li class="list-group-item bg-light">Awaiting response</li>
+      <li class="list-group-item bg-light">
+        <span>Awaiting response</span>
+        <span class="badge badge-primary float-right">Families</span>
+      </li>
       <li class="list-group-item d-flex justify-content-lg-around flex-row">
         <div class="dashboard-chart" id="chart-awaiting" data-percentage="<%= percentage @awaiting_respone.count, Family.all.count %>"></div>
         <div class="mt-2">
@@ -101,7 +107,10 @@
 <div class="row">
   <div class="col-sm-12 col-md-6 mb-2">
     <ul class="list-group dashboard-list">
-      <li class="list-group-item bg-light">Attending</li>
+      <li class="list-group-item bg-light">
+        <span>Attending</span>
+        <span class="badge badge-primary float-right">Guests</span>
+      </li>
       <li class="list-group-item d-flex justify-content-lg-around flex-row">
         <div class="dashboard-chart" id="chart-attending" data-percentage="<%= percentage @guests_present.count, Guest.all.count %>"></div>
         <div class="mt-2">
@@ -147,7 +156,10 @@
   <!-- Absent -->
   <div class="col-sm-12 col-md-6 mb-2">
     <ul class="list-group dashboard-list">
-      <li class="list-group-item bg-light">Absent</li>
+      <li class="list-group-item bg-light">
+        <span>Absent<span>
+        <span class="badge badge-primary float-right">Guests</span>
+      </li>
       <li class="list-group-item d-flex justify-content-lg-around flex-row">
         <div class="dashboard-chart" id="chart-absent" data-percentage="<%= percentage @guests_absent.count, Guest.all.count %>"></div>
         <div class="mt-2">
@@ -192,8 +204,9 @@
 </div>
 
 <script>
-  percentageChart("#chart-response", $("#chart-response").attr("data-percentage"));
-  percentageChart("#chart-awaiting", $("#chart-awaiting").attr("data-percentage"));
-  percentageChart("#chart-attending", $("#chart-attending").attr("data-percentage"));
-  percentageChart("#chart-absent", $("#chart-absent").attr("data-percentage"));
+  $(".dashboard-chart").each((i, chart) => {
+    const id = $(chart).attr("id");
+    
+    percentageChart("#" + id);
+  });
 </script>
