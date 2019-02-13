@@ -1,8 +1,9 @@
-function percentageChart(id, percentage) {
+function percentageChart(id) {
   const duration    = 1500;
   const transition  = 200;
   const width       = 170;
   const height      = 170;
+  const percentage  = $(id).attr("data-percentage");
   const dataset     = { lower: calcPercent(0),
                         upper: calcPercent(percentage) 
                       };
