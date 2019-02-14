@@ -33,7 +33,7 @@ class RSVP {
 
   resetCode() {
     localStorage.removeItem("uuid");
-    location.reload();
+    location.href = "/";
   }
 }
 
