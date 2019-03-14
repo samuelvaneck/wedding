@@ -4,7 +4,9 @@ describe Admin::MessagesController do
   let(:user) { FactoryBot.create :user }
   let(:family) { FactoryBot.create :family}
   let(:message) { FactoryBot.create :message, family: family }
-  let(:messages) { FactoryBot.create_list :message, 3, family: family }
+  let(:message_one) { FactoryBot.create :message, family: family }
+  let(:message_two) { FactoryBot.create :message, family: family }
+  let(:message_three) { FactoryBot.create :message, family: family }
 
   before do
     sign_in user
@@ -12,12 +14,14 @@ describe Admin::MessagesController do
 
   describe 'GET #index' do
     before do
-      messages
+      message_one
+      message_two
+      message_three
     end
     context 'without search params' do
       it 'is expected to assign message as @messages' do
         get :index
-        expect(assigns(:messages).order(created_at: :asc)).to eq messages
+        expect(assigns(:messages)).to include message_one, message_two, message_three
       end
 
       it 'is exptected to render the index template' do

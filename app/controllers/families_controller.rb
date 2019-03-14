@@ -5,11 +5,11 @@ class FamiliesController < ApplicationController
 
   def update
     @family.response = true
-    success = @family.update(family_params)
+    success = @family.update! family_params
     @card_id = success ? 'card-success' : 'card-error'
     @guests = @family.guests
     @message = @family.message || Message.new
-    render 'flip_card'
+    render :flip_card
   end
 
   def flip_card

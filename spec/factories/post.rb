@@ -2,6 +2,6 @@ require 'faker'
 
 FactoryBot.define do
   factory :post do
-    comment { Faker::GameOfThrones.quote }
+    comment { Faker::TvShows::GameOfThrones.quote }
   end
 end
