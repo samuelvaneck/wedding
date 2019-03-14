@@ -19,10 +19,6 @@
               <th>Responses</th>
               <td><%= @responded.count %></td>
             </tr>
-            <tr>
-              <th>Total</th>
-              <td><%= Family.all.count %></td>
-            </tr>
           </table>
           <%= button_tag "List", type: "button", class: "btn btn-primary btn-block", data: { toggle: "modal", target: "#repsonsed-modal" } %>
         </div>       
@@ -67,10 +63,6 @@
             <tr>
               <th>Awaiting response</th>
               <td><%= @awaiting_respone.count %></td>
-            </tr>
-            <tr>
-              <th>Total</th>
-              <td><%= Family.all.count %></td>
             </tr>
           </table>
           <%= button_tag "List", type: "button", class: "btn btn-primary btn-block", data: { toggle: "modal", target: "#awaiting-repsonse-modal" } %>
@@ -119,10 +111,6 @@
               <th>Attending</th>
               <td><%= @guests_present.count %></td>
             </tr>
-            <tr>
-              <th>Total</th>
-              <td><%= Guest.all.count %></td>
-            </tr>
           </table>
           <%= button_tag "List", type: "button", class: "btn btn-primary btn-block", data: { toggle: "modal", target: "#attending-guests-modal" } %>
         </div>
@@ -167,10 +155,6 @@
             <tr>
               <th>Absent</th>
               <td><%= @guests_absent.count %></td>
-            </tr>
-            <tr>
-              <th>Total</th>
-              <td><%= Guest.all.count %></td>
             </tr>
           </table>
           <%= button_tag "List", type: "button", class: "btn btn-primary btn-block", data: { toggle: "modal", target: "#absent-guests-modal" } %>
