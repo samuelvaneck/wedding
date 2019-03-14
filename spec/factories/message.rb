@@ -2,6 +2,6 @@ require 'faker'
 
 FactoryBot.define do
   factory :message do
-    content { Faker::FamousLastWords.last_words }
+    content { Faker::Hipster.sentence }
   end
 end
