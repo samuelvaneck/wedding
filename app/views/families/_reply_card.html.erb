@@ -35,11 +35,12 @@
           <% end %>
           <li class="list-group-item">
             <%= f.fields_for :message, @message do |message_fields| %>
-              <div class="d-flex">
+              <div class="d-flex flex-column">
                 <div class="form-group">
                   <strong><%= message_fields.label :bericht %></strong>
                   <%= message_fields.text_area :content, placeholder: "Laat optioneel uw wens of bericht achter", class: 'form-control', cols: 100, rows: 3 %>
                 </div>
+                <div class="rounded bg-light mb-2 p-2 font-italic" id="message-preview">Bericht voorbeeld</div>
               </div>
             <% end %>
             <div class="d-flex">
