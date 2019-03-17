@@ -4,7 +4,7 @@ class Family < ApplicationRecord
   has_one :message, dependent: :destroy
 
   validates :name, presence: true
-  validates :email, uniqueness: true, if: :email_changed?
+  validates :email, uniqueness: true, allow_blank: true, if: :will_save_change_to_email?
   validates :uuid, uniqueness: true
 
   accepts_nested_attributes_for :guests

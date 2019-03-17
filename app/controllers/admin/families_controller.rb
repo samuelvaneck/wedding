@@ -27,7 +27,7 @@ class Admin::FamiliesController < AdminController
   end
 
   def update
-    @family.update family_params
+    success = @family.update family_params
     respond_with :admin, @family
   end
 
