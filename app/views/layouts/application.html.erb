@@ -36,6 +36,20 @@
           <%= render 'layouts/sidenav' %>
         <% end %>
         <div class="col" id="main">
+          <div class="mt-2">
+            <% if notice %>
+              <p class="alert alert-info"><%= notice %></p>
+            <% end %>
+            <% if flash[:success] %>
+              <p class="alert alert-success"><%= flash[:success] %></p>
+            <% end %>
+            <% if flash[:warning] %>
+              <p class="alert alert-warning"><%= flash[:warning] %></p>
+            <% end %>
+            <% if alert %>
+              <p class="alert alert-danger"><%= alert %></p>
+            <% end %>
+          </div>
           <%= yield %>
         </div>
       </div>
