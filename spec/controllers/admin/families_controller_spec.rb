@@ -134,6 +134,17 @@ describe Admin::FamiliesController do
         expect(response).to render_template :edit
       end
     end
+
+    context "with guests added" do
+      it "is expect to also change the guests" do
+        guest = family.guests.first
+        guest_attributes = { "0" => { attending: true, id: guest.id  } }
+        put :update, params: { id: family.id, family: { guests_attributes: guest_attributes } }
+        guest.reload
+
+        expect(guest.attending).to eq true
+      end
+    end
   end
 
   describe '#DELETE destroy' do
