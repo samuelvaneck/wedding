@@ -37,8 +37,10 @@
         </div>
         <div class="modal-body">
           <ul class="list-group">
-            <% @responded.each do |family| %>
-              <li class="list-group-item dashboard-list-item"><%= family.name %></li>
+            <% @responded.order(:name).each do |family| %>
+              <li class="list-group-item dashboard-list-item">
+                <%= link_to family.name, admin_family_path(family) %>
+              </li>
             <% end %>
           </ul>
         </div>
@@ -82,8 +84,10 @@
         </div>
         <div class="modal-body">
           <ul class="list-group">
-            <% @awaiting_respone.each do |family| %>
-              <li class="list-group-item dashboard-list-item"><%= family.name %></li>
+            <% @awaiting_respone.order(:name).each do |family| %>
+              <li class="list-group-item dashboard-list-item">
+                <%= link_to family.name, admin_family_path(family)  %>
+              </li>
             <% end %>
           </ul>
         </div>
@@ -104,12 +108,12 @@
         <span class="badge badge-primary float-right">Guests</span>
       </li>
       <li class="list-group-item d-flex justify-content-lg-around flex-row">
-        <div class="dashboard-chart" id="chart-attending" data-percentage="<%= percentage @guests_present.count, Guest.all.count %>"></div>
+        <div class="dashboard-chart" id="chart-attending" data-percentage="<%= percentage Guest.is_attending.count, Guest.all.count %>"></div>
         <div class="mt-2">
           <table class="table table-borderless table-sm">
             <tr>
               <th>Attending</th>
-              <td><%= @guests_present.count %></td>
+              <td><%= Guest.is_attending.count %></td>
             </tr>
           </table>
           <%= button_tag "List", type: "button", class: "btn btn-primary btn-block", data: { toggle: "modal", target: "#attending-guests-modal" } %>
@@ -129,8 +133,18 @@
         </div>
         <div class="modal-body">
           <ul class="list-group">
-            <% @guests_present.each do |guest| %>
-              <li class="list-group-item dashboard-list-item"><%= guest.name %></li>
+            <% @family_guests_present.each do |family| %>
+              <li class="list-group-item dashboard-list-item d-flex flex-row">
+                <div>
+                  <strong><%= link_to family.name, admin_family_path(family) %></strong>
+                </div>
+                <div class="ml-auto"><%= response_badge(family) %></div>
+              </li>
+              <% family.guests.is_attending.each do |guest| %>
+                <li class="list-group-item dashboard-list-item">
+                  <%= link_to guest.name, admin_guest_path(guest), class: "ml-3" %>
+                </li>
+              <% end %>
             <% end %>
           </ul>
         </div>
@@ -149,12 +163,12 @@
         <span class="badge badge-primary float-right">Guests</span>
       </li>
       <li class="list-group-item d-flex justify-content-lg-around flex-row">
-        <div class="dashboard-chart" id="chart-absent" data-percentage="<%= percentage @guests_absent.count, Guest.all.count %>"></div>
+        <div class="dashboard-chart" id="chart-absent" data-percentage="<%= percentage Guest.not_attending.count, Guest.all.count %>"></div>
         <div class="mt-2">
           <table class="table table-borderless table-sm">
             <tr>
               <th>Absent</th>
-              <td><%= @guests_absent.count %></td>
+              <td><%= Guest.not_attending.count %></td>
             </tr>
           </table>
           <%= button_tag "List", type: "button", class: "btn btn-primary btn-block", data: { toggle: "modal", target: "#absent-guests-modal" } %>
@@ -174,8 +188,18 @@
         </div>
         <div class="modal-body">
           <ul class="list-group">
-            <% @guests_absent.each do |guest| %>
-              <li class="list-group-item dashboard-list-item"><%= guest.name %></li>
+            <% @family_guests_absent.each do |family| %>
+              <li class="list-group-item dashboard-list-item d-flex flex-row">
+                <div>
+                  <strong><%= link_to family.name, admin_family_path(family) %></strong>
+                </div>
+                <div class="ml-auto"><%= response_badge(family) %></div>
+              </li>
+              <% family.guests.not_attending.each do |guest| %>
+                <li class="list-group-item dashboard-list-item">
+                  <%= link_to guest.name, admin_guest_path(guest), class: "ml-3" %>
+                </li>
+              <% end %>
             <% end %>
           </ul>
         </div>
