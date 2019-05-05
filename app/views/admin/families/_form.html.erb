@@ -29,6 +29,33 @@
     <div class="invalid-feedback"></div>
   </div>
 
-  <%= link_to "Back", admin_families_path, class: "btn btn-outline-secondary" %>
-  <%= f.submit "Save", class: "btn btn-outline-primary float-right" %>
+  <h2 class="text-center">Guests</h2>
+
+  <%= f.fields_for :guests, @family.guests do |fg| %>
+    <div class="form-group">
+      <%= fg.label :name %>
+      <%= fg.text_field :name, class: "form-control", required: true, autocomplete: "off" %>
+      <div class="invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+      <%= fg.check_box :attending %>
+      <%= fg.label :attending %>
+      <div class="invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+      <%= fg.check_box :day_guest %>
+      <%= fg.label :day_guest %>
+      <div class="invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+      <%= fg.label :family %>
+      <%= fg.collection_select :family_id, Family.all, :id, :name, {}, { class: "form-control", required: true } %>
+      <div class="invalid-feedback"></div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= link_to "Back", admin_families_path, class: "btn btn-outline-secondary" %>
+    <%= f.submit "Save", class: "btn btn-outline-primary float-right" %>
+  </div>
 <% end %>
