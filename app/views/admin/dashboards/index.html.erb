@@ -112,7 +112,15 @@
         <div class="mt-2">
           <table class="table table-borderless table-sm">
             <tr>
-              <th>Attending</th>
+              <td>Day guests</td>
+              <td><%= Guest.day_guests_attending.count %></td>
+            </tr>
+            <tr>
+              <td>Evening guests</td>
+              <td><%= Guest.evening_guests_attending.count %></td>
+            </tr>
+            <tr>
+              <th>Total</th>
               <td><%= Guest.is_attending.count %></td>
             </tr>
           </table>
@@ -167,7 +175,15 @@
         <div class="mt-2">
           <table class="table table-borderless table-sm">
             <tr>
-              <th>Absent</th>
+              <td>Day guests</td>
+              <td><%= Guest.day_guests_not_attending.count %></td>
+            </tr>
+            <tr>
+              <td>Evening gueests</td>
+              <td><%= Guest.evening_guests_not_attending.count %></td>
+            </tr>
+            <tr>
+              <th>Total</th>
               <td><%= Guest.not_attending.count %></td>
             </tr>
           </table>
