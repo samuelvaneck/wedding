@@ -233,4 +233,9 @@
     
     percentageChart("#" + id);
   });
+  
+  // TODO: needed if Bootstrap modal is open on page back it's not responding
+  $(window).on("popstate", () => {
+    window.location.reload();
+  });
 </script>
