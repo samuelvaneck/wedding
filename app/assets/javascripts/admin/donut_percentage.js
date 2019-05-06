@@ -44,7 +44,7 @@ function percentageChart(id) {
         return arc(dp(t));
       }
     });
-  }, 200);
+  }, transition);
 
 
   function calcPercent(percentage) {

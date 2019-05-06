@@ -1,5 +1,9 @@
 module DashboardsHelper
   def percentage(part, total)
-    part.to_f / total.to_f * 100
+    if total.zero?
+      0
+    else
+     part.to_f / total.to_f * 100
+    end
   end
 end
