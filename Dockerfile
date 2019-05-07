@@ -9,6 +9,5 @@ RUN mkdir $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
-COPY vendor/ vendor/
 RUN bundle install
 COPY . $INSTALL_PATH
