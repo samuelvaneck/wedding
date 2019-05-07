@@ -27,7 +27,7 @@ class Admin::FamiliesController < AdminController
   end
 
   def update
-    success = @family.update family_params
+    @family.update family_params
     respond_with :admin, @family
   end
 
@@ -38,7 +38,7 @@ class Admin::FamiliesController < AdminController
 
   def import
     file = params[:file]
-    imported = Family.import file
+    Family.import file
     redirect_to admin_families_path
   end
 
