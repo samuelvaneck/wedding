@@ -40,7 +40,6 @@ group :development, :test do
   gem 'launchy'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
-  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
 
@@ -56,7 +55,7 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
