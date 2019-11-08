@@ -31,6 +31,7 @@ gem 'rqrcode'
 gem 'will_paginate'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'webpacker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
