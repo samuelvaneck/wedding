@@ -33,7 +33,7 @@
 <script>
   // load script
   const uuidParams = getUrlParameter("uuid");
-  const rsvp = new RSVP();
+  var rsvp = new window.RSVP();
   !!uuidParams ? rsvp.code(uuidParams) : rsvp.code();
   if (rsvp.code()) {
     rsvp.fillInCode();

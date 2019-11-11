@@ -14,5 +14,15 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+import * as d3 from "d3";
+import('bootstrap')
+import('popper.js')
+import percentageChart from 'packs/admin/donut_percentage'
+import getUrlParameter from 'packs/admin/get_params'
+import RSVP from 'packs/application/rsvp'
+window.RSVP = RSVP
 
 console.log('Hello World from Webpacker')
+require('@rails/ujs').start()
+require('@rails/activestorage').start()
+require('turbolinks').start()

@@ -1,4 +1,4 @@
-function openNav(event) {
+window.openNav = event => {
   if ($("#mobile-menu").width() == 250) {
     closeNav();
   } else {
@@ -8,7 +8,7 @@ function openNav(event) {
   }
 };
 
-function closeNav(event) {
+window.closeNav = event => {
   $("#mobile-menu").css({ width: "0px" }).hide();
   $("#main").css({ marginLeft: "0px" });
   $("#desktop-menu").show();
