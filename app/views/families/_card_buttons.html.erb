@@ -6,5 +6,5 @@
   <% if Date.today >= Date.parse("2019-05-10") %>
     <%= tag.button 'Foto uploaden', { class: 'btn btn-outline-primary mr-1', id: 'card-post-btn', data_card: "card-post", type: "button" } %>
   <% end %>
-  <%= button_tag "Andere code", type: "button", class: "btn btn-outline-primary", id: "reset-rsvp-code" %>
+  <%= button_tag "Andere code", type: "button", class: "btn btn-outline-primary", id: "reset-rsvp-code", onClick: 'handleClickRSVPReset()' %>
 </div>

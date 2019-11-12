@@ -1,0 +1,8 @@
+<input type='text' 
+       id="search" 
+       class='form-control' 
+       placeholder='Search...' 
+       autocomplete='off' 
+       data-target='items-collection' 
+       data-search-path='<%= request.env['PATH_INFO'] %>'
+       onKeyup='handleKeyUpSearch(this)' />

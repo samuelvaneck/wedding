@@ -20,6 +20,10 @@ import('popper.js')
 import percentageChart from 'packs/admin/donut_percentage'
 import getUrlParameter from 'packs/admin/get_params'
 import RSVP from 'packs/application/rsvp'
+import handleClickRSVPReset from 'packs/application/rsvp_reset'
+import openNav from 'packs/admin/menu'
+import closeNav from 'packs/admin/menu'
+import handleKeyUpSearch from 'packs/application/search'
 window.RSVP = RSVP
 
 console.log('Hello World from Webpacker')

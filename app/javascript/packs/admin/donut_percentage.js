@@ -21,19 +21,19 @@ window.percentageChart = id => {
                         .append("g")
                         .attr("transform", "translate(" + width/2 + "," + height/2 + ")");
   let path          = svg.selectAll("path")
-                          .data(pie(dataset.lower))
-                          .enter().append("path")
-                          .attr("fill", (d, i) => { return color(i); })
-                          .attr("d", arc)
-                          .each((d) => {
-                            this._current = d;
-                          });
+                         .data(pie(dataset.lower))
+                         .enter().append("path")
+                         .attr("fill", (d, i) => { return color(i); })
+                         .attr("d", arc)
+                         .each((d) => {
+                           this._current = d;
+                         });
   let text          = svg.append("text")
-                          .attr("text-anchor", "middle")
-                          .attr("dy", ".3em");
+                         .attr("text-anchor", "middle")
+                         .attr("dy", ".3em");
+                
   let progress = 0;
-
-  setTimeout(function() {
+  setTimeout(() => {
     path = path.data(pie(dataset.upper));
     path.transition().duration(duration).attrTween("d", (d) => {
       const dp = d3.interpolate(this._current, d)
