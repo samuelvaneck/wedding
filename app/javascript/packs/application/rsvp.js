@@ -37,7 +37,4 @@ class RSVP {
   }
 }
 
-$(document).on("click", "#reset-rsvp-code", () => {
-  let rsvp = new RSVP();
-  rsvp.resetCode();
-});
+export default RSVP;

@@ -1,5 +1,5 @@
 // function to get the value of a URL parameter
-function getUrlParameter(param) {
+window.getUrlParameter = param => {
   let pageURL = decodeURIComponent(window.location.search).split("?")[1];
   if (pageURL != undefined) {
     const urlVariables = pageURL.split("&")

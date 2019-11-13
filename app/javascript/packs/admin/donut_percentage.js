@@ -1,4 +1,4 @@
-function percentageChart(id) {
+window.percentageChart = id => {
   const duration    = 1500;
   const transition  = 200;
   const width       = 170;

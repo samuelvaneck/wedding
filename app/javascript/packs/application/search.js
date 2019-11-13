@@ -1,18 +1,17 @@
-$(document).on("keyup", "#search", (event) => {
-  let _this = event.target;
+window.handleKeyUpSearch = (_this => {
   delaySearch(() => {
     searchItems(_this);
   }, 400);
 });
 
-function searchItems(_this) {
+var searchItems = (_this => {
   let url = $(_this).attr("data-search-path");
   let data = {};
   data.search = $(_this).val();
-  data.target = $(_this).attr("data-table");
+  data.target = $(_this).attr("data-target");
 
   $.get(url, data, "", "script");
-}
+});
 
 var delaySearch = (() => {
   let timer = 0;

@@ -57,7 +57,7 @@ describe Admin::PostsController do
   describe '#GET new' do
     it 'is expected to assign @post' do
       get :new
-      expect(assigns(:post)).to be_a_new Post
+      expect(assigns(:item)).to be_a_new Post
     end
     it 'is expected to render the new template' do
       get :new

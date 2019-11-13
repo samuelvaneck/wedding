@@ -1,4 +1,4 @@
-<%= form_for [:admin, @family], html: { class: "needs-validation", novalidate: true } do |f| %>
+<%= form_for [:admin, @item], html: { class: "needs-validation", novalidate: true } do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control", required: true, autocomplete: "off" %>
@@ -31,7 +31,7 @@
 
   <h2 class="text-center">Guests</h2>
 
-  <%= f.fields_for :guests, @family.guests do |fg| %>
+  <%= f.fields_for :guests, @item.guests do |fg| %>
     <div class="form-group">
       <%= fg.label :name %>
       <%= fg.text_field :name, class: "form-control", required: true, autocomplete: "off" %>

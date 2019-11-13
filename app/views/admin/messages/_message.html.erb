@@ -1,6 +1,8 @@
-<tr>
-  <td><%= link_to message.family.name, admin_family_path(message.family) %></td>
-  <td><%= link_to message.content, admin_message_path(message) %></td>
-  <td><%= link_to edit_admin_message_path(message) do %><i class="fas fa-pen"></i><% end %></td>
-  <td><%= link_to admin_message_path(message), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fas fa-trash"></i><% end %></td>
-</tr>
+<li class="list-group-item">
+  <div class="d-flex flex-row">
+    <div><%= link_to message.content, admin_message_path(message) %></div>
+  </div>
+  <div class="d-flex flex-row">
+    <div><small><%= link_to message.family.name, admin_family_path(message.family), style: 'color:#6c757d' %></small></div>
+  </div>
+</li>

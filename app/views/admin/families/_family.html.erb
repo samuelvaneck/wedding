@@ -1,16 +1,38 @@
-<tr>
-  <td><%= link_to family.name, admin_family_path(family) %></td>
-  <td class="d-none d-lg-table-cell"><%= mail_to family.email %></td>
-  <td class="text-center"><%= boolean_icon family.response %></td>
-  <td class="text-center d-none d-md-table-cell"><%= atteding_total_guests family %></td>
-  <td class="text-center d-none d-lg-table-cell"><%= family.uuid %></td>
-  <td class="text-center d-none d-md-table-cell"><%= link_to family.message.content, admin_message_path(family.message) rescue "none" %></td>
-  <td class="text-center d-none d-lg-table-cell"><%= family.allergies %></td>
-  <% if family.photo.attached? %> 
-    <td class="text-center d-none d-lg-table-cell"><%= image_tag family.photo, class: "thumbnail" %></td>
-  <% else %>
-    <td class="text-center d-none d-lg-table-cell">none</td>
-  <% end %>
-  <td><%= link_to edit_admin_family_path(family) do %><i class="fas fa-pen"></i><% end %></td>
-  <td><%= link_to admin_family_path(family), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fas fa-trash"></i><% end %></td>
-</tr>
+<li class='list-group-item'>
+  <div class="d-flex flex-row">
+    <div class='pr-3'>
+      <% if family.photo.attached? %> 
+        <td class="text-center d-none d-lg-table-cell"><%= image_tag family.photo, class: "thumbnail" %></td>
+      <% else %>
+        <td class="text-center d-none d-lg-table-cell"><%= image_tag 'no_image_available.svg', class: 'thumbnail' %></td>
+      <% end %>
+    </div>
+    <div>
+      <div><%= link_to family.name, admin_family_path(family) %></div>
+      <div class="d-flex flex-row text-muted">
+        <div>
+          <small>
+            <span class='mr-2'>Guests</span>
+            <%= atteding_total_guests family %>
+          </small>
+        </div>
+        <% if family.email.present? %>
+          <div>&ensp;&bull;&ensp;<small><%= mail_to_if family.email %></small></div>
+        <% end %>
+        <% if family.message&.content.present? %>
+          <div>&ensp;&bull;&ensp;<small><%= family.message.content.truncate(27) %></small></div>
+        <% end %>
+      </div>
+    </div>
+    <div class='ml-auto'>
+      <div class='text-right'><%= response_badge family %></div>
+      <div class='text-right'><%= badge_code family %></div>
+    </div>
+  </div>
+  <div class='d-flex flex-row'>
+    <div><%= family.allergies %></div>
+  </div>
+  <div class="d-flex flex-row">
+    
+  </div>
+</li>

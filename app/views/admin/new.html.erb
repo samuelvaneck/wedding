@@ -1,10 +1,10 @@
-<% provide(:title, "New message") %>
+<% provide(:title, "New #{@item.class.name.downcase}") %>
 
 <%= render 'breadcrumb' %>
 
 <div class="d-flex justify-content-center flex-row">
   <div>
-    <h2>New message</h2>
+    <h2>New <%= @item.class.name.downcase %></h2>
   </div>
 </div>
 <div class="d-flex flex-row">

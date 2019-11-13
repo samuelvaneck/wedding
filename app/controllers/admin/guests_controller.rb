@@ -6,6 +6,7 @@ class Admin::GuestsController < AdminController
     @guests.where!("name ILIKE ?", "%#{params[:search]}%") if params[:search]
     @target = params[:target] if params[:target]
     @guests = @guests.order(params[:order]).page(params[:page]).per_page(20)
+    @items = @guests
   end
 
   def show
@@ -13,7 +14,7 @@ class Admin::GuestsController < AdminController
   end
 
   def new
-    @guest = Guest.new
+    @item = Guest.new
   end
 
   def create
@@ -36,10 +37,13 @@ class Admin::GuestsController < AdminController
   end
 
   private
+
   def guest_params
     params.require(:guest).permit :name, :attending, :day_guest, :family_id
   end
+
   def set_guest
     @guest = Guest.find params[:id]
+    @item = @guest
   end
 end
