@@ -62,7 +62,7 @@ describe Admin::MessagesController do
   describe '#GET new' do
     it 'is expected to assign @message' do
       get :new
-      expect(assigns(:message)).to be_a_new Message
+      expect(assigns(:item)).to be_a_new Message
     end
     it 'is expected to render the new template' do
       get :new

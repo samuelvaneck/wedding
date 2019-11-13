@@ -57,7 +57,7 @@ describe Admin::FamiliesController do
   describe '#GET new' do
     it 'is expected to assign @family' do
       get :new
-      expect(assigns(:family)).to be_a_new Family
+      expect(assigns(:item)).to be_a_new Family
     end
     it 'is expected to render the new template' do
       get :new

@@ -58,7 +58,7 @@ describe Admin::GuestsController do
   describe '#GET new' do
     it 'is expected to assign @guest' do
       get :new
-      expect(assigns(:guest)).to be_a_new Guest
+      expect(assigns(:item)).to be_a_new Guest
     end
     it 'is expected to render the new template' do
       get :new
