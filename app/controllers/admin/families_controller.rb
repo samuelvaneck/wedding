@@ -6,6 +6,7 @@ class Admin::FamiliesController < AdminController
     @families.where!("name ILIKE ? OR email ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search]
     @target = params[:target] if params[:target]
     @families = @families.order(params[:order]).page(params[:page]).per_page(20)
+    @items = @families
   end
 
   def show
@@ -13,7 +14,7 @@ class Admin::FamiliesController < AdminController
   end
 
   def new
-    @family = Family.new
+    @item = Family.new
   end
 
   def create
@@ -62,5 +63,6 @@ class Admin::FamiliesController < AdminController
 
   def set_family
     @family = Family.find params[:id]
+    @item = @family
   end
 end
