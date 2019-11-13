@@ -14,7 +14,7 @@ module FamiliesHelper
 
   def response_badge(family)
     badge_class = family.response ? 'badge badge-success' : 'badge badge-danger'
-    badge_text = family.response ? 'Responded' : 'No response'
+    badge_text = family.response ? 'responded' : 'no response'
     tag.span class: badge_class do
       badge_text
     end
@@ -22,5 +22,12 @@ module FamiliesHelper
 
   def badge_code(family)
     tag.span family.uuid, class: 'badge badge-secondary', title: 'Wedding code'
+  end
+
+  def badge_attending(guest)
+    badge_class = guest.attending ? 'badge badge-success' : 'badge badge-danger'
+    tag.span class: badge_class do
+      guest.attending || 'no response'
+    end
   end
 end

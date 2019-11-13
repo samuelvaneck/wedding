@@ -11,23 +11,7 @@
       </button>
     </div>
   </div>
-  <div class="col-12 col-md-6">
-    <div class="ml-auto mt-1">
-      <div class="input-group">
-        <%= render 'admin/dashboards/search' %>
-        <div class="input-group-append">
-          <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-hashpop="true" aria-expanded="false">Sort</button>
-          <div class="dropdown-menu">
-            <%= link_to "Name", admin_families_path(order: "name"), class: "dropdown-item" %>
-            <%= link_to "Email", admin_families_path(order: "email"), class: "dropdown-item" %>
-            <%= link_to "Response", admin_families_path(order: "response"), class: "dropdown-item" %>
-            <%= link_to "UUID", admin_families_path(order: "uuid"), class: "dropdown-item" %>
-            <%= link_to "Allergien", admin_families_path(order: "allergies"), class: "dropdown-item" %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'admin/dashboards/search_bar' %>
 </div>
 <div class="d-flex">
   <ul class='list-group w-100' id='items-collection'>

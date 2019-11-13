@@ -1,0 +1,23 @@
+<div class="col-12 col-md-6">
+  <div class="ml-auto mt-1">
+    <div class="input-group">
+      <%= render 'admin/dashboards/search' %>
+      <div class="input-group-append">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-hashpop="true" aria-expanded="false">Sort</button>
+        <div class="dropdown-menu">
+          <% if controller_name == 'families' %>
+            <%= link_to "Name", admin_families_path(order: "name"), class: "dropdown-item" %>
+            <%= link_to "Email", admin_families_path(order: "email"), class: "dropdown-item" %>
+            <%= link_to "Response", admin_families_path(order: "response"), class: "dropdown-item" %>
+            <%= link_to "UUID", admin_families_path(order: "uuid"), class: "dropdown-item" %>
+            <%= link_to "Allergien", admin_families_path(order: "allergies"), class: "dropdown-item" %>
+          <% elsif controller_name == 'guests' %>
+            <%= link_to "Name", admin_guests_path(order: "name"), class: "dropdown-item" %>
+            <%= link_to "Attending", admin_guests_path(order: "atteding"), class: "dropdown-item" %>
+            <%= link_to "Day guest", admin_guests_path(order: "day_guest"), class: "dropdown-item" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
