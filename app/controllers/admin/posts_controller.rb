@@ -6,6 +6,7 @@ class Admin::PostsController < AdminController
     @posts.where!("comment ILIKE ?", "%#{params[:search]}%") if params[:search]
     @posts = @posts.order(created_at: :asc).page(params[:page]).per_page(20)
     @target = params[:target]
+    @items = @posts
   end
 
   def show
@@ -13,7 +14,7 @@ class Admin::PostsController < AdminController
   end
 
   def new
-    @post = Post.new
+    @item = Post.new
   end
 
   def create
@@ -43,5 +44,6 @@ class Admin::PostsController < AdminController
 
   def set_post
     @post = Post.find params[:id]
+    @item = @post
   end
 end

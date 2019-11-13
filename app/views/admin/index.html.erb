@@ -1,14 +1,16 @@
 <%= render 'breadcrumb' %>
 <div class="d-flex justify-content-center mt-3">
-  <div><h2 class="">Families</h2></div>
+  <div><h2><%= controller_name.humanize %></h2></div>
 </div>
 <div class="row mb-2">
   <div class="col-12 col-md-6">
     <div class="mt-1">
-      <%= link_to "New", new_admin_family_path, class: 'btn btn-outline-primary' %>
-      <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#import-guests-modal">
-        Import Guests
-      </button>
+      <%= link_to "New", { action: :new }, class: 'btn btn-outline-primary' %>
+      <% if controller.respond_to?(:import) %>
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#import-guests-modal">
+          Import Guests
+        </button>
+      <% end %>
     </div>
   </div>
   <%= render 'admin/dashboards/search_bar' %>

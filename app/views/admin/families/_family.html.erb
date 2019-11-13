@@ -7,7 +7,23 @@
         <td class="text-center d-none d-lg-table-cell"><%= image_tag 'no_image_available.svg', class: 'thumbnail' %></td>
       <% end %>
     </div>
-    <div><%= link_to family.name, admin_family_path(family) %></div>
+    <div>
+      <div><%= link_to family.name, admin_family_path(family) %></div>
+      <div class="d-flex flex-row text-muted">
+        <div>
+          <small>
+            <span class='mr-2'>Guests</span>
+            <%= atteding_total_guests family %>
+          </small>
+        </div>
+        <% if family.email.present? %>
+          <div>&ensp;&bull;&ensp;<small><%= mail_to_if family.email %></small></div>
+        <% end %>
+        <% if family.message&.content.present? %>
+          <div>&ensp;&bull;&ensp;<small><%= family.message.content.truncate(27) %></small></div>
+        <% end %>
+      </div>
+    </div>
     <div class='ml-auto'>
       <div class='text-right'><%= response_badge family %></div>
       <div class='text-right'><%= badge_code family %></div>
@@ -17,17 +33,6 @@
     <div><%= family.allergies %></div>
   </div>
   <div class="d-flex flex-row">
-    <div class='text-muted'>
-      <small>
-        <span class='mr-2'>Guests</span>
-        <%= atteding_total_guests family %>
-      </small>
-    </div>
-    <% if family.email.present? %>
-      <div class='text-muted'>&ensp;&bull;&ensp;<small><%= mail_to_if family.email %></small></div>
-    <% end %>
-    <% if family.message&.content.present? %>
-      <div class='text-muted'>&ensp;&bull;&ensp;<small><%= family.message.content.truncate(27) %></small></div>
-    <% end %>
+    
   </div>
 </li>

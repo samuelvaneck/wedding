@@ -6,6 +6,7 @@ class Admin::MessagesController < AdminController
     @messages.where!("content ILIKE ?", "%#{params[:search]}%") if params[:search]
     @messages = @messages.order(content: :asc).page(params[:page]).per_page(20)
     @target = params[:target] if params[:target]
+    @items = @messages
   end
 
   def show
@@ -13,7 +14,7 @@ class Admin::MessagesController < AdminController
   end
 
   def new
-    @message = Message.new
+    @item = Message.new
   end
 
   def create
@@ -43,5 +44,6 @@ class Admin::MessagesController < AdminController
 
   def set_message
     @message = Message.find params[:id]
+    @item = @message
   end
 end
