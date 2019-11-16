@@ -53,12 +53,9 @@ export class CodeUUID extends React.Component<CodeUUIDProps> {
     if (code.length == 6) {
       setTimeout(() => {
         try {
-          fetch("/families/flip_card/?uuid=" + code)
-          .then((response) => {
-            if (response.status == 404) {
-              this.resetInputFields()
-            }
-          })
+          $.get("/families/flip_card/?uuid=" + code, null, null, "script").fail(() => {
+           this.resetInputFields()
+          });
         } catch(error) {
           this.resetInputFields()
         }
@@ -87,24 +84,26 @@ export class CodeUUID extends React.Component<CodeUUIDProps> {
   render() {
     return (
       <React.Fragment>
-        <div className={"card-header"}>
-        <div className={"d-flex justify-content-center"}><h4>{this.props.title}</h4></div>
-        </div>
-        <div className={"card-body"}>
-          <div className={"container"}>
-            <div className={"row"}>
-              <div className={"col-xs-12 col-sm-6 p-1"}>
-                <div className={"d-flex code-input-left"}>
-                  <CodeInputField id={"code-input-0"} inputKeyUp={this.handleInputKeyUp} value={this.state['code-input-0']} inputChange={this.handleInputChange} />
-                  <CodeInputField id={"code-input-1"} inputKeyUp={this.handleInputKeyUp} value={this.state['code-input-1']} inputChange={this.handleInputChange} />
-                  <CodeInputField id={"code-input-2"} inputKeyUp={this.handleInputKeyUp} value={this.state['code-input-2']} inputChange={this.handleInputChange} />
+        <div className="card">
+          <div className={"card-header"}>
+          <div className={"d-flex justify-content-center"}><h4>{this.props.title}</h4></div>
+          </div>
+          <div className={"card-body"}>
+            <div className={"container"}>
+              <div className={"row"}>
+                <div className={"col-xs-12 col-sm-6 p-1"}>
+                  <div className={"d-flex code-input-left"}>
+                    <CodeInputField id={"code-input-0"} inputKeyUp={this.handleInputKeyUp} value={this.state['code-input-0']} inputChange={this.handleInputChange} />
+                    <CodeInputField id={"code-input-1"} inputKeyUp={this.handleInputKeyUp} value={this.state['code-input-1']} inputChange={this.handleInputChange} />
+                    <CodeInputField id={"code-input-2"} inputKeyUp={this.handleInputKeyUp} value={this.state['code-input-2']} inputChange={this.handleInputChange} />
+                  </div>
                 </div>
-              </div>
-              <div className={"col-xs-12 col-sm-6 p-1"}>
-                <div className={"d-flex code-input-right"}>
-                  <CodeInputField id={"code-input-3"} inputKeyUp={this.handleInputKeyUp} value={this.state['code-input-3']} inputChange={this.handleInputChange} />
-                  <CodeInputField id={"code-input-4"} inputKeyUp={this.handleInputKeyUp} value={this.state['code-input-4']} inputChange={this.handleInputChange} />
-                  <CodeInputField id={"code-input-5"} inputKeyUp={this.handleInputKeyUp} value={this.state['code-input-5']} inputChange={this.handleInputChange} />
+                <div className={"col-xs-12 col-sm-6 p-1"}>
+                  <div className={"d-flex code-input-right"}>
+                    <CodeInputField id={"code-input-3"} inputKeyUp={this.handleInputKeyUp} value={this.state['code-input-3']} inputChange={this.handleInputChange} />
+                    <CodeInputField id={"code-input-4"} inputKeyUp={this.handleInputKeyUp} value={this.state['code-input-4']} inputChange={this.handleInputChange} />
+                    <CodeInputField id={"code-input-5"} inputKeyUp={this.handleInputKeyUp} value={this.state['code-input-5']} inputChange={this.handleInputChange} />
+                  </div>
                 </div>
               </div>
             </div>
