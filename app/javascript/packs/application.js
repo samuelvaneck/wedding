@@ -14,19 +14,19 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-import * as d3 from "d3";
-import('bootstrap')
-import('popper.js')
-import percentageChart from 'packs/admin/donut_percentage'
-import getUrlParameter from 'packs/admin/get_params'
-import RSVP from 'packs/application/rsvp'
-import handleClickRSVPReset from 'packs/application/rsvp_reset'
-import openNav from 'packs/admin/menu'
-import closeNav from 'packs/admin/menu'
-import handleKeyUpSearch from 'packs/application/search'
-window.RSVP = RSVP
 
-console.log('Hello World from Webpacker')
 require('@rails/ujs').start()
 require('@rails/activestorage').start()
 require('turbolinks').start()
+
+import 'bootstrap' 
+import 'popper.js'
+
+// custom functions
+import RSVP from './application/rsvp'
+import getUrlParameter from './application/get_params'
+import handleClickRSVPReset from './application/rsvp_reset'
+import './components/Welcome'
+import './components/CodeUUID'
+window.RSVP = RSVP
+

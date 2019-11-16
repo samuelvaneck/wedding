@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Parisienne|Source+Sans+Pro" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_MAPS_API_KEY"]}" %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload' %>
     <meta charset="UTF-8">
     <%= yield(:head_tags) %>
   </head>
@@ -16,6 +16,23 @@
   <body>
     <div class="container-fluid">
       <div class="row">
+        <div id="admin-header" class="d-flex flex-row w-100">
+          <div id="#open-mobile-nav" class="ml-2 mt-2 d-sm-none" onClick="openNav()">
+            <i class="fas fa-bars fa-2x"></i>
+          </div>
+          <div class="m-2 flex-fill text-center">
+            <h3>Wedding</h3>
+          </div>
+          <% if user_signed_in? %>
+            <div class="admin-btns">
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light float-right mt-2 ml-2' %>
+              <% if params[:controller].split("/").first != "admin" %>
+                <%= link_to "Admin", admin_families_path, class: "btn btn-outline-primary float-right mt-2" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <%= render 'layouts/sidenav' %>
         <div class="col" id="main">
           <div class="mt-2">
             <% if notice %>
