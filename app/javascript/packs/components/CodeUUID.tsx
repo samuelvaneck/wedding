@@ -25,7 +25,7 @@ export class CodeUUID extends React.Component<CodeUUIDProps> {
   }
 
   componentDidMount() {
-    document.getElementById('code-input-0').foKeyUp
+    document.getElementById('code-input-0').focus()
   }
 
   handleInputKeyUp = (event) => {
@@ -123,8 +123,8 @@ export class CodeUUID extends React.Component<CodeUUIDProps> {
               </div>
             </div>
           </div>
+          <Spinner hidden={this.state.spinner} />
         </div>
-        <Spinner hidden={this.state.spinner} />
       </React.Fragment>
     )
   }
