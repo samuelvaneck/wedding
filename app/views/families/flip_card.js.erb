@@ -19,6 +19,7 @@
       "card-success": () => { $(nextFace[1]).html("<%= j render 'update_success' %>") },
       "card-error": () => { $(nextFace[1]).html("<%= j render 'update_error' %>") }
     }
+    console.log(cardId);
     const renderCard = cardHTML[cardId];
     renderCard();
     
