@@ -5,8 +5,8 @@
   "admin/donut_percentage.js.map": "/packs/js/admin/donut_percentage-9be5db3f18554c1b63a2.js.map",
   "admin/menu.js": "/packs/js/admin/menu-7e98682c9f32a2fcda57.js",
   "admin/menu.js.map": "/packs/js/admin/menu-7e98682c9f32a2fcda57.js.map",
-  "application.js": "/packs/js/application-9b33c74dc95fd55123ce.js",
-  "application.js.map": "/packs/js/application-9b33c74dc95fd55123ce.js.map",
+  "application.js": "/packs/js/application-28072d1f670e34f92327.js",
+  "application.js.map": "/packs/js/application-28072d1f670e34f92327.js.map",
   "application/get_params.js": "/packs/js/application/get_params-089da86e5f086d9f3313.js",
   "application/get_params.js.map": "/packs/js/application/get_params-089da86e5f086d9f3313.js.map",
   "application/header.js": "/packs/js/application/header-f5d518c57a92838d0d53.js",
@@ -23,8 +23,8 @@
   "application/search.js.map": "/packs/js/application/search-38d95b9e1535218f44db.js.map",
   "components/CodeInputField.js": "/packs/js/components/CodeInputField-f04c7639a3747e34ddcc.js",
   "components/CodeInputField.js.map": "/packs/js/components/CodeInputField-f04c7639a3747e34ddcc.js.map",
-  "components/CodeUUID.js": "/packs/js/components/CodeUUID-b1e3a21ce9468b6bbd21.js",
-  "components/CodeUUID.js.map": "/packs/js/components/CodeUUID-b1e3a21ce9468b6bbd21.js.map",
+  "components/CodeUUID.js": "/packs/js/components/CodeUUID-fe78bd18c03049326706.js",
+  "components/CodeUUID.js.map": "/packs/js/components/CodeUUID-fe78bd18c03049326706.js.map",
   "components/Spinner.js": "/packs/js/components/Spinner-7947b0a44dcd0669b1bb.js",
   "components/Spinner.js.map": "/packs/js/components/Spinner-7947b0a44dcd0669b1bb.js.map",
   "components/Welcome.js": "/packs/js/components/Welcome-a625d9a0fad7d00610e4.js",
@@ -56,10 +56,10 @@
     },
     "application": {
       "js": [
-        "/packs/js/application-9b33c74dc95fd55123ce.js"
+        "/packs/js/application-28072d1f670e34f92327.js"
       ],
       "js.map": [
-        "/packs/js/application-9b33c74dc95fd55123ce.js.map"
+        "/packs/js/application-28072d1f670e34f92327.js.map"
       ]
     },
     "application/get_params": {
@@ -128,10 +128,10 @@
     },
     "components/CodeUUID": {
       "js": [
-        "/packs/js/components/CodeUUID-b1e3a21ce9468b6bbd21.js"
+        "/packs/js/components/CodeUUID-fe78bd18c03049326706.js"
       ],
       "js.map": [
-        "/packs/js/components/CodeUUID-b1e3a21ce9468b6bbd21.js.map"
+        "/packs/js/components/CodeUUID-fe78bd18c03049326706.js.map"
       ]
     },
     "components/Spinner": {

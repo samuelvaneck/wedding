@@ -19,8 +19,6 @@ interface CodeUUIDState {
   spinner: boolean
 }
 
-const getInitialSpinner = (props: CodeUUIDState) => props.spinner;
-
 export class CodeUUID extends React.Component<CodeUUIDProps, CodeUUIDState> {
   state: CodeUUIDState
 
