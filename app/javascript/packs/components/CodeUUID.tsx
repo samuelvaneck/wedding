@@ -65,22 +65,15 @@ export class CodeUUID extends React.Component<CodeUUIDProps, CodeUUIDState> {
     if (code.length == 6) {
       setTimeout(() => {
         try {
-          // TODO: CRATE FORM FOR LOGIN AND PASS CRF TOKEN IN HEADER
+          const csrfToken = document.querySelector('[name="csrf-token"]').content;
           fetch('/families/flip_card/?uuid=' + code + '&card_id=card-reply&login=true', {
             method: 'GET',
             headers: {
-              'Accept': 'text/javascript, application/javascript, application/ecmascript, application/x-ecmascript,'
+              'Accept': 'text/javascript, application/javascript, application/ecmascript, application/x-ecmascript,',
+              'X-CSRF-Token': csrfToken,
+              'X-Requested-With': 'XMLHTTPRequest' 
             }
-          })
-          // let data = {
-          //   uuid: code,
-          //   card_id: 'card-reply',
-          //   login: true
-          // };
-
-          // $.get("/families/flip_card", data, null, "script").fail(() => {
-          //   this.resetInputFields()
-          // });
+          }).then(reponse => this.resetInputFields())
         } catch (error) {
           this.resetInputFields()
         }
