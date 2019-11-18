@@ -65,7 +65,9 @@ export class CodeUUID extends React.Component<CodeUUIDProps, CodeUUIDState> {
     if (code.length == 6) {
       setTimeout(() => {
         try {
-          const csrfToken = document.querySelector('[name="csrf-token"]').content;
+          const elem: HTMLMetaElement = document.querySelector('[name="csrf-token"]');
+          const csrfToken = elem.content;
+
           fetch('/families/flip_card/?uuid=' + code + '&card_id=card-reply&login=true', {
             method: 'GET',
             headers: {
