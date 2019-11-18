@@ -3,14 +3,27 @@ import { mount } from '../application/mount';
 import { Spinner } from './Spinner'
 import { CodeInputField } from './CodeInputField'
 import { fail } from 'assert';
-import { string } from 'prop-types';
+import { string, any } from 'prop-types';
 
 interface CodeUUIDProps {
   title: string
+}
+
+interface CodeUUIDState {
+  "code-input-0": string
+  "code-input-1": string
+  "code-input-2": string
+  "code-input-3": string
+  "code-input-4": string
+  "code-input-5": string
   spinner: boolean
 }
 
-export class CodeUUID extends React.Component<CodeUUIDProps> {
+const getInitialSpinner = (props: CodeUUIDState) => props.spinner;
+
+export class CodeUUID extends React.Component<CodeUUIDProps, CodeUUIDState> {
+  state: CodeUUIDState
+
   constructor(props: CodeUUIDProps) {
     super(props)
     this.state = {
@@ -20,7 +33,7 @@ export class CodeUUID extends React.Component<CodeUUIDProps> {
       "code-input-3": '',
       "code-input-4": '',
       "code-input-5": '',
-      spinner: this.props.spinner
+      spinner: false
     }
   }
 
@@ -28,18 +41,20 @@ export class CodeUUID extends React.Component<CodeUUIDProps> {
     document.getElementById('code-input-0').focus()
   }
 
-  handleInputKeyUp = (event) => {
-    const idx = parseInt(event.target.id.replace('code-input-', ''));
+  handleInputKeyUp = (event: React.KeyboardEvent) => {
+    const target = event.target as HTMLTextAreaElement
+    const idx = parseInt(target.id.replace('code-input-', ''))
 
     if (event.keyCode == 8) {
-      this.setState({
-        [event.target.id]: ''
-      })
+      this.setState(state => ({
+        ...state,
+        [target.id]: ''
+      }));
       if (idx == 0) return
-      document.getElementById('code-input-' + (idx - 1)).focus();
+      document.getElementById('code-input-' + (idx - 1)).focus()
     } else {
       if (idx == 5) return;
-      document.getElementById('code-input-' + (idx + 1)).focus();
+      document.getElementById('code-input-' + (idx + 1)).focus()
     }
   }
 
@@ -49,26 +64,25 @@ export class CodeUUID extends React.Component<CodeUUIDProps> {
     codeInput.forEach(d => { if (!!d) code += d; });
     this.setState({ spinner: code.length == 6 })
 
-    console.log(code);
-
     if (code.length == 6) {
       setTimeout(() => {
         try {
           // TODO: CRATE FORM FOR LOGIN AND PASS CRF TOKEN IN HEADER
-          // fetch('/families/flip_card/?uuid=' + code + '&card_id=card-reply&login=true', {
-          //   method: 'GET',
-          //   headers: {
-          //     'Accept': 'text/javascript, application/javascript, application/ecmascript, application/x-ecmascript,'
-          //   }
-          // })
-          let data = {};
-          data.uuid = code;
-          data.card_id = "card-reply";
-          data.login = true;
+          fetch('/families/flip_card/?uuid=' + code + '&card_id=card-reply&login=true', {
+            method: 'GET',
+            headers: {
+              'Accept': 'text/javascript, application/javascript, application/ecmascript, application/x-ecmascript,'
+            }
+          })
+          // let data = {
+          //   uuid: code,
+          //   card_id: 'card-reply',
+          //   login: true
+          // };
 
-          $.get("/families/flip_card", data, null, "script").fail(() => {
-            this.resetInputFields()
-          });
+          // $.get("/families/flip_card", data, null, "script").fail(() => {
+          //   this.resetInputFields()
+          // });
         } catch (error) {
           this.resetInputFields()
         }
@@ -90,10 +104,13 @@ export class CodeUUID extends React.Component<CodeUUIDProps> {
     document.getElementById('code-input-0').focus()
   }
 
-  handleInputChange = () => {
-    this.setState({
-      [event.target.id]: event.target.value,
-    }, this.checkValue);
+  handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const target = event.target;
+    
+    this.setState(state => ({
+      ...state,
+      [target.id]: target.value
+    }), this.checkValue);
   }
 
   render() {

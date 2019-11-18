@@ -2,8 +2,8 @@ import * as React from 'react'
 
 interface CodeInputProps {
   id: string
-  inputKeyUp(): void
-  inputChange(): void
+  inputKeyUp: (event: React.KeyboardEvent) => void
+  inputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   value: string
 }
 
