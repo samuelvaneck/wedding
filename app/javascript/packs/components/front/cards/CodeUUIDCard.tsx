@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { mount } from '../application/mount';
+// import { mount } from '../../../application/mount';
 import { Spinner } from './Spinner'
 import { CodeInputField } from './CodeInputField'
 import { fail } from 'assert';
@@ -7,6 +7,7 @@ import { string, any } from 'prop-types';
 
 interface CodeUUIDProps {
   title: string
+  handleCardChange: (id: string) => void
 }
 
 interface CodeUUIDState {
@@ -19,7 +20,7 @@ interface CodeUUIDState {
   spinner: boolean
 }
 
-export class CodeUUID extends React.Component<CodeUUIDProps, CodeUUIDState> {
+export class CodeUUIDCard extends React.Component<CodeUUIDProps, CodeUUIDState> {
   state: CodeUUIDState
 
   constructor(props: CodeUUIDProps) {
@@ -71,11 +72,17 @@ export class CodeUUID extends React.Component<CodeUUIDProps, CodeUUIDState> {
           fetch('/families/flip_card/?uuid=' + code + '&card_id=card-reply&login=true', {
             method: 'GET',
             headers: {
-              'Accept': 'text/javascript, application/javascript, application/ecmascript, application/x-ecmascript,',
+              'Accept': 'text/json',
               'X-CSRF-Token': csrfToken,
               'X-Requested-With': 'XMLHTTPRequest' 
             }
-          }).then(reponse => this.resetInputFields())
+          }).then(response => { 
+            if (response.status == 404) {
+              this.resetInputFields() 
+            } else {
+              this.props.handleCardChange('rsvp_card')
+            }
+          })
         } catch (error) {
           this.resetInputFields()
         }
@@ -140,4 +147,4 @@ export class CodeUUID extends React.Component<CodeUUIDProps, CodeUUIDState> {
   }
 }
 
-mount(CodeUUID, 'card-uuid')
+// mount(CodeUUIDCard, 'card-uuid')

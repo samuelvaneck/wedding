@@ -26,14 +26,15 @@
   <% if @family %>
     <%= render 'reply_card' %>
   <% else %>
-    <div class="flipping-card show-front" style="top:80px">
+    <%= react_component 'cards-container', { current_card: 'code_uuid_card' } %>
+    <!-- <div class="flipping-card show-front" style="top:80px">
       <div class="card__face card__face--front h-100">
-        <%= render 'uuid_card' %>
+        <%#= render 'uuid_card' %>
       </div>
       <div class="card__face card__face--right"></div>
       <div class="card__face card__face--back"></div>
       <div class="card__face card__face--left"></div>
-    </div>
+    </div> -->
   <% end %>
 </div>
 <div class="family-footer">
