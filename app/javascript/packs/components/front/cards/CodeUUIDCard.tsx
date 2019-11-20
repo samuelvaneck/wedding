@@ -7,7 +7,7 @@ import { string, any } from 'prop-types';
 
 interface CodeUUIDProps {
   title: string
-  handleCardChange: (id: string) => void
+  handleCardChange: (id: string, family: {}) => void
 }
 
 interface CodeUUIDState {
@@ -68,21 +68,22 @@ export class CodeUUIDCard extends React.Component<CodeUUIDProps, CodeUUIDState> 
         try {
           const elem: HTMLMetaElement = document.querySelector('[name="csrf-token"]');
           const csrfToken = elem.content;
-
-          fetch('/families/flip_card/?uuid=' + code + '&card_id=card-reply&login=true', {
+          const url = '/families/login/?uuid=' + code + '&card_id=card-reply&login=true'
+          
+          fetch(url, {
             method: 'GET',
             headers: {
-              'Accept': 'text/json',
+              'Accept': 'application/json',
               'X-CSRF-Token': csrfToken,
               'X-Requested-With': 'XMLHTTPRequest' 
             }
           }).then(response => { 
-            if (response.status == 404) {
+            if (response.status == 404) { 
               this.resetInputFields() 
-            } else {
-              this.props.handleCardChange('rsvp_card')
-            }
-          })
+            } else { return response.json(); }
+          }).then(family => { 
+            this.props.handleCardChange('rsvp_card', family)
+          });
         } catch (error) {
           this.resetInputFields()
         }
@@ -116,7 +117,7 @@ export class CodeUUIDCard extends React.Component<CodeUUIDProps, CodeUUIDState> 
   render() {
     return (
       <React.Fragment>
-        <div className="card pb-3">
+        <div className="card shadow rounded pb-3">
           <div className="card-header">
             <div className="d-flex justify-content-center"><h4>{this.props.title}</h4></div>
           </div>
