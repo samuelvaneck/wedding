@@ -7,6 +7,7 @@ interface CardsContainerState {
   current_card: string
   family?: { name: string }
   guests: []
+  message: { content: string }
 }
 
 export class CardsContainer extends React.Component<CardsContainerState> {
@@ -17,12 +18,13 @@ export class CardsContainer extends React.Component<CardsContainerState> {
     this.state = {
       current_card: 'code_uuid_card',
       family: { name: '' },
-      guests: []
+      guests: [],
+      message: { content: '' }
     }
   }
 
-  handleCardChange = (id: string, family: { guests: [] }) => {
-    this.setState({ current_card: id, family: family, guests: family.guests })
+  handleCardChange = (id: string, family: { guests: [], message: {} }) => {
+    this.setState({ current_card: id, family: family, guests: family.guests, message: family.message })
   }
 
   render() {
@@ -32,7 +34,7 @@ export class CardsContainer extends React.Component<CardsContainerState> {
       )
     } else if (this.state.current_card == 'rsvp_card') {
       return (
-        <RSVPCard familyName={this.state.family.name} guests={this.state.guests} />
+        <RSVPCard familyName={this.state.family.name} guests={this.state.guests} message={this.state.message} />
       )
     }
     
