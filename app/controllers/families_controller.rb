@@ -9,12 +9,9 @@ class FamiliesController < ApplicationController
     @family.response = true
     success = @family.update! family_params
     @card_id = success ? 'card-success' : 'card-error'
-    @guests = @family.guests
-    @message = @family.message || Message.new
-    render :flip_card
   end
 
-  def login 
+  def login
     @family = Family.find_by(uuid: params[:uuid]) if params[:uuid]
     return head(:not_found) unless @family
 

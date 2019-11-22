@@ -1,22 +1,43 @@
 import * as React from 'react'
 import { mount } from '../../../application/mount'
+import { InputType } from 'zlib'
 
-
-interface RSVPCardProps {
-  familyName: string
-  guests: []
-  message: { content: string }
+interface Guest {
+  id: number
+  name: string
+  attending: boolean
+  day_guest: boolean
 }
 
-export class RSVPCard extends React.Component<RSVPCardProps> {
-  state: RSVPCardProps
+interface Message {
+  content: string
+}
+
+interface RSVPCardProps {
+  family: {
+    name: string
+    guests: {
+      [key: string]: Guest
+    }
+    message: Message
+  }
+}
+
+interface RSVPCardState {
+  family: { name: string, guests: { [key: string]: Guest }, message: { content: string }}
+  submitSuccess: boolean
+}
+
+const getInitialFamily = (props: RSVPCardProps) => props.family
+
+export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
+  state: RSVPCardState
 
   constructor(props: RSVPCardProps) {
-    super(props)
+    super(props);
     this.state = {
-      familyName: this.props.familyName,
-      guests: this.props.guests,
-      message: this.props.message
+      family: getInitialFamily(this.props),
+      submitSuccess: false
     }
   }
 
@@ -24,12 +45,20 @@ export class RSVPCard extends React.Component<RSVPCardProps> {
     console.log(event);
   }
 
-  handleSubmit(event) {
-    console.log(event);
+  handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement
+    const data = new FormData(form);
+
+    fetch('/famlies/update', {
+      method: 'PUT',
+      body: data
+    }).then(response => response.json)
   }
 
   render() {
-    const guestsInputFields = this.state.guests.map((guest: { name: string }, idx) => {
+    const guestsInputFields = Object.keys(this.state.family.guests).map((key, idx) => {
+      const guest = this.state.family.guests[key];
       return(
         <li className="list-group-item" key={idx}>
           <div className="d-flex">
@@ -47,7 +76,7 @@ export class RSVPCard extends React.Component<RSVPCardProps> {
         <div className='card shadow rounded'>
           <div className='card-header'>
             <div className="d-flex justify-content-center">
-              <div className="mt-2"><h5><strong>{this.state.familyName}</strong></h5></div>
+              <div className="mt-2"><h5><strong>{this.props.family.name}</strong></h5></div>
             </div>
           </div>
           <div className="card-body">
@@ -63,7 +92,7 @@ export class RSVPCard extends React.Component<RSVPCardProps> {
                 <li className="list-group-item">
                   <div className="form-group">
                     <strong>Bericht</strong>
-                    <textarea value={this.state.message.content} onChange={this.handleChangeMessageContent} className='form-control' />
+                    <textarea value={this.state.family.message.content} onChange={this.handleChangeMessageContent} className='form-control' />
                   </div>
                 </li>
                 <li className="list-group-item">

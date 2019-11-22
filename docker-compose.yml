@@ -16,7 +16,7 @@ services:
     ports: 
       - 3000:3000
     volumes:
-      - .:/app:chached
+      - .:/app
     environment:
       - RAILS_LOG_TO_STDOUT=true
       - DOCKER_COMPOSE=true
@@ -30,7 +30,7 @@ services:
     depends_on:
       - postgres
     volumes:
-      - .:/app:cached
+      - .:/app
     ports:
       - 3085:3085
     environment: 

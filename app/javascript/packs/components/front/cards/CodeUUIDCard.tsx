@@ -5,9 +5,16 @@ import { CodeInputField } from './CodeInputField'
 import { fail } from 'assert';
 import { string, any } from 'prop-types';
 
+interface GuestProps {
+  id: number
+  name: string
+  attending: boolean
+  day_guest: boolean
+}
+
 interface CodeUUIDProps {
   title: string
-  handleCardChange: (id: string, family: {}) => void
+  handleCardChange: (id: string, family: { id: number, name: string, guests: { [key: string]: GuestProps }, message: {} }) => void
 }
 
 interface CodeUUIDState {
@@ -81,7 +88,7 @@ export class CodeUUIDCard extends React.Component<CodeUUIDProps, CodeUUIDState> 
             if (response.status == 404) { 
               this.resetInputFields() 
             } else { return response.json(); }
-          }).then(family => { 
+          }).then(family => {
             this.props.handleCardChange('rsvp_card', family)
           });
         } catch (error) {

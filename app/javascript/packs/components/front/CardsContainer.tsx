@@ -3,28 +3,36 @@ import { mount } from '../../application/mount'
 import { CodeUUIDCard } from './cards/CodeUUIDCard'
 import { RSVPCard } from './cards/RSVPCard'
 
-interface CardsContainerState {
-  current_card: string
-  family?: { name: string }
-  guests: []
-  message: { content: string }
+interface Guest {
+  id: number
+  name: string
+  attending: boolean
+  day_guest: boolean
 }
 
-export class CardsContainer extends React.Component<CardsContainerState> {
-  state: CardsContainerState
+interface CardsContainerState {
+  current_card: string
+  family: { 
+    id: number, 
+    name: string,
+    guests: {
+      [key: string]: Guest
+    },
+    message: { content: string } 
+  }
+}
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      current_card: 'code_uuid_card',
-      family: { name: '' },
-      guests: [],
-      message: { content: '' }
-    }
+const getInitialCurrentCard = () => 'code_uuid_card';
+const getInitialFamily = () => { return { id: -1, name: '', guests: {}, message: { content: '' } } }; 
+
+export class CardsContainer extends React.Component<CardsContainerState> {
+  readonly state = {
+    current_card: getInitialCurrentCard(),
+    family: getInitialFamily()
   }
 
-  handleCardChange = (id: string, family: { guests: [], message: {} }) => {
-    this.setState({ current_card: id, family: family, guests: family.guests, message: family.message })
+  handleCardChange = (id: string, family: { id: number, name: string, guests: { [key: string]: Guest }, message: { content: string } }) => {
+    this.setState({ current_card: id, family: family })
   }
 
   render() {
@@ -34,7 +42,7 @@ export class CardsContainer extends React.Component<CardsContainerState> {
       )
     } else if (this.state.current_card == 'rsvp_card') {
       return (
-        <RSVPCard familyName={this.state.family.name} guests={this.state.guests} message={this.state.message} />
+        <RSVPCard family={this.state.family} />
       )
     }
     
