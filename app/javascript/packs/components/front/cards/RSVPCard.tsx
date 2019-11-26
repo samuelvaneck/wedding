@@ -2,6 +2,7 @@ import * as React from 'react'
 import { mount } from '../../../application/mount'
 import { InputType } from 'zlib'
 import { runInThisContext } from 'vm'
+import { getUnpackedSettings } from 'http2'
 
 interface Guest {
   id: number
@@ -65,10 +66,38 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
     const family = { ...this.state.family };
     const elem: HTMLMetaElement = document.querySelector('[name="csrf-token"]');
     const csrfToken = elem.content;
+    
+    const data = Object.keys(family).reduce((f, key) => {
+      if (['id', 'email', 'name', 'created_at', 'updated_at', 'uuid', 'response'].indexOf(key) == -1) {
+        if (key == 'guests') {
+          f['guests_attributes'] = [];
+          Object.keys(family[key]).map(idx => {
+            let guest = {}
+            Object.keys(family[key][idx]).map(gKey => {
+              if (['created_at', 'updated_at', 'name', 'day_guest', 'family_id'].indexOf(gKey) == -1) {
+                guest[gKey] = family[key][idx][gKey]
+              }
+              f['guests_attributes'][idx] = guest;
+            })
+          });
+        } else if (key === 'message') {
+          f['message_attributes'] = {}
+          Object.keys(family[key]).map((mKey) => {
+            if (['family_id', 'created_at', 'updated_at'].indexOf(mKey) == -1) {
+              f['message_attributes'][mKey] = family[key][mKey];
+            } 
+          })
+        } else {
+          if (f === undefined) { f = {} }
+          f[key] = family[key];
+        }
+        return f
+      }
+    }, {});
 
     fetch('/families/' + family.id, {
       method: 'PUT',
-      body: JSON.stringify(this.state),
+      body: JSON.stringify(data),
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -81,7 +110,6 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
   render() {
     const guestsInputFields = Object.keys(this.state.family.guests).map((key, idx) => {
       const guest = this.state.family.guests[key];
-      const attending = guest.attending ? 't' : 'f'
       return(
         <li className="list-group-item" key={idx}>
           <div className="d-flex">
@@ -89,7 +117,7 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
             <div className="ml-auto mr-4">
               <input type='checkbox' name='attending' 
                      onChange={(event) => this.handleChangeGuestAttending(event, idx)}
-                     defaultValue={attending} />
+                     defaultChecked={guest.attending} />
             </div>
           </div>
         </li>
