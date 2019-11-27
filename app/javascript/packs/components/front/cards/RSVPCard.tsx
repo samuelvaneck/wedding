@@ -40,7 +40,7 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
     super(props);
     this.state = {
       family: getInitialFamily(this.props),
-      submitSuccess: false
+      submitSuccess: null
     }
 
     this.handleChangeGuestAttending = this.handleChangeGuestAttending.bind(this);
@@ -104,7 +104,24 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
         'X-CSRF-Token': csrfToken,
         'X-Requested-With': 'XMLHTTPRequest' 
       }
-    }).then(response => response.json)
+    }).then(response => response.json())
+    .then(data => {
+      this.setState({ submitSuccess: data['success'] })
+    });
+  }
+
+  renderSubmitFeedback() {
+    let submitText = ''
+    
+    if (this.state.submitSuccess) {
+      submitText = 'Bedankt voor het doorgeven van je RSVP!'
+    } else if (this.state.submitSuccess == null) {
+      submitText = ''
+    } else {
+      submitText = 'Fout tijdens opslaan. Probeer het opnieuw.'
+    }
+
+    return <span>{submitText}</span>
   }
 
   render() {
@@ -149,12 +166,14 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
                   </div>
                 </li>
                 <li className="list-group-item">
-                  <div className="d-flex justify-content-end">
+                  <div className="d-flex justify-content-between">
+                      {this.renderSubmitFeedback()}
                       <input type="submit" value='Verstuur' className='btn btn-outline-primary' onClick={(event) => this.handleSubmit(event) } />
                   </div>
                 </li>
               </ul>
             </form>
+
           </div>
         </div>
       </React.Fragment>

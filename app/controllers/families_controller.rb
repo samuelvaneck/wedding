@@ -8,7 +8,7 @@ class FamiliesController < ApplicationController
   def update
     @family.response = true
     success = @family.update! family_params
-    @card_id = success ? 'card-success' : 'card-error'
+    render json: { success: success }
   end
 
   def login
