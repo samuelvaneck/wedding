@@ -2,6 +2,7 @@ import * as React from 'react'
 import { mount } from '../../application/mount'
 import { CodeUUIDCard } from './cards/CodeUUIDCard'
 import { RSVPCard } from './cards/RSVPCard'
+import { InfoCard } from './cards/InfoCard'
 
 interface Guest {
   id: number
@@ -49,7 +50,7 @@ export class CardsContainer extends React.Component<CardsContainerState> {
         <RSVPCard family={this.state.family} handleRSVPCardChange={this.handleRSVPCardChange} />
       )
     } else if (this.state.current_card == 'info_card') {
-      console.log('hit!');
+      return <InfoCard />
     }
     
   }

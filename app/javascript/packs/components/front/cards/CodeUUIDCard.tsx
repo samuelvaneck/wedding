@@ -1,9 +1,6 @@
 import * as React from 'react'
-// import { mount } from '../../../application/mount';
 import { Spinner } from './Spinner'
 import { CodeInputField } from './CodeInputField'
-import { fail } from 'assert';
-import { string, any } from 'prop-types';
 
 interface GuestProps {
   id: number
