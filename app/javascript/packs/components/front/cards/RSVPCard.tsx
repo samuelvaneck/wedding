@@ -47,8 +47,15 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChangeMessageContent() {
-    console.log(event);
+  handleChangeMessageContent(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    const value = event.target.value;
+    const family = { ...this.state.family }
+    const message = { ...this.state.family.message }
+    
+    message.content = value;
+    family.message = message;
+
+    this.setState({ family });
   }
 
   handleChangeGuestAttending(event: React.ChangeEvent<HTMLInputElement>, idx: number) {
@@ -56,9 +63,11 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
     const value = target.checked;
     let family = { ...this.state.family };
     let guest = { ...this.state.family.guests[idx] }
+    
     guest.attending = value;
-    family.guests[idx] = guest
-    this.setState({ family })
+    family.guests[idx] = guest;
+    
+    this.setState({ family });
   }
 
   handleSubmit(event: React.FormEvent<HTMLInputElement>) {
@@ -162,7 +171,7 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
                 <li className="list-group-item">
                   <div className="form-group">
                     <strong>Bericht</strong>
-                    <textarea value={this.state.family.message.content} onChange={this.handleChangeMessageContent} className='form-control' />
+                    <textarea value={this.state.family.message.content} onChange={event => { this.handleChangeMessageContent(event) }} className='form-control' />
                   </div>
                 </li>
                 <li className="list-group-item">
