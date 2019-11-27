@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: "families#index"
+  root to: 'families#index'
 
-  get "admin", to: "admin/dashboards#index"
-  get "admin/dashboard", to: "admin/dashboards#index"
+  get 'admin', to: 'admin/dashboards#index'
+  get 'admin/dashboard', to: 'admin/dashboards#index'
 
   namespace :admin do
     resources :families do
@@ -16,10 +16,10 @@ Rails.application.routes.draw do
     resources :posts
   end
 
-  resources :families, only: [:index, :update] do
-    collection { get :flip_card }
-    resources :guests, only: [:show, :update]
-    resources :messages, only: [:create, :show, :update]
+  resources :families, only: %i[index update] do
+    collection { get :login }
+    resources :guests, only: %i[show update]
+    resources :messages, only: %i[create show update]
   end
   resources :posts
 end

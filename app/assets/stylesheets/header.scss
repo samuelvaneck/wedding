@@ -1,54 +1,54 @@
-// card 3D flip
-.flipping-card {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  -webkit-transition: transform 1.5s;
-  -moz-transition: transform 1.5s;
-  -ms-transition: transform 1.5s;
-  transition: transform 1.5s;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
+// // card 3D flip
+// .flipping-card {
+//   width: 100%;
+//   height: 100%;
+//   position: relative;
+//   -webkit-transition: transform 1.5s;
+//   -moz-transition: transform 1.5s;
+//   -ms-transition: transform 1.5s;
+//   transition: transform 1.5s;
+//   -webkit-transform-style: preserve-3d;
+//   transform-style: preserve-3d;
+// }
 
-.card__face {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  -webkit-backface-visibility:hidden;
-  -moz-backface-visibility:hidden;
-  -o-backface-visibility: hidden;
-  backface-visibility:hidden;
-}
+// .card__face {
+//   position: absolute;
+//   height: 100%;
+//   width: 100%;
+//   -webkit-backface-visibility:hidden;
+//   -moz-backface-visibility:hidden;
+//   -o-backface-visibility: hidden;
+//   backface-visibility:hidden;
+// }
 
-.card__face--front {
-  z-index: 10;
-  -webkit-transform: rotateY(0deg) translateZ(45vw);
-  -moz-transform: rotateY(0deg) translateZ(45vw);
-  -ms-transform: translateY(0deg) translateZ(45vw);
-  transform: rotateY(0deg) translateZ(45vw);
-}
+// .card__face--front {
+//   z-index: 10;
+//   -webkit-transform: rotateY(0deg) translateZ(45vw);
+//   -moz-transform: rotateY(0deg) translateZ(45vw);
+//   -ms-transform: translateY(0deg) translateZ(45vw);
+//   transform: rotateY(0deg) translateZ(45vw);
+// }
 
-.card__face--right {
-  -webkit-transform: rotateY(90deg) translateZ(45vw);
-  -moz-transform: rotateY(90deg) translateZ(45vw);
-  -ms-transform: translateY(90deg) translateZ(45vw);
-  transform: rotateY(90deg) translateZ(45vw);
-}
+// .card__face--right {
+//   -webkit-transform: rotateY(90deg) translateZ(45vw);
+//   -moz-transform: rotateY(90deg) translateZ(45vw);
+//   -ms-transform: translateY(90deg) translateZ(45vw);
+//   transform: rotateY(90deg) translateZ(45vw);
+// }
 
-.card__face--back {
-  -webkit-transform: rotateY(180deg) translateZ(45vw);
-  -moz-transform: rotateY(180deg) translateZ(45vw);
-  -ms-transform: translateY(180deg) translateZ(45vw);
-  transform: rotateY(180deg) translateZ(45vw);
-}
+// .card__face--back {
+//   -webkit-transform: rotateY(180deg) translateZ(45vw);
+//   -moz-transform: rotateY(180deg) translateZ(45vw);
+//   -ms-transform: translateY(180deg) translateZ(45vw);
+//   transform: rotateY(180deg) translateZ(45vw);
+// }
 
-.card__face--left {
-  -webkit-transform: rotateY(270deg) translateZ(45vw);
-  -moz-transform: rotateY(270deg) translateZ(45vw);
-  -ms-transform: translateY(270deg) translateZ(45vw);
-  transform: rotateY(270deg) translateZ(45vw);
-}
+// .card__face--left {
+//   -webkit-transform: rotateY(270deg) translateZ(45vw);
+//   -moz-transform: rotateY(270deg) translateZ(45vw);
+//   -ms-transform: translateY(270deg) translateZ(45vw);
+//   transform: rotateY(270deg) translateZ(45vw);
+// }
 
 // family header
 

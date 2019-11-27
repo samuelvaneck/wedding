@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FamiliesController < ApplicationController
   before_action :set_family, only: [:update]
 
@@ -6,19 +8,14 @@ class FamiliesController < ApplicationController
   def update
     @family.response = true
     success = @family.update! family_params
-    @card_id = success ? 'card-success' : 'card-error'
-    @guests = @family.guests
-    @message = @family.message || Message.new
-    render :flip_card
+    render json: { success: success }
   end
 
-  def flip_card
+  def login
     @family = Family.find_by(uuid: params[:uuid]) if params[:uuid]
     return head(:not_found) unless @family
 
-    @card_id = @family.response && params[:login] == 'true' ? 'card-info' : params[:card_id]
-    @guests = @family.guests
-    @message = @family.message || Message.new
+    render json: @family, include: %i[guests message]
   end
 
   private
