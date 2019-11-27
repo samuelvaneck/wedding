@@ -24,10 +24,11 @@ interface RSVPCardProps {
     }
     message: Message
   }
+  handleRSVPCardChange: (id: string) => void
 }
 
 interface RSVPCardState {
-  family: { id: number, name: string, guests: { [key: string]: Guest }, message: { content: string }}
+  family: { id: number, name: string, guests: { [key: string]: Guest }, message: { content: string } }
   submitSuccess: boolean
 }
 
@@ -35,7 +36,7 @@ const getInitialFamily = (props: RSVPCardProps) => props.family
 
 export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
   state: RSVPCardState
-  
+
   constructor(props: RSVPCardProps) {
     super(props);
     this.state = {
@@ -51,7 +52,7 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
     const value = event.target.value;
     const family = { ...this.state.family }
     const message = { ...this.state.family.message }
-    
+
     message.content = value;
     family.message = message;
 
@@ -63,10 +64,10 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
     const value = target.checked;
     let family = { ...this.state.family };
     let guest = { ...this.state.family.guests[idx] }
-    
+
     guest.attending = value;
     family.guests[idx] = guest;
-    
+
     this.setState({ family });
   }
 
@@ -75,7 +76,7 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
     const family = { ...this.state.family };
     const elem: HTMLMetaElement = document.querySelector('[name="csrf-token"]');
     const csrfToken = elem.content;
-    
+
     const data = Object.keys(family).reduce((f, key) => {
       if (['id', 'email', 'name', 'created_at', 'updated_at', 'uuid', 'response'].indexOf(key) == -1) {
         if (key == 'guests') {
@@ -94,7 +95,7 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
           Object.keys(family[key]).map((mKey) => {
             if (['family_id', 'created_at', 'updated_at'].indexOf(mKey) == -1) {
               f['message_attributes'][mKey] = family[key][mKey];
-            } 
+            }
           })
         } else {
           if (f === undefined) { f = {} }
@@ -111,17 +112,20 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'X-CSRF-Token': csrfToken,
-        'X-Requested-With': 'XMLHTTPRequest' 
+        'X-Requested-With': 'XMLHTTPRequest'
       }
     }).then(response => response.json())
-    .then(data => {
-      this.setState({ submitSuccess: data['success'] })
-    });
+      .then(data => {
+        this.setState({ submitSuccess: data['success'] })
+        setTimeout(() => {
+          this.props.handleRSVPCardChange('info_card');
+        }, 2000)
+      });
   }
 
   renderSubmitFeedback() {
     let submitText = ''
-    
+
     if (this.state.submitSuccess) {
       submitText = 'Bedankt voor het doorgeven van je RSVP!'
     } else if (this.state.submitSuccess == null) {
@@ -136,14 +140,14 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
   render() {
     const guestsInputFields = Object.keys(this.state.family.guests).map((key, idx) => {
       const guest = this.state.family.guests[key];
-      return(
+      return (
         <li className="list-group-item" key={idx}>
           <div className="d-flex">
             <div>{guest.name}</div>
             <div className="ml-auto mr-4">
-              <input type='checkbox' name='attending' 
-                     onChange={(event) => this.handleChangeGuestAttending(event, idx)}
-                     defaultChecked={guest.attending} />
+              <input type='checkbox' name='attending'
+                onChange={(event) => this.handleChangeGuestAttending(event, idx)}
+                defaultChecked={guest.attending} />
             </div>
           </div>
         </li>
@@ -176,8 +180,8 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
                 </li>
                 <li className="list-group-item">
                   <div className="d-flex justify-content-between">
-                      {this.renderSubmitFeedback()}
-                      <input type="submit" value='Verstuur' className='btn btn-outline-primary' onClick={(event) => this.handleSubmit(event) } />
+                    {this.renderSubmitFeedback()}
+                    <input type="submit" value='Verstuur' className='btn btn-outline-primary' onClick={(event) => this.handleSubmit(event)} />
                   </div>
                 </li>
               </ul>

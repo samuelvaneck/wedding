@@ -31,19 +31,25 @@ export class CardsContainer extends React.Component<CardsContainerState> {
     family: getInitialFamily()
   }
 
-  handleCardChange = (id: string, family: { id: number, name: string, guests: { [key: string]: Guest }, message: { content: string } }) => {
+  handleLoginCardChange = (id: string, family: { id: number, name: string, guests: { [key: string]: Guest }, message: { content: string } }) => {
     this.setState({ current_card: id, family: family })
+  }
+
+  handleRSVPCardChange = (id: string) => {
+    this.setState({ current_card: id })
   }
 
   render() {
     if (this.state.current_card =='code_uuid_card') {
       return (
-        <CodeUUIDCard title='Bruiloft Code' handleCardChange={this.handleCardChange} />
+        <CodeUUIDCard title='Bruiloft Code' handleLoginCardChange={this.handleLoginCardChange} />
       )
     } else if (this.state.current_card == 'rsvp_card') {
       return (
-        <RSVPCard family={this.state.family} />
+        <RSVPCard family={this.state.family} handleRSVPCardChange={this.handleRSVPCardChange} />
       )
+    } else if (this.state.current_card == 'info_card') {
+      console.log('hit!');
     }
     
   }

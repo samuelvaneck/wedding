@@ -14,7 +14,7 @@ interface GuestProps {
 
 interface CodeUUIDProps {
   title: string
-  handleCardChange: (id: string, family: { id: number, name: string, guests: { [key: string]: GuestProps }, message: {} }) => void
+  handleLoginCardChange: (id: string, family: { id: number, name: string, guests: { [key: string]: GuestProps }, message: {} }) => void
 }
 
 interface CodeUUIDState {
@@ -89,7 +89,7 @@ export class CodeUUIDCard extends React.Component<CodeUUIDProps, CodeUUIDState> 
               this.resetInputFields() 
             } else { return response.json(); }
           }).then(family => {
-            this.props.handleCardChange('rsvp_card', family)
+            this.props.handleLoginCardChange('rsvp_card', family)
           });
         } catch (error) {
           this.resetInputFields()
