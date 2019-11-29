@@ -83,10 +83,10 @@ export class CodeUUIDCard extends React.Component<CodeUUIDProps, CodeUUIDState> 
             }
           }).then(response => { 
             if (response.status == 404) { 
-              this.resetInputFields() 
+              this.resetInputFields(); 
             } else { return response.json(); }
           }).then(family => {
-            this.props.handleLoginCardChange('rsvp_card', family)
+            family == undefined ? this.resetInputFields() : this.props.handleLoginCardChange('rsvp_card', family);
           });
         } catch (error) {
           this.resetInputFields()
