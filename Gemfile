@@ -34,6 +34,7 @@ gem 'wkhtmltopdf-binary'
 gem 'webpacker'
 
 group :development, :test do
+  gem 'capistrano-webpacker-precompile', require: false
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'database_cleaner'
   gem 'factory_bot_rails'

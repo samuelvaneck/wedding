@@ -72,7 +72,7 @@ export class CodeUUIDCard extends React.Component<CodeUUIDProps, CodeUUIDState> 
         try {
           const elem: HTMLMetaElement = document.querySelector('[name="csrf-token"]');
           const csrfToken = elem.content;
-          const url = '/families/login/?uuid=' + code + '&card_id=card-reply&login=true'
+          const url = '/families/login/?uuid=' + code.toLowerCase() + '&card_id=card-reply&login=true'
           
           fetch(url, {
             method: 'GET',
@@ -83,10 +83,10 @@ export class CodeUUIDCard extends React.Component<CodeUUIDProps, CodeUUIDState> 
             }
           }).then(response => { 
             if (response.status == 404) { 
-              this.resetInputFields() 
+              this.resetInputFields(); 
             } else { return response.json(); }
           }).then(family => {
-            this.props.handleLoginCardChange('rsvp_card', family)
+            family == undefined ? this.resetInputFields() : this.props.handleLoginCardChange('rsvp_card', family);
           });
         } catch (error) {
           this.resetInputFields()
