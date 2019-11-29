@@ -72,7 +72,7 @@ export class CodeUUIDCard extends React.Component<CodeUUIDProps, CodeUUIDState> 
         try {
           const elem: HTMLMetaElement = document.querySelector('[name="csrf-token"]');
           const csrfToken = elem.content;
-          const url = '/families/login/?uuid=' + code + '&card_id=card-reply&login=true'
+          const url = '/families/login/?uuid=' + code.toLowerCase() + '&card_id=card-reply&login=true'
           
           fetch(url, {
             method: 'GET',
