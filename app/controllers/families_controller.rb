@@ -6,7 +6,6 @@ class FamiliesController < ApplicationController
   def index; end
 
   def update
-    @family.response = true
     success = @family.update! family_params
     render json: { success: success }
   end
