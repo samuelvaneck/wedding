@@ -15,6 +15,8 @@ interface RSVPCardProps {
   family: {
     id: number
     name: string
+    allergies: string
+    response: boolean
     guests: {
       [key: string]: Guest
     }
@@ -24,7 +26,14 @@ interface RSVPCardProps {
 }
 
 interface RSVPCardState {
-  family: { id: number, name: string, guests: { [key: string]: Guest }, message: { content: string } }
+  family: { 
+    id: number, 
+    name: string, 
+    allergies: string
+    response: boolean
+    guests: { [key: string]: Guest }, 
+    message: { content: string } 
+  }
   submitSuccess: boolean
 }
 
@@ -67,6 +76,13 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
     this.setState({ family });
   }
 
+  handleChangeFamilyAllergies(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    const family = { ...this.state.family }
+    family.allergies = event.target.value;
+
+    this.setState({ family });
+  }
+
   handleSubmit(event: React.FormEvent<HTMLInputElement>) {
     event.preventDefault();
     const family = { ...this.state.family };
@@ -100,6 +116,8 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
         return f
       }
     }, {});
+
+    data['response'] = true;
 
     fetch('/families/' + family.id, {
       method: 'PUT',
@@ -172,6 +190,12 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
                   <div className="form-group">
                     <strong>Bericht</strong>
                     <textarea value={this.state.family.message.content} onChange={event => { this.handleChangeMessageContent(event) }} className='form-control' />
+                  </div>
+                </li>
+                <li className="list-group-item">
+                  <div className="form-group">
+                    <strong>Allergien</strong>
+                    <textarea value={this.state.family.allergies} onChange={event => { this.handleChangeFamilyAllergies(event) }} className="form-control"></textarea>
                   </div>
                 </li>
                 <li className="list-group-item">
