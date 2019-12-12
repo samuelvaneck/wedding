@@ -17,6 +17,7 @@ const getInitailLng = (props: MapProps) => props.lng;
 
 const MapComponent = ({text}: any) => <div>{text}</div>
 
+
 export class GoogleMap extends React.Component<MapProps, MapState> {
   constructor(props: MapProps) {
     super(props)
@@ -28,6 +29,14 @@ export class GoogleMap extends React.Component<MapProps, MapState> {
   }
 
   render() {
+    const renderMarker = (map, maps) => {
+      let marker = new maps.Marker({
+        position: { lat: this.state.lat, lng: this.state.lng },
+        map,
+        title: 'Bruiloft locatie'
+      })
+      return marker;
+    }
     const center = { lat: this.state.lat, lng: this.state.lng }
     const apiKey = process.env.GOOGLE_MAPS_API_KEY
     return (
@@ -36,8 +45,10 @@ export class GoogleMap extends React.Component<MapProps, MapState> {
           bootstrapURLKeys={{ key: apiKey }}
           defaultCenter={center}
           defaultZoom={this.state.zoom}
+          yesIWantToUseGoogleMapApiInternals
+          onGoogleApiLoaded={({ map, maps }) => renderMarker(map, maps)}
         >
-          <MapComponent lat={this.state.lat} lng={this.state.lng} text="Bruiloft locatie" />
+          <MapComponent lat={this.state.lat} lng={this.state.lng} text="" />
         </GoogleMapReact>
       </div>
     )
