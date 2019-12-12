@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { GoogleMap } from './Map'
 const marienHofImg = require('@images/marienhof.jpg')
 
 interface InfoCardProps {
@@ -26,7 +27,7 @@ export class InfoCard extends React.Component<InfoCardProps, InfoCardState> {
           <div className="card-body">
             <ul className="list-group">
               <li className="list-group-item bg-light">Locatie</li>
-              <li className="list-group-item">Map</li>
+              <li className="list-group-item"><GoogleMap lat={52.153595} lng={5.390943} /></li>
             </ul>
           </div>
         </div>
