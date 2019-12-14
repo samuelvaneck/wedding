@@ -4,8 +4,23 @@ const marienHofImg = require('@images/marienhof.jpg')
 const marienHofLogo = require('@images/logo_marienhof.png')
 const imgRian = require('@images/rian.jpg')
 
+interface Guest {
+  id: number
+  name: string
+  attending: boolean
+  day_guest: boolean
+}
 interface InfoCardProps {
-
+  family: { 
+    id: number, 
+    name: string,
+    allergies: string,
+    response: boolean,
+    guests: {
+      [key: string]: Guest
+    },
+    message: { content: string } 
+  }
 }
 
 interface InfoCardState {
@@ -21,6 +36,56 @@ export class InfoCard extends React.Component<InfoCardProps, InfoCardState> {
   }
 
   render() {
+    const familyDayGuests = Object.keys(this.props.family.guests).map((key, idx) => {
+      const guest = this.props.family.guests[key];
+      return guest.day_guest;
+    });
+
+    const DayProgram = (props) => {
+      const dayGuests = props.dayGuests;
+      if (dayGuests) {
+        return (
+          <React.Fragment>
+            <li className="list-group-item bg-light"><h3>Dag programma</h3></li>
+            <li className="list-group-item">
+              <ul className="list-group">
+                <li className="list-group-item d-flex">
+                  <div className="mr-2"><strong>13.30u</strong></div>
+                  <div>Ontvangst met koffie en thee</div>
+                </li>
+                <li className="list-group-item d-flex">
+                  <div className="mr-2"><strong>14.00u</strong></div>
+                  <div>Gemeentelijk huwelijk</div>
+                </li>
+                <li className="list-group-item d-flex">
+                  <div className="mr-2"><strong>14.45u</strong></div>
+                  <div>Taart en toast</div>
+                </li>
+                <li className="list-group-item d-flex">
+                  <div className="mr-2"><strong>15.30u</strong></div>
+                  <div>Foto moment</div>
+                </li>
+                <li className="list-group-item d-flex">
+                  <div className="mr-2"><strong>16.00u</strong></div>
+                  <div>Borrel</div>
+                </li>
+                <li className="list-group-item d-flex">
+                  <div className="mr-2"><strong>17.00u</strong></div>
+                  <div>Diner</div>
+                </li>
+                <li className="list-group-item d-flex">
+                  <div className="mr-2"><strong>18.30u</strong></div>
+                  <div>Vrije tijd</div>
+                </li>
+              </ul>
+            </li>
+          </React.Fragment>
+        )
+      } else {
+        return <span></span>
+      }
+    }
+
     return (
       <React.Fragment>
         <div className="card shadow rounded pb-3">
@@ -36,52 +101,20 @@ export class InfoCard extends React.Component<InfoCardProps, InfoCardState> {
                       <GoogleMap lat={52.153595} lng={5.390943} />
                     </div>
                     <div className="col-sm-12 col-md-3">
-                      <p><img src={marienHofLogo} alt="" className="m-logo"/></p>
-                      <p>
+                      <div className="my-2"><img src={marienHofLogo} alt="" className="m-logo"/></div>
+                      <div className="my-2">
                         Kleine Haag 2 <br />
                         3811 HE Amersfoort
-                      </p>
-                      <p className="text-justify">
+                      </div>
+                      <div className="my-2 text-justify">
                         <h5>Parkeren</h5>
                         Kom je met de auto dan kan je je auto parkeren bij parkeergarage Koestraat. Deze parkeergarage ligt dichtbij de Mariënhof en voor deze parkeergarage zijn er gratis uitrijkaarten beschikbaar.
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </li>
-              <li className="list-group-item bg-light"><h3>Dag programma</h3></li>
-              <li className="list-group-item">
-                <ul className="list-group">
-                  <li className="list-group-item d-flex">
-                    <div className="mr-2"><strong>13.30u</strong></div>
-                    <div>Ontvangst met koffie en thee</div>
-                  </li>
-                  <li className="list-group-item d-flex">
-                    <div className="mr-2"><strong>14.00u</strong></div>
-                    <div>Gemeentelijk huwelijk</div>
-                  </li>
-                  <li className="list-group-item d-flex">
-                    <div className="mr-2"><strong>14.45u</strong></div>
-                    <div>Taart en toast</div>
-                  </li>
-                  <li className="list-group-item d-flex">
-                    <div className="mr-2"><strong>15.30u</strong></div>
-                    <div>Foto moment</div>
-                  </li>
-                  <li className="list-group-item d-flex">
-                    <div className="mr-2"><strong>16.00u</strong></div>
-                    <div>Borrel</div>
-                  </li>
-                  <li className="list-group-item d-flex">
-                    <div className="mr-2"><strong>17.00u</strong></div>
-                    <div>Diner</div>
-                  </li>
-                  <li className="list-group-item d-flex">
-                    <div className="mr-2"><strong>18.30u</strong></div>
-                    <div>Vrije tijd</div>
-                  </li>
-                </ul>
-              </li>
+              <DayProgram dayGuests={familyDayGuests.includes(true)} />
               <li className="list-group-item bg-light"><h3>Avond programma</h3></li>
               <li className="list-group-item">
                 <ul className="list-group">

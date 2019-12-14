@@ -58,7 +58,7 @@ class Admin::FamiliesController < AdminController
   private
 
   def family_params
-    params.require(:family).permit(:email, :name, :response, :attendees, :photo, :uuid, guests_attributes: [:attending, :id], message_attributes: [:content, :id])
+    params.require(:family).permit(:email, :name, :response, :attendees, :photo, :uuid, guests_attributes: [:attending, :id, :day_guest], message_attributes: [:content, :id])
   end
 
   def set_family

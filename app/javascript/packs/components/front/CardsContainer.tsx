@@ -48,7 +48,7 @@ export class CardsContainer extends React.Component<CardsContainerState> {
     } else if (this.state.current_card == 'rsvp_card') {
       return <RSVPCard family={this.state.family} handleRSVPCardChange={this.handleRSVPCardChange} />
     } else if (this.state.current_card == 'info_card') {
-      return <InfoCard />
+      return <InfoCard family={this.state.family} />
     }
     
   }
