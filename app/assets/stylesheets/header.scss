@@ -137,7 +137,6 @@
 
 .family-footer {
   z-index: 1;
-  min-height: 20vh;
 }
 
 @media (min-width: 768px) {
@@ -155,10 +154,6 @@
 
 .content-date {
   font-size: 1.5em;
-}
-
-#content {
-  height: 100%;
 }
 
 // Small devices (landscape phones, 576px and up)
