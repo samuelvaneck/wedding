@@ -40,7 +40,7 @@ export class GoogleMap extends React.Component<MapProps, MapState> {
     const center = { lat: this.state.lat, lng: this.state.lng }
     const apiKey = process.env.GOOGLE_MAPS_API_KEY
     return (
-      <div style={{ height: '50vh', width: '100%' }}>
+      <div style={{ height: '50vh', width: '100%' }} className="shadow mb-5 bg-white rounded">
         <GoogleMapReact
           bootstrapURLKeys={{ key: apiKey }}
           defaultCenter={center}
