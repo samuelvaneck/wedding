@@ -52,7 +52,6 @@
   z-index: 10;
   position: relative;
   top: -15vh;
-  margin: 10px;
 }
 
 .card-image {
@@ -95,6 +94,9 @@
   }
   .code-input-right {
     justify-content: center !important;
+  }
+  .family-content {
+    margin: 10px;
   }
 }
 

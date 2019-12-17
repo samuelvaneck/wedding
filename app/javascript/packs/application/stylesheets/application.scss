@@ -1,9 +1,9 @@
-$primary: #00539C;
-$primary-light: #0989FB;
-$gray: #EFEFEF;
-$green: #92B558;
-
-@import "~bootstrap/scss/bootstrap";
+@import './custom';
+@import '~bootstrap/scss/bootstrap';
+@import './checkbox.scss';
+@import './header.scss';
+@import './d3.css';
+@import './update.scss';
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
