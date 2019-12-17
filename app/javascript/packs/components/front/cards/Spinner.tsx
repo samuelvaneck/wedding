@@ -21,7 +21,9 @@ export class Spinner extends React.Component<SpinnerProps> {
         <div className="d-flex justify-content-center mt-3 mb-3">
           <div id="status">
             <span className="mr-3 status-text">Checking</span>
-            <i className="fas fa-spinner fa-pulse" id="spinner"></i>
+            <div className="spinner-border spinner-border-sm text-primary" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
           </div>
         </div>
       </React.Fragment>
