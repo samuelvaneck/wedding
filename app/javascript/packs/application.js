@@ -28,5 +28,6 @@ import getUrlParameter from './application/get_params'
 import handleClickRSVPReset from './application/rsvp_reset'
 import './components/front/FamilyHeader'
 import './components/front/CardsContainer'
+import './components/front/FamilyFooter'
 window.RSVP = RSVP
 
