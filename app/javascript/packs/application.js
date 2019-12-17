@@ -26,6 +26,7 @@ import 'popper.js'
 import RSVP from './application/rsvp'
 import getUrlParameter from './application/get_params'
 import handleClickRSVPReset from './application/rsvp_reset'
+import './components/front/FamilyHeader'
 import './components/front/CardsContainer'
 window.RSVP = RSVP
 

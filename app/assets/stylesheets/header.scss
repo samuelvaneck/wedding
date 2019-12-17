@@ -66,14 +66,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(asset_path("bgs/bg-1.jpg"));
-  transition: all 1s ease-in-out;
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -ms-transition: all 1s ease-in-out;
-}
-
-.header-img:hover, .header-img-hover {
-  transform: scale(1.1);
 }
 
 .header-content {
@@ -83,15 +75,7 @@
   width: 20%;
   height: 50vh;
   right: 5%;
-  transition: all 1s ease-in-out;
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -ms-transition: all 1s ease-in-out;
   overflow-x: visible;
-}
-
-.header-content:hover, .header-content-hover {
-  width: 50vw;
 }
 
 .content-text {
@@ -119,7 +103,7 @@
 .family-content {
   z-index: 10;
   position: relative;
-  top: -20vh;
+  top: -15vh;
   margin: 10px;
 }
 
