@@ -21,10 +21,6 @@ require('turbolinks').start()
 
 // stylesheets
 import './application/stylesheets/application'
-import './application/stylesheets/header'
-import './application/stylesheets/d3'
-import './application/stylesheets/checkbox'
-import './application/stylesheets/update'
 
 // custom functions
 import './components/front/FamilyHeader'
