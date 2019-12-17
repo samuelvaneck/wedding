@@ -1,6 +1,4 @@
-<div>
-  <%= react_component 'family-header', { couple_names: 'Samuel & Corine', wedding_date: '10 mei 2019' } %>
-</div>
+<%= react_component 'family-header', { couple_names: 'Samuel & Corine', wedding_date: '10 mei 2019' } %>
 <div class="family-content" id="content">
   <% if @family %>
     <%= render 'reply_card' %>
@@ -8,8 +6,4 @@
     <%= react_component 'cards-container', { current_card: 'code_uuid_card' } %>
   <% end %>
 </div>
-<div class="family-footer">
-  <div class="fixed-bottom text-center mb-2" style="z-index:1">
-    <div>Gemaakt door Samuel</div>
-  </div>
-</div>
+<%= react_component 'family-footer' %>
