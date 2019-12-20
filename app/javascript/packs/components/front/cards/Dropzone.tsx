@@ -3,7 +3,7 @@ const cloudIcon = require('../../../../images/cloud-computing.svg')
 
 interface dropZoneProps {
   disabled: boolean
-  onFilesAdded: (array: any) => void
+  onFilesAdded: (event: any, array: any) => void
 }
 
 interface dropZoneState {
@@ -32,7 +32,7 @@ export class Dropzone extends React.Component<dropZoneProps, dropZoneState> {
     const files = event.target.files;
     const array = this.fileListToArray(files);
     
-    this.props.onFilesAdded(array)
+    this.props.onFilesAdded(event, array)
   }
 
   fileListToArray(list) {
@@ -60,7 +60,7 @@ export class Dropzone extends React.Component<dropZoneProps, dropZoneState> {
 
     const files = event.dataTransfer.files;
     const array = this.fileListToArray(files);
-    this.props.onFilesAdded(array);
+    this.props.onFilesAdded(event, array);
     this.setState({ highlight: false });
   }
 

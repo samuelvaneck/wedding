@@ -213,7 +213,7 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
                 <li className="list-group-item">
                   <div className="form-group">
                     <strong>Foto</strong>
-                    <FileUpload />
+                    <FileUpload files={[this.state.family.photo]} />
                   </div>
                 </li>
                 <li className="list-group-item">
