@@ -31,11 +31,10 @@ export class Dropzone extends React.Component<dropZoneProps, dropZoneState> {
 
     const files = event.target.files;
     const array = this.fileListToArray(files);
-    
     this.props.onFilesAdded(event, array)
   }
 
-  fileListToArray(list) {
+  fileListToArray(list: FileList) {
     const array = [];
     for (var i = 0; i < list.length; i++) {
       array.push(list.item(i))
@@ -59,7 +58,8 @@ export class Dropzone extends React.Component<dropZoneProps, dropZoneState> {
     if (this.props.disabled) return;
 
     const files = event.dataTransfer.files;
-    const array = this.fileListToArray(files);
+    const array = Array.from(files).map(file => { return file })
+
     this.props.onFilesAdded(event, array);
     this.setState({ highlight: false });
   }
