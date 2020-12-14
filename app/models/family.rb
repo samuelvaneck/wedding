@@ -20,7 +20,7 @@ class Family < ApplicationRecord
     spreadsheet = Roo::Spreadsheet.open(file)
     spreadsheet.each_with_pagename do |name, sheet|
       next unless name == 'Uitnodigingen'
-      
+
       read_sheet sheet
     end
   end
@@ -34,6 +34,10 @@ class Family < ApplicationRecord
     )
   end
 
+  def photo_url
+    Rails.application.routes.url_helpers.rails_blob_path(self.photo, only_path: true)
+  end
+
   private
 
   def self.read_sheet(sheet)
@@ -41,7 +45,7 @@ class Family < ApplicationRecord
     sheet.parse header_search: ['Huishouden', 'Gast', 'Dag gasten', 'Avond gasten', 'Kind', 'Dïeet', 'Notities', 'E-mailadres', 'Telefoonnummer']
     sheet.each_with_index(family: 'Huishouden', guest: 'Gast', day_guest: 'Dag gasten', email: 'E-mailadres') do |guest, idx|
       next if idx.zero?
-      
+
       import_guest guest
     end
   end

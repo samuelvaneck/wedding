@@ -18,6 +18,7 @@ interface CardsContainerState {
     name: string,
     allergies: string,
     response: boolean,
+    photo: File,
     guests: {
       [key: string]: Guest
     },
@@ -26,7 +27,7 @@ interface CardsContainerState {
 }
 
 const getInitialCurrentCard = () => 'code_uuid_card';
-const getInitialFamily = () => { return { id: -1, name: '', allergies: '', response: false, guests: {}, message: { content: '' } } }; 
+const getInitialFamily = () => { return { id: -1, name: '', allergies: '', response: false, photo: null, guests: {}, message: { content: '' } } }; 
 
 export class CardsContainer extends React.Component<CardsContainerState> {
   readonly state = {
@@ -34,7 +35,7 @@ export class CardsContainer extends React.Component<CardsContainerState> {
     family: getInitialFamily()
   }
 
-  handleLoginCardChange = (id: string, family: { id: number, name: string, allergies: string, response: boolean, guests: { [key: string]: Guest }, message: { content: string } }) => {
+  handleLoginCardChange = (id: string, family: { id: number, name: string, allergies: string, response: boolean, photo: File, guests: { [key: string]: Guest }, message: { content: string } }) => {
     this.setState({ current_card: id, family: family })
   }
 

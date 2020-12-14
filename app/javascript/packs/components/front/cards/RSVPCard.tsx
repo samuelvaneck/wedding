@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { FileUpload } from './FileUpload'
 
 interface Guest {
   id: number
@@ -17,6 +18,7 @@ interface RSVPCardProps {
     name: string
     allergies: string
     response: boolean
+    photo: File
     guests: {
       [key: string]: Guest
     }
@@ -31,6 +33,7 @@ interface RSVPCardState {
     name: string, 
     allergies: string
     response: boolean
+    photo: File
     guests: { [key: string]: Guest }, 
     message: { content: string } 
   }
@@ -79,6 +82,15 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
   handleChangeFamilyAllergies(event: React.ChangeEvent<HTMLTextAreaElement>) {
     const family = { ...this.state.family }
     family.allergies = event.target.value;
+
+    this.setState({ family });
+  }
+
+  handleChangeFamilyPhoto(event: React.ChangeEvent<HTMLInputElement>) {
+    const family = { ...this.state.family }
+    family.photo = event.target.files[0]
+
+    console.log(family);
 
     this.setState({ family });
   }
@@ -196,6 +208,12 @@ export class RSVPCard extends React.Component<RSVPCardProps, RSVPCardState> {
                   <div className="form-group">
                     <strong>Allergien</strong>
                     <textarea value={this.state.family.allergies} onChange={event => { this.handleChangeFamilyAllergies(event) }} className="form-control"></textarea>
+                  </div>
+                </li>
+                <li className="list-group-item">
+                  <div className="form-group">
+                    <strong>Foto</strong>
+                    <FileUpload files={[this.state.family.photo]} family_id={this.state.family.id} />
                   </div>
                 </li>
                 <li className="list-group-item">

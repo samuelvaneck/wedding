@@ -7,14 +7,14 @@ class FamiliesController < ApplicationController
 
   def update
     success = @family.update! family_params
-    render json: { success: success }
+    render json: { success: success, family: @family, photo_url: @family.photo_url }
   end
 
   def login
     @family = Family.find_by(uuid: params[:uuid]) if params[:uuid]
     return head(:not_found) unless @family
 
-    render json: @family, include: %i[guests message]
+    render json: @family, photo_url: @family&.photo_url, include: %i[guests message]
   end
 
   private
