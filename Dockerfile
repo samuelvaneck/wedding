@@ -14,3 +14,5 @@ ENV BUNDLER_VERSION 2.1.4
 RUN gem install bundler && bundle install
 RUN yarn
 COPY . $INSTALL_PATH
+
+CMD ["bundle", "exec", "rails s -p 3000 -b 0.0.0.0"]

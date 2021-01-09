@@ -36,3 +36,6 @@ yarn-debug.log*
 
 # ignore enviroment file
 .env
+
+# ignore SQL dumps
+*.sql
