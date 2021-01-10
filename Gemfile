@@ -3,38 +3,29 @@ git_source(:github)  { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
-gem 'rails', '~> 6.0', '>= 6.0.3.1'
-gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'mini_racer', platforms: :ruby
-
-gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
-gem 'redis', '~> 4.0'
-gem 'sidekiq'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
-gem 'jquery-rails'
-gem 'font-awesome-sass'
-gem "roo"
 gem 'devise'
-
-gem 'capistrano'
-gem 'capistrano-bundler'
-gem 'capistrano-passenger'
-gem 'capistrano-rails'
-gem 'capistrano-rbenv'
-
+gem 'font-awesome-sass'
+gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
+gem 'mini_racer', platforms: :ruby
+gem 'pg', '>= 0.18', '< 2.0'
+gem 'puma', '~> 3.11'
+gem 'rails', '~> 6.0', '>= 6.0.3.1'
+gem 'redis', '~> 4.0'
+gem 'roo'
 gem 'rqrcode'
-gem 'will_paginate'
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem 'sass-rails', '~> 5.0'
+gem 'sidekiq'
+gem 'turbolinks', '~> 5'
+gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
+gem 'wicked_pdf'
+gem 'will_paginate'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
-  gem 'capistrano-webpacker-precompile', require: false
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'database_cleaner'
   gem 'factory_bot_rails'
@@ -47,6 +38,12 @@ end
 
 group :development do
   gem 'brakeman'
+  gem 'capistrano'
+  gem 'capistrano3-nginx', '~> 2.0'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails'
+  gem 'capistrano-rails-console', require: false
+  gem 'capistrano-rbenv'
   gem 'guard-rspec'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop'
