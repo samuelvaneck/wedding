@@ -1,4 +1,4 @@
-lock '~> 3.14.0'
+lock '~> 3.15.0'
 
 set :application, 'wedding'
 set :repo_url, 'git@github.com:samuelvaneck/wedding.git'
