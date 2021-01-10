@@ -8,11 +8,12 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs ya
 ENV INSTALL_PATH /app
 RUN mkdir $INSTALL_PATH
 WORKDIR $INSTALL_PATH
-COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
+COPY . $INSTALL_PATH
 ENV BUNDLER_VERSION 2.1.4
 RUN gem install bundler && bundle install
-RUN yarn
-COPY . $INSTALL_PATH
+RUN yarn install --check-files
+RUN RAILS_ENV=production bundle exec rake assets:precompile
+RUN RAILS_ENV=production bundle exec rails webpacker:clobber
+RUN RAILS_ENV=production bundle exec rails webpacker:compile
 
 CMD ["bundle", "exec", "rails s -p 3000 -b 0.0.0.0"]

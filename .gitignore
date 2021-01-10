@@ -39,3 +39,5 @@ yarn-debug.log*
 
 # ignore SQL dumps
 *.sql
+
+/config/credentials/production.key
