@@ -10,10 +10,16 @@ RUN mkdir $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 COPY . $INSTALL_PATH
 ENV BUNDLER_VERSION 2.1.4
-RUN gem install bundler && bundle install
-RUN yarn install --check-files
-RUN RAILS_ENV=production bundle exec rake assets:precompile
-RUN RAILS_ENV=production bundle exec rails webpacker:clobber
-RUN RAILS_ENV=production bundle exec rails webpacker:compile
+RUN gem install bundler && \
+    yarn install --check-files && \
+    bundle config build.nokogiri --use-system-libraries && \
+    bundle config git.allow_insecure true && \
+    bundle config set deployment 'true' && \
+    bundle config set frozen 'true' && \
+    bundle config set without 'development test' && \
+    bundle install --quiet && \
+    bundle exec rake assets:precompile && \
+    mkdir tmp/pids && \
+    rm -rf vendor/cache/*.gem
 
 CMD ["bundle", "exec", "rails s -p 3000 -b 0.0.0.0"]
