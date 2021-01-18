@@ -20,5 +20,5 @@ test:
 production:
   <<: *default
   database: wedding_production
-  username: wedding
-  password: <%= ENV['WEDDING_DATABASE_PASSWORD'] %>
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>

@@ -6,6 +6,7 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs yarn zip libnss3-dev
 
 ENV INSTALL_PATH /app
+ENV RAILS_ENV production
 RUN mkdir $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 COPY . $INSTALL_PATH
@@ -18,8 +19,6 @@ RUN gem install bundler && \
     bundle config set frozen 'true' && \
     bundle config set without 'development test' && \
     bundle install --quiet && \
-    bundle exec rake assets:precompile && \
-    mkdir tmp/pids && \
-    rm -rf vendor/cache/*.gem
+    bundle exec rake assets:precompile
 
 CMD ["bundle", "exec", "rails s -p 3000 -b 0.0.0.0"]
