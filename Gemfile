@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github)  { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '3.0.0'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
@@ -38,12 +38,6 @@ end
 
 group :development do
   gem 'brakeman'
-  gem 'capistrano'
-  gem 'capistrano3-nginx', '~> 2.0'
-  gem 'capistrano-passenger'
-  gem 'capistrano-rails'
-  gem 'capistrano-rails-console', require: false
-  gem 'capistrano-rbenv'
   gem 'guard-rspec'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop'

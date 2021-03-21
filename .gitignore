@@ -41,3 +41,6 @@ yarn-debug.log*
 *.sql
 
 /config/credentials/production.key
+
+# vendor bundle
+vendor/bundle/
