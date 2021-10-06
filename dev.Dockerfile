@@ -20,21 +20,20 @@ RUN wget --no-check-certificate https://github.com/wkhtmltopdf/packaging/release
 RUN dpkg -i /wkhtmltox_0.12.6-1.buster_amd64.deb
 RUN rm /wkhtmltox_0.12.6-1.buster_amd64.deb
 
-ENV INSTALL_PATH /app
-ENV RAILS_ENV production
+ENV RUBYOPT='-W0'
+
+ENV INSTALL_PATH=/app
 RUN mkdir $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 COPY . $INSTALL_PATH
-RUN gem update --system && \
-    gem install bundler && \
-    bundle update rake && \
-    yarn install --check-files && \
-    bundle config build.nokogiri --use-system-libraries && \
-    bundle config git.allow_insecure true && \
-    bundle config set deployment 'true' && \
-    bundle config set frozen 'true' && \
-    bundle config set without 'development test' && \
-    bundle install && \
-    bundle exec rake assets:precompile
 
-CMD ["bundle", "exec", "rails s -p 3000 -b 0.0.0.0"]
+RUN gem update --system
+RUN gem install bundler
+RUN yarn install --check-files
+RUN bundle config build.nokogiri --use-system-libraries
+RUN bundle install \
+        --jobs "$(nproc --all)" \
+        --retry 3 --quiet
+RUN bundle exec rake assets:precompile \
+        --quiet --silent \
+        --jobs "$(nproc --all)"

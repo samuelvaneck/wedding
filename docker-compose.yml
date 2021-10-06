@@ -10,12 +10,15 @@ services:
       - ./tmp/postgres/13/data:/var/lib/postgresql/data
 
   wedding_web:
-    build: .
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    command: bash -c "rm -rf /app/tmp/pids && bundle exec rails s -p 3000 -b '0.0.0.0'"
     hostname: wedding_web
     depends_on:
       - postgres
       - webpacker
-    ports: 
+    ports:
       - 3000:3000
     volumes:
       - .:/app
@@ -23,11 +26,15 @@ services:
       - RAILS_LOG_TO_STDOUT=true
       - DOCKER_COMPOSE=true
       - WEBPACKER_DEV_SERVER_HOST=webpacker
+      - APP_URL=localhost
+      - RAILS_ENV=development
     tty: true
     stdin_open: true
 
   webpacker:
-    build: .
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
     command: ./bin/webpack-dev-server
     depends_on:
       - postgres
@@ -35,7 +42,7 @@ services:
       - .:/app
     ports:
       - 3085:3085
-    environment: 
+    environment:
       - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
 
   selenium:
