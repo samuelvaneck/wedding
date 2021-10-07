@@ -33,6 +33,6 @@ RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle config set --local without 'development test'
 RUN bundle install --jobs "$(nproc --all)" --retry 3
 RUN bundle exec rails assets:precompile --jobs "$(nproc --all)"
-RUN yarn build --watch
+RUN ./bin/webpack
 
 CMD ["bundle", "exec", "rails s -p 3000 -b 0.0.0.0"]
