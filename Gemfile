@@ -1,18 +1,19 @@
 source 'https://rubygems.org'
 git_source(:github)  { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.0'
+ruby '3.0.2'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'devise'
+gem "ffi", github: "ffi/ffi"
 gem 'font-awesome-sass'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'mini_racer', platforms: :ruby
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
-gem 'rails', '~> 6.0', '>= 6.0.3.1'
+gem 'rails', '~> 6.1', '>= 6.1.4.1'
 gem 'redis', '~> 4.0'
 gem 'roo'
 gem 'rqrcode'
