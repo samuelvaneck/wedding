@@ -31,9 +31,5 @@ RUN gem update --system
 RUN gem install bundler
 RUN yarn install --check-files
 RUN bundle config build.nokogiri --use-system-libraries
-RUN bundle install \
-        --jobs "$(nproc --all)" \
-        --retry 3 --quiet
-RUN bundle exec rake assets:precompile \
-        --quiet --silent \
-        --jobs "$(nproc --all)"
+RUN bundle install --jobs "$(nproc --all)" --retry 3
+RUN bundle exec rake assets:precompile --jobs "$(nproc --all)"

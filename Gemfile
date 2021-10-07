@@ -6,6 +6,7 @@ ruby '3.0.2'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'devise'
+gem "ffi", github: "ffi/ffi"
 gem 'font-awesome-sass'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'

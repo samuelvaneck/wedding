@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/ffi/ffi.git
+  revision: 315d66e7b0768856d589e15bf597f4816d5cd524
+  specs:
+    ffi (1.15.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -112,7 +118,6 @@ GEM
       railties (>= 5.0.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
-    ffi (1.15.4)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
     formatador (0.3.0)
@@ -360,6 +365,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   faker
+  ffi!
   font-awesome-sass
   guard-rspec
   jbuilder (~> 2.5)
@@ -395,4 +401,4 @@ RUBY VERSION
    ruby 3.0.2p107
 
 BUNDLED WITH
-   2.2.22
+   2.2.28
