@@ -17,7 +17,7 @@
     "jquery": "^3.4.1",
     "node-sass": "^4.13.0",
     "popper.js": "^1.16.0",
-    "prop-types": "^15.7.2",
+    "prop-types": "^15.8.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "sass-loader": "^8.0.0",
