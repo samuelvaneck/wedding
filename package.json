@@ -2,7 +2,7 @@
   "name": "wedding",
   "private": true,
   "dependencies": {
-    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-react": "^7.17.12",
     "@rails/activestorage": "^6.1.5",
     "@rails/ujs": "^6.1.5",
     "@rails/webpacker": "^4.0.7",
