@@ -14,7 +14,7 @@ gem 'mini_racer', platforms: :ruby
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 5.6'
 gem 'rails', '~> 6.1', '>= 6.1.4.1'
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 5.0'
 gem 'roo'
 gem 'rqrcode'
 gem 'sass-rails', '~> 6.0'
