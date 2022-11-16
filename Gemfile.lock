@@ -119,7 +119,7 @@ GEM
       railties (>= 5.0.0)
     faker (3.0.0)
       i18n (>= 1.8.11, < 2)
-    font-awesome-sass (6.1.2)
+    font-awesome-sass (6.2.1)
       sassc (~> 2.0)
     formatador (0.3.0)
     globalid (1.0.0)
