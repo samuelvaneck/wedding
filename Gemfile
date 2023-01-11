@@ -40,7 +40,7 @@ end
 group :development do
   gem 'brakeman'
   gem 'guard-rspec'
-  gem 'listen', '>= 3.0.5', '<= 3.7.1'
+  gem 'listen', '>= 3.0.5', '<= 3.8.0'
   gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
