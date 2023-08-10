@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ffi/ffi.git
-  revision: 0b4d1a2c5fb4fa3aa8cc4c5c0dc7a59ca2406a87
+  revision: a480ff6db209713fc73a3dbbb4f1c31a376d6e6a
   specs:
     ffi (1.15.5)
 
@@ -121,7 +121,7 @@ GEM
       railties (>= 5.0.0)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
-    font-awesome-sass (6.4.0)
+    font-awesome-sass (6.4.2)
       sassc (~> 2.0)
     formatador (0.3.0)
     globalid (1.1.0)
