@@ -13,7 +13,7 @@ gem 'jquery-rails'
 gem 'mini_racer', platforms: :ruby
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 6.4'
-gem 'rails', '~> 6.1', '>= 6.1.4.1'
+gem 'rails', '~> 7.0', '>= 6.1.4.1'
 gem 'redis', '~> 5.0'
 gem 'roo'
 gem 'rqrcode'
